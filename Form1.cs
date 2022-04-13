@@ -39,7 +39,7 @@ namespace KTANE_Bot
             //initialize voice and speech recognition.
             KtaneBOT.SelectVoice("Microsoft Zira Desktop");
             _recognitionEngine.SetInputToDefaultAudioDevice();
-            _recognitionEngine.LoadGrammarAsync(new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Defuse.txt")))));
+            _recognitionEngine.LoadGrammarAsync(DefuseGrammar.StandardDefuseGrammar);
             _recognitionEngine.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(DefaultSpeechRecognized);
         }
 
@@ -125,42 +125,7 @@ namespace KTANE_Bot
                 
                 //if it does, initialize bomb checking.
                 OutputMessage("Check.");
-                
-                //varying choices.
-                Choices batteryChoices = new Choices(new string[] {"none", "0", "1", "2", "more than 2", "3", "4", "5", "6"});
-                GrammarBuilder countBatteries = new GrammarBuilder(batteryChoices);
-                Choices trueOrFalse = new Choices(new string[] {"yes", "no", "true", "false"});
-                GrammarBuilder trueOrFalseChoices = new GrammarBuilder(trueOrFalse);
-                Choices oddEven = new Choices(new string[] {"odd", "even"});
-                GrammarBuilder oddEvenChoices = new GrammarBuilder(oddEven);
-                
-                //batteries
-                GrammarBuilder battery = new GrammarBuilder("Batteries");
-                battery.Append(countBatteries);
-                
-                //parallel port
-                GrammarBuilder parallelPort = new GrammarBuilder("Parallel");
-                parallelPort.Append(trueOrFalse);
-                
-                //frk, interpreted as the word "freak".
-                GrammarBuilder frk = new GrammarBuilder("Freak");
-                frk.Append(trueOrFalse);
-                
-                //car, interpreted as the word "car".
-                GrammarBuilder car = new GrammarBuilder("Car");
-                car.Append(trueOrFalse);
-                
-                //vowel in serial number
-                GrammarBuilder vowel = new GrammarBuilder("Vowel");
-                vowel.Append(trueOrFalse);
-                
-                //last number of serial number
-                GrammarBuilder digit = new GrammarBuilder("Digit");
-                digit.Append(oddEven);
-                
-                Choices allChoices = new Choices(new GrammarBuilder[] {battery, vowel, parallelPort, digit, frk, car});
-                Grammar grammar = new Grammar(allChoices);
-                _recognitionEngine.LoadGrammarAsync(grammar);
+                _recognitionEngine.LoadGrammarAsync(DefuseGrammar.BombCheckGrammar);
                 State = "bomb checking";
             }
             else
