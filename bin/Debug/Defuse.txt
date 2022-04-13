@@ -1,0 +1,13 @@
+Bomb check
+Defuse wires
+Defuse button
+Defuse symbols
+Defuse memory
+Defuse complicated
+Defuse simon
+Defuse sequence
+Defuse morse
+Defuse knob
+Defuse password
+The bomb is defused
+The bomb exploded
