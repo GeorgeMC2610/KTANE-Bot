@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Speech.Recognition;
 using System.Speech.Synthesis;
 using System.Timers;
+using static KTANE_Bot.Button;
 
 namespace KTANE_Bot
 {
@@ -18,6 +19,10 @@ namespace KTANE_Bot
     {
         //speech recognition packages
         SpeechRecognitionEngine _recognitionEngine = new SpeechRecognitionEngine();
+
+        private SpeechRecognitionEngine ButtonSolver = new SpeechRecognitionEngine();
+        
+        
         SpeechSynthesizer KtaneBOT = new SpeechSynthesizer();
         Random random = new Random();
 
@@ -106,6 +111,8 @@ namespace KTANE_Bot
                                 (properties[4] == "yes" || properties[4] == "true"),
                                 (properties[5] == "yes" || properties[5] == "true"));
                     OutputMessage("Done.");
+                    //_recognitionEngine.UnloadGrammar(DefuseGrammar.BombCheckGrammar);
+                    //_recognitionEngine.LoadGrammarAsync(DefuseGrammar.StandardDefuseGrammar);
                     State = "";
                 }
                 
@@ -125,13 +132,23 @@ namespace KTANE_Bot
                 
                 //if it does, initialize bomb checking.
                 OutputMessage("Check.");
+                //_recognitionEngine.UnloadGrammar(DefuseGrammar.StandardDefuseGrammar);
                 _recognitionEngine.LoadGrammarAsync(DefuseGrammar.BombCheckGrammar);
                 State = "bomb checking";
             }
+            //but if the bomb is initialized, start defusing
             else
             {
                 switch (e.Result.Text)
                 {
+                    case "Defuse button":
+                        OutputMessage("Button.");
+                        ButtonSolver.SetInputToDefaultAudioDevice();
+                        ButtonSolver.LoadGrammarAsync(DefuseGrammar.ButtonGrammar);
+                        ButtonSolver.RecognizeAsync(RecognizeMode.Multiple);
+                        ButtonSolver.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(Button);
+                        _recognitionEngine.RecognizeAsyncCancel();
+                        break;
                     case "The bomb is defused":
                         OutputMessage("We did it!");
                         break;
@@ -139,6 +156,32 @@ namespace KTANE_Bot
                         OutputMessage("You're useless.");
                         break;
                 }
+            }
+        }
+
+        private void Button(object sender, SpeechRecognizedEventArgs e)
+        {
+            textBoxInput.Text = e.Result.Text;
+            
+            if (textBoxOutput.Text == "Button.")
+            {
+                var action = KTANE_Bot.Button.Solve(bomb, e.Result.Text.Split(' ')[0], e.Result.Text.Split(' ')[1]);
+                OutputMessage(action);
+                if (action == "Press and immediately release.")
+                {
+                    ButtonSolver.RecognizeAsyncCancel();
+                    _recognitionEngine.RecognizeAsync(RecognizeMode.Multiple); 
+                }
+            }
+            else if (textBoxOutput.Text.StartsWith("Hold "))
+            {
+                if (e.Result.Text.Split(' ')[1] != "stripe")
+                    return;
+                
+                var action = KTANE_Bot.Button.Solve(e.Result.Text.Split(' ')[0]);
+                OutputMessage(action);
+                ButtonSolver.RecognizeAsyncCancel();
+                _recognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
             }
         }
 

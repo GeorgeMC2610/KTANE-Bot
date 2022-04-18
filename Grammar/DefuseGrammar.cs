@@ -7,6 +7,7 @@ namespace KTANE_Bot
     {
         public static Grammar StandardDefuseGrammar = new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Defuse.txt"))));
         public static Grammar BombCheckGrammar => bombCheckGrammar();
+        public static Grammar ButtonGrammar => buttonGrammar();
 
         //bomb checking grammar
         private static Grammar bombCheckGrammar()
@@ -46,5 +47,22 @@ namespace KTANE_Bot
             return new Grammar(allChoices);
         }
 
+        private static Grammar buttonGrammar()
+        {
+            var labelChoices = new Choices(new string[] { "detonate", "hold", "press", "abort", "stripe"});
+            var red = new GrammarBuilder("Red");
+            var yellow = new GrammarBuilder("Yellow");
+            var blue = new GrammarBuilder("Blue");
+            var white = new GrammarBuilder("White");
+            
+            red.Append(labelChoices);
+            yellow.Append(labelChoices);
+            blue.Append(labelChoices);
+            white.Append(labelChoices);
+
+            var allChoices = new Choices(new GrammarBuilder[] {red, yellow, blue, white});
+            return new Grammar(allChoices);
+        }
+        
     }
 }
