@@ -11,8 +11,8 @@ namespace KTANE_Bot
             if (bomb.Batteries > 1 && label == "detonate") return "Press and immediately release.";
             if (bomb.CAR && color == "White")              return "Hold the button, what is the stripe colour?";
             if (bomb.FRK && bomb.Batteries > 2)            return "Press and immediately release.";
-            if (color == "yellow")                         return "Hold the button, what is the stripe colour?";
-            if (color == "red" && label == "hold")         return "Press and immediately release.";
+            if (color == "Yellow")                         return "Hold the button, what is the stripe colour?";
+            if (color == "Red" && label == "hold")         return "Press and immediately release.";
             
             return "Hold the button, what is the stripe colour?";
         }

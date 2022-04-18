@@ -149,6 +149,10 @@ namespace KTANE_Bot
                         ButtonSolver.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(Button);
                         _recognitionEngine.RecognizeAsyncCancel();
                         break;
+                    case "Defuse memory":
+                        
+                        
+                        break;
                     case "The bomb is defused":
                         OutputMessage("We did it!");
                         break;
@@ -165,7 +169,7 @@ namespace KTANE_Bot
             
             if (textBoxOutput.Text == "Button.")
             {
-                var action = KTANE_Bot.Button.Solve(bomb, e.Result.Text.Split(' ')[0], e.Result.Text.Split(' ')[1]);
+                var action = Solve(bomb, e.Result.Text.Split(' ')[0], e.Result.Text.Split(' ')[1]);
                 OutputMessage(action);
                 if (action == "Press and immediately release.")
                 {

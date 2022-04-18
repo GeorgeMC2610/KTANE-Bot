@@ -63,6 +63,15 @@ namespace KTANE_Bot
             var allChoices = new Choices(new GrammarBuilder[] {red, yellow, blue, white});
             return new Grammar(allChoices);
         }
-        
+
+        private static Grammar memoryGrammar()
+        {
+            var nums = new Choices(new string[] {"1", "2", "3", "4"});
+            var sequence = new GrammarBuilder("Sequence");
+            sequence.Append(nums);
+
+            var allChoices = new Choices(sequence);
+            return new Grammar(allChoices);
+        }
     }
 }
