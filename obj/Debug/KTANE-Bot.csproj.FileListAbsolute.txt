@@ -8,3 +8,4 @@ D:\VS Projects\KTANE-Bot\obj\Debug\KTANE-Bot.csproj.GenerateResource.cache
 D:\VS Projects\KTANE-Bot\obj\Debug\KTANE-Bot.csproj.CoreCompileInputs.cache
 D:\VS Projects\KTANE-Bot\obj\Debug\KTANE-Bot.exe
 D:\VS Projects\KTANE-Bot\obj\Debug\KTANE-Bot.pdb
+D:\VS Projects\KTANE-Bot\obj\Debug\KTANE-Bot.csproj.SuggestedBindingRedirects.cache

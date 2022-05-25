@@ -29,7 +29,7 @@ namespace KTANE_Bot
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonExecute = new System.Windows.Forms.Button();
+            this.buttonReset = new System.Windows.Forms.Button();
             this.textBoxInput = new System.Windows.Forms.TextBox();
             this.labelInput = new System.Windows.Forms.Label();
             this.labelOutput = new System.Windows.Forms.Label();
@@ -37,21 +37,25 @@ namespace KTANE_Bot
             this.textBoxOutput = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // buttonExecute
+            // buttonReset
             // 
-            this.buttonExecute.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonExecute.Location = new System.Drawing.Point(12, 145);
-            this.buttonExecute.Name = "buttonExecute";
-            this.buttonExecute.Size = new System.Drawing.Size(119, 29);
-            this.buttonExecute.TabIndex = 1;
-            this.buttonExecute.Text = "Execute";
-            this.buttonExecute.UseVisualStyleBackColor = true;
-            this.buttonExecute.Click += new System.EventHandler(this.buttonExecute_Click);
+            this.buttonReset.BackColor = System.Drawing.Color.Red;
+            this.buttonReset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttonReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonReset.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonReset.Location = new System.Drawing.Point(12, 145);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(119, 29);
+            this.buttonReset.TabIndex = 1;
+            this.buttonReset.Text = "RESET BOMB";
+            this.buttonReset.UseVisualStyleBackColor = false;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // textBoxInput
             // 
+            this.textBoxInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxInput.Enabled = false;
-            this.textBoxInput.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.textBoxInput.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxInput.Location = new System.Drawing.Point(12, 113);
             this.textBoxInput.Name = "textBoxInput";
             this.textBoxInput.Size = new System.Drawing.Size(378, 26);
@@ -59,7 +63,7 @@ namespace KTANE_Bot
             // 
             // labelInput
             // 
-            this.labelInput.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.labelInput.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInput.Location = new System.Drawing.Point(12, 90);
             this.labelInput.Name = "labelInput";
             this.labelInput.Size = new System.Drawing.Size(55, 20);
@@ -69,7 +73,7 @@ namespace KTANE_Bot
             // 
             // labelOutput
             // 
-            this.labelOutput.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.labelOutput.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelOutput.Location = new System.Drawing.Point(12, 240);
             this.labelOutput.Name = "labelOutput";
             this.labelOutput.Size = new System.Drawing.Size(69, 20);
@@ -79,10 +83,10 @@ namespace KTANE_Bot
             // 
             // buttonStart
             // 
-            this.buttonStart.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonStart.BackColor = System.Drawing.Color.Green;
             this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonStart.Font = new System.Drawing.Font("Consolas", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.buttonStart.Font = new System.Drawing.Font("Consolas", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStart.ForeColor = System.Drawing.Color.White;
             this.buttonStart.Location = new System.Drawing.Point(12, 387);
             this.buttonStart.Name = "buttonStart";
@@ -94,8 +98,10 @@ namespace KTANE_Bot
             // 
             // textBoxOutput
             // 
+            this.textBoxOutput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxOutput.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxOutput.Enabled = false;
-            this.textBoxOutput.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.textBoxOutput.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxOutput.Location = new System.Drawing.Point(12, 263);
             this.textBoxOutput.Name = "textBoxOutput";
             this.textBoxOutput.Size = new System.Drawing.Size(378, 26);
@@ -112,7 +118,7 @@ namespace KTANE_Bot
             this.Controls.Add(this.labelOutput);
             this.Controls.Add(this.labelInput);
             this.Controls.Add(this.textBoxInput);
-            this.Controls.Add(this.buttonExecute);
+            this.Controls.Add(this.buttonReset);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Keep Talking and Nobody Explodes Defuser";
@@ -129,7 +135,7 @@ namespace KTANE_Bot
 
         private System.Windows.Forms.Label labelOutput;
 
-        private System.Windows.Forms.Button buttonExecute;
+        private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.TextBox textBoxInput;
 
         #endregion

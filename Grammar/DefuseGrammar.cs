@@ -6,19 +6,28 @@ namespace KTANE_Bot
     public static class DefuseGrammar
     {
         public static Grammar StandardDefuseGrammar = new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Defuse.txt"))));
-        public static Grammar BombCheckGrammar => bombCheckGrammar();
-        public static Grammar ButtonGrammar => buttonGrammar();
+        public static Grammar BombCheckGrammar => _BombCheckGrammar();
+        public static Grammar ButtonGrammar => _ButtonGrammar();
 
+        private static Grammar _StandardDefuseGrammar()
+        {
+            GrammarBuilder builder = new GrammarBuilder();
+            builder.AppendRuleReference(@"DefaultSpeech.grxml");
+
+            Grammar stdGrammar = new Grammar(builder);
+            stdGrammar.Name = "Standard Defuse Grammar";
+            return stdGrammar;
+        }
+        
+        
         //bomb checking grammar
-        private static Grammar bombCheckGrammar()
+        private static Grammar _BombCheckGrammar()
         {
             var batteryChoices = new Choices(new string[] {"none", "0", "1", "2", "more than 2", "3", "4", "5", "6"});
             var countBatteries = new GrammarBuilder(batteryChoices);
             var trueOrFalse = new Choices(new string[] {"yes", "no", "true", "false"});
-            var trueOrFalseChoices = new GrammarBuilder(trueOrFalse);
             var oddEven = new Choices(new string[] {"odd", "even"});
-            var oddEvenChoices = new GrammarBuilder(oddEven);
-                
+            
             //batteries
             var battery = new GrammarBuilder("Batteries");
             battery.Append(countBatteries);
@@ -47,7 +56,7 @@ namespace KTANE_Bot
             return new Grammar(allChoices);
         }
 
-        private static Grammar buttonGrammar()
+        private static Grammar _ButtonGrammar()
         {
             var labelChoices = new Choices(new string[] { "detonate", "hold", "press", "abort", "stripe"});
             var red = new GrammarBuilder("Red");
@@ -64,14 +73,15 @@ namespace KTANE_Bot
             return new Grammar(allChoices);
         }
 
-        private static Grammar memoryGrammar()
+        private static Grammar _MemoryGrammar()
         {
             var nums = new Choices(new string[] {"1", "2", "3", "4"});
-            var sequence = new GrammarBuilder("Sequence");
+            var sequence = new GrammarBuilder("Numbers");
             sequence.Append(nums);
 
             var allChoices = new Choices(sequence);
             return new Grammar(allChoices);
         }
+
     }
 }

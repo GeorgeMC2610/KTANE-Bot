@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar version="1.0" xml:lang="en-US" tag-format="semantics/1.0" root="Main" xmlns="http://www.w3.org/TR/2004/REC-speech-grammar-20040316">
+    <rule id="Main">
+        <item> Bomb check </item>
+        <item> Defuse wires </item>
+        <item> Defuse button </item>
+        <item> Defuse symbols </item>
+        <item> Defuse memory </item>
+        <item> Defuse complicated </item>
+        <item> Defuse simon </item>
+        <item> Defuse sequence </item>
+        <item> Defuse morse </item>
+        <item> Defuse knob </item>
+        <item> Defuse password </item>
+        <item> The bomb is defused </item>
+        <item> The bomb exploded </item>
+    </rule>
+</grammar>
