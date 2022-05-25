@@ -12,6 +12,18 @@ namespace KTANE_Bot
         Waiting,
         Defusing
     }
+
+    internal enum Solvers
+    {
+        Default,
+        Check,
+        Button,
+        Memory,
+        Wires,
+        Sequence,
+        Complex,
+        SimonSays
+    }
     
     public class KTANE_Speech
     {
@@ -30,36 +42,95 @@ namespace KTANE_Bot
             {"Digit",     -1}
         };
         private SpeechSynthesizer _ktaneBot;
-        private SpeechRecognitionEngine
-            _defaultSpeech,
-            _buttonSolver,
-            _memorySolver,
-            _wiresSolver,
-            _sequenceSolver,
-            _complexSolver,
-            _simonSaysSolver;
-
         public KTANE_Speech()
         {
             //speech synthesizer
             _ktaneBot = new SpeechSynthesizer();
             _ktaneBot.SelectVoice("Microsoft Zira Desktop");
             
-            _defaultSpeech = _buttonSolver = _memorySolver = _wiresSolver = _sequenceSolver = _complexSolver = _simonSaysSolver = new SpeechRecognitionEngine();
-
-            _state = States.Checking;
+            //switch to waiting state, so the bomb solver waits for a command.
+            _state = States.Waiting;
             
+            //initialize default
             RecognitionEngine = new SpeechRecognitionEngine();
             RecognitionEngine.SetInputToDefaultAudioDevice();
             RecognitionEngine.LoadGrammarAsync(DefuseGrammar.StandardDefuseGrammar);
             Disable();
         }
 
-        private string AnalyzeSpeech(string command)
+        public string AnalyzeSpeech(string command)
         {
-            
+            switch (_state)
+            {
+                case States.Checking:
+                    int value;
+                    string message;
+                    
+                    if (command.EndsWith("yes") || command.EndsWith("true") || command.EndsWith("odd"))
+                        value = 1;
+                    else if (command.EndsWith("no") || command.EndsWith("false") || command.EndsWith("even"))
+                        value = 0;
+                    else if (command.EndsWith("none"))
+                        value = 0;
+                    else if (command.EndsWith("more than 2"))
+                        value = int.MaxValue;
+                    else
+                        value = int.Parse(command.Split(' ')[1]);
+
+                    _bombProperties[command.Split(' ')[0]] = value;
+                    return $"{command.Split(' ')[0]} {_bombProperties[command.Split(' ')[0]]}";
+                    
+                    break;
+                case States.Waiting:
+                    if (_bomb == null)
+                    {
+                        if (command != "Bomb check")
+                            return "You must first initialize the bomb. (Say \"Bomb check\" to do so)";
+
+                        SwitchDefaultSpeechRecognizer(Solvers.Check);
+                        _state = States.Checking;
+                        return "Start checking phase.";
+                    }
+
+                    break;
+                case States.Defusing:
+                    break;
+            }
+
+            return "No";
         }
 
+        private void SwitchDefaultSpeechRecognizer(Solvers solver)
+        {
+            RecognitionEngine.UnloadAllGrammars();
+
+            switch (solver)
+            {
+                case Solvers.Default:
+                    RecognitionEngine.LoadGrammarAsync(DefuseGrammar.StandardDefuseGrammar);
+                    break;
+                case Solvers.Check:
+                    RecognitionEngine.LoadGrammarAsync(DefuseGrammar.BombCheckGrammar);
+                    break;
+                case Solvers.Button:
+                    RecognitionEngine.LoadGrammarAsync(DefuseGrammar.ButtonGrammar);
+                    break;
+                case Solvers.Memory:
+                    break;
+                case Solvers.Wires:
+                    break;
+                case Solvers.Sequence:
+                    break;
+                case Solvers.Complex:
+                    break;
+                case Solvers.SimonSays:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(solver), solver, null);
+            }
+        }
+        
+        
         public void Enable()
         {
             Enabled = true;
@@ -72,11 +143,9 @@ namespace KTANE_Bot
             RecognitionEngine.RecognizeAsyncCancel();
         }
 
-        private void Speak(string message)
+        public void Speak(string message)
         {
-            
             _ktaneBot.SpeakAsync(message);
         }
-        
     }
 }

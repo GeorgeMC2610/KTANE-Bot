@@ -34,6 +34,8 @@ namespace KTANE_Bot
         private void DefaultSpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
             textBoxInput.Text = e.Result.Text;
+            textBoxOutput.Text = _ktaneSpeech.AnalyzeSpeech(e.Result.Text);
+            _ktaneSpeech.Speak(textBoxOutput.Text);
         }
         
 
