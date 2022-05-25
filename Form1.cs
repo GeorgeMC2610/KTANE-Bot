@@ -26,19 +26,14 @@ namespace KTANE_Bot
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //initialize voice and speech recognition.
-            //KtaneBOT.SelectVoice("Microsoft Zira Desktop");
-            //_recognitionEngine.SetInputToDefaultAudioDevice();
-            //_recognitionEngine.LoadGrammarAsync(DefuseGrammar.StandardDefuseGrammar);
-            //_recognitionEngine.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(DefaultSpeechRecognized);
-
+            //initialize speech recognition.
             _ktaneSpeech = new KTANE_Speech();
             _ktaneSpeech.RecognitionEngine.SpeechRecognized += DefaultSpeechRecognized;
         }
         
         private void DefaultSpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
-            MessageBox.Show("Hello From Form1");
+            textBoxInput.Text = e.Result.Text;
         }
         
 
