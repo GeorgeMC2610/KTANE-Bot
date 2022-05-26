@@ -6,13 +6,13 @@ namespace KTANE_Bot
     {
         //bomb properties
         public readonly int Batteries;
-        public readonly bool Vowel;
         public readonly bool Parallel;
-        public readonly bool EvenDigit;
         public readonly bool FRK;
         public readonly bool CAR;
+        public readonly bool Vowel;
+        public readonly bool EvenDigit;
 
-        public Bomb(int batteries, bool vowel, bool parallel, bool evenDigit, bool frk, bool car)
+        public Bomb(int batteries, bool parallel, bool frk, bool car, bool vowel, bool evenDigit)
         {
             Batteries = batteries;
             Vowel = vowel;

@@ -114,6 +114,18 @@ namespace KTANE_Bot
                             message = value == 0 ? "Last digit is even." : "Last digit is odd.";
                             break;
                     }
+
+                    if (!_bombProperties.ContainsValue(-1))
+                    {
+                        _bomb = new Bomb(_bombProperties["Batteries"], 
+                            _bombProperties["Parallel"] == 1,
+                            _bombProperties["Freak"] == 1, 
+                            _bombProperties["Car"] == 1, 
+                            _bombProperties["Vowel"] == 1,
+                            _bombProperties["Digit"] == 1);
+                        message += " Done.";
+                        _state = States.Waiting;
+                    }
                     
                     return message;
                 case States.Waiting:
