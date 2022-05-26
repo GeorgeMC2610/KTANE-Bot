@@ -125,6 +125,7 @@ namespace KTANE_Bot
                             _bombProperties["Digit"] == 1);
                         message += " Done.";
                         _state = States.Waiting;
+                        SwitchDefaultSpeechRecognizer(Solvers.Default);
                     }
                     
                     return message;
