@@ -63,24 +63,59 @@ namespace KTANE_Bot
             switch (_state)
             {
                 case States.Checking:
+                    //identify, using the following dict, what the different values mean.
+                    var propertiesDictionary = new Dictionary<string, int>
+                    {
+                        { "yes", 1 },
+                        { "true", 1 },
+                        { "odd", 1 },
+                        { "false", 0 },
+                        { "no", 0 },
+                        { "none", 0},
+                        { "even", 0 },
+                        { "more", int.MaxValue }
+                    };
+                    
+                    //the value is going to be assigned according to the dict above. 
                     int value;
-                    string message;
-                    
-                    if (command.EndsWith("yes") || command.EndsWith("true") || command.EndsWith("odd"))
-                        value = 1;
-                    else if (command.EndsWith("no") || command.EndsWith("false") || command.EndsWith("even"))
-                        value = 0;
-                    else if (command.EndsWith("none"))
-                        value = 0;
-                    else if (command.EndsWith("more than 2"))
-                        value = int.MaxValue;
-                    else
+                    try
+                    {
+                        value = propertiesDictionary[command.Split(' ')[1]];
+                    }
+                    //if the value is not in the dict, then it's a plain number.
+                    catch (KeyNotFoundException)
+                    {
                         value = int.Parse(command.Split(' ')[1]);
+                    }
 
+                    //set the property to be the value we assigned before.
                     _bombProperties[command.Split(' ')[0]] = value;
-                    return $"{command.Split(' ')[0]} {_bombProperties[command.Split(' ')[0]]}";
                     
-                    break;
+                    //process the message to be sent.
+                    var message = "";
+                    switch (command.Split(' ')[0])
+                    {
+                        case "Batteries":
+                            message = value == int.MaxValue ? "More than two batteries." : $"{value} batteries.";
+                            break;
+                        case "Parallel":
+                            message = value == 0 ? "No parallel port." : "Yes parallel port.";
+                            break;
+                        case "Freak":
+                            message = value == 0 ? "No FRK label." : "Lit FRK label.";
+                            break;
+                        case "Car":
+                            message = value == 0 ? "No CAR label." : "Lit CAR label.";
+                            break;
+                        case "Vowel":
+                            message = value == 0 ? "No vowel in serial." : "Vowel in serial.";
+                            break;
+                        case "Digit":
+                            message = value == 0 ? "Last digit is even." : "Last digit is odd.";
+                            break;
+                    }
+                    
+                    return message;
                 case States.Waiting:
                     if (_bomb == null)
                     {
