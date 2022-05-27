@@ -191,38 +191,23 @@ namespace KTANE_Bot
         {
             RecognitionEngine.UnloadAllGrammars();
 
-            switch (solver)
+            var grammarDict = new Dictionary<Solvers, Grammar>
             {
-                case Solvers.Default:
-                    RecognitionEngine.LoadGrammarAsync(DefuseGrammar.StandardDefuseGrammar);
-                    break;
-                case Solvers.Check:
-                    RecognitionEngine.LoadGrammarAsync(DefuseGrammar.BombCheckGrammar);
-                    break;
-                case Solvers.Wires:
-                    break;
-                case Solvers.Button:
-                    RecognitionEngine.LoadGrammarAsync(DefuseGrammar.ButtonGrammar);
-                    break;
-                case Solvers.Symbols:
-                    break;
-                case Solvers.Memory:
-                    break;
-                case Solvers.Complicated:
-                    break;
-                case Solvers.Simon:
-                    break;
-                case Solvers.Sequence:
-                    break;
-                case Solvers.Morse:
-                    break;
-                case Solvers.Knob:
-                    break;
-                case Solvers.Password:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(solver), solver, null);
-            }
+                { Solvers.Default, DefuseGrammar.StandardDefuseGrammar },
+                { Solvers.Check, DefuseGrammar.BombCheckGrammar},
+                { Solvers.Wires, null},
+                { Solvers.Button, DefuseGrammar.ButtonGrammar},
+                { Solvers.Symbols, null},
+                { Solvers.Memory, null},
+                { Solvers.Complicated, null},
+                { Solvers.Simon, null},
+                { Solvers.Sequence, null},
+                { Solvers.Morse, null},
+                { Solvers.Knob, null},
+                { Solvers.Password, null},
+            };
+
+            RecognitionEngine.LoadGrammarAsync(grammarDict[solver]);
         }
         
         
