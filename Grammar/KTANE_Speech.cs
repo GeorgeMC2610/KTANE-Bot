@@ -122,7 +122,7 @@ namespace KTANE_Bot
                             _bombProperties["Freak"] == 1, 
                             _bombProperties["Car"] == 1, 
                             _bombProperties["Vowel"] == 1,
-                            _bombProperties["Digit"] == 1);
+                            _bombProperties["Digit"] == 0);
                         message += " Done.";
                         _state = States.Waiting;
                         SwitchDefaultSpeechRecognizer(Solvers.Default);
@@ -140,7 +140,34 @@ namespace KTANE_Bot
                         return "Start checking phase.";
                     }
 
-                    break;
+                    var caseDictionary = new Dictionary<string, Solvers>
+                    {
+                        { "Defuse button", Solvers.Button },
+                        { "Defuse memory", Solvers.Memory },
+                        { "Defuse wires", Solvers.Wires },
+                        { "Defuse sequence", Solvers.Sequence },
+                        { "Defuse complicated", Solvers.Complex },
+                        { "Defuse simon", Solvers.SimonSays },
+                    };
+
+                    try
+                    {
+                        SwitchDefaultSpeechRecognizer(caseDictionary[command]);
+                        _state = States.Defusing;
+                        return $"{command.Split(' ')[0].ToUpper()}.";
+                    }
+                    catch (KeyNotFoundException)
+                    {
+                        switch (command)
+                        {
+                            case "The bomb exploded":
+                                return "You're useless.";
+                            case "The bomb is defused":
+                                return "Good job!";
+                            default:
+                                return "No.";
+                        }
+                    }
                 case States.Defusing:
                     break;
             }
