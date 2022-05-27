@@ -49,8 +49,12 @@ namespace KTANE_Bot
 
         private Dictionary<string, Solvers> _solvingGrammar = new Dictionary<string, Solvers>
         {
-            { "Defuse button", Solvers.Button},
-            { "Defuse memory", Solvers.Memory}
+            { "Defuse button", Solvers.Button },
+            { "Defuse memory", Solvers.Memory },
+            { "Defuse wires", Solvers.Wires },
+            { "Defuse sequence", Solvers.Sequence },
+            { "Defuse complicated", Solvers.Complicated },
+            { "Defuse simon", Solvers.Simon }
         };
         private SpeechSynthesizer _ktaneBot;
         public KTANE_Speech()
@@ -151,19 +155,9 @@ namespace KTANE_Bot
                         return "Start checking phase.";
                     }
 
-                    var caseDictionary = new Dictionary<string, Solvers>
-                    {
-                        { "Defuse button", Solvers.Button },
-                        { "Defuse memory", Solvers.Memory },
-                        { "Defuse wires", Solvers.Wires },
-                        { "Defuse sequence", Solvers.Sequence },
-                        { "Defuse complicated", Solvers.Complicated },
-                        { "Defuse simon", Solvers.Simon },
-                    };
-
                     try
                     {
-                        SwitchDefaultSpeechRecognizer(caseDictionary[command]);
+                        SwitchDefaultSpeechRecognizer(_solvingGrammar[command]);
                         _state = States.Defusing;
                         //this is just a long way to say "return the module with first capital letter and a full stop.
                         return $"{char.ToUpper(command.Split(' ')[1][0]) + command.Split(' ')[1].Substring(1)}.";
@@ -209,7 +203,6 @@ namespace KTANE_Bot
 
             RecognitionEngine.LoadGrammarAsync(grammarDict[solver]);
         }
-        
         
         public void Enable()
         {
