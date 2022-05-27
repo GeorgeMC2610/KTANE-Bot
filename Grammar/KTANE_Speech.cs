@@ -157,15 +157,16 @@ namespace KTANE_Bot
                         { "Defuse memory", Solvers.Memory },
                         { "Defuse wires", Solvers.Wires },
                         { "Defuse sequence", Solvers.Sequence },
-                        { "Defuse complicated", Solvers.Complex },
-                        { "Defuse simon", Solvers.SimonSays },
+                        { "Defuse complicated", Solvers.Complicated },
+                        { "Defuse simon", Solvers.Simon },
                     };
 
                     try
                     {
                         SwitchDefaultSpeechRecognizer(caseDictionary[command]);
                         _state = States.Defusing;
-                        return $"{command.Split(' ')[0].ToUpper()}.";
+                        //this is just a long way to say "return the module with first capital letter and a full stop.
+                        return $"{char.ToUpper(command.Split(' ')[1][0]) + command.Split(' ')[1].Substring(1)}.";
                     }
                     catch (KeyNotFoundException)
                     {
