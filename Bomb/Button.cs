@@ -1,34 +1,49 @@
+using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 
 namespace KTANE_Bot
 {
-    public static class Button
+    public class Button
     {
-        public static string Solve(Bomb bomb, string color, string label)
+        private Bomb _bomb;
+        private string _color;
+        private string _label;
+
+        public Button(Bomb bomb, string color, string label)
         {
-            if (color == "Blue" && label == "abort")       return "Hold the button, what is the stripe colour?";
-            if (bomb.Batteries > 1 && label == "detonate") return "Press and immediately release.";
-            if (bomb.CAR && color == "White")              return "Hold the button, what is the stripe colour?";
-            if (bomb.FRK && bomb.Batteries > 2)            return "Press and immediately release.";
-            if (color == "Yellow")                         return "Hold the button, what is the stripe colour?";
-            if (color == "Red" && label == "hold")         return "Press and immediately release.";
+            _bomb = bomb;
+            _color = color;
+            _label = label;
+        }
+        
+        public string Solve()
+        {
+            if (_color == "Blue" && _label == "abort")       return "Hold, what is the stripe colour?";
+            if (_bomb.Batteries > 1 && _label == "detonate") return "Press and immediately release.";
+            if (_bomb.CAR && _color == "White")              return "Hold the button, what is the stripe colour?";
+            if (_bomb.FRK && _bomb.Batteries > 2)            return "Press and immediately release.";
+            if (_color == "Yellow")                          return "Hold the button, what is the stripe colour?";
+            if (_color == "Red" && _label == "hold")         return "Press and immediately release.";
             
             return "Hold the button, what is the stripe colour?";
         }
 
-        public static string Solve(string color)
+        public string Solve(string color)
         {
-            switch (color)
+            var solvingDict = new Dictionary<string, string>
             {
-                case "Blue":
-                    return "Release at four.";
-                case "White":
-                    return "Release at one.";
-                case "Yellow":
-                    return "Release at five.";
-                default:
-                    return "Release at one.";
+                { "Blue", "Release at four." },
+                { "Yellow", "Release at five." }
+            };
+
+            try
+            {
+                return solvingDict[color];
+            }
+            catch (KeyNotFoundException)
+            {
+                return "Release at one.";
             }
         }
     }
