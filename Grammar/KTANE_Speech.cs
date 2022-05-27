@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Speech.Recognition;
 using System.Speech.Synthesis;
 using System.Windows.Forms;
@@ -17,12 +18,16 @@ namespace KTANE_Bot
     {
         Default,
         Check,
-        Button,
-        Memory,
         Wires,
+        Button,
+        Symbols,
+        Memory,
+        Complicated,
+        Simon,
         Sequence,
-        Complex,
-        SimonSays
+        Morse,
+        Knob,
+        Password
     }
     
     public class KTANE_Speech
@@ -40,6 +45,12 @@ namespace KTANE_Bot
             {"Car",       -1},
             {"Vowel",     -1},
             {"Digit",     -1}
+        };
+
+        private Dictionary<string, Solvers> _solvingGrammar = new Dictionary<string, Solvers>
+        {
+            { "Defuse button", Solvers.Button},
+            { "Defuse memory", Solvers.Memory}
         };
         private SpeechSynthesizer _ktaneBot;
         public KTANE_Speech()
@@ -160,18 +171,26 @@ namespace KTANE_Bot
                 case Solvers.Check:
                     RecognitionEngine.LoadGrammarAsync(DefuseGrammar.BombCheckGrammar);
                     break;
+                case Solvers.Wires:
+                    break;
                 case Solvers.Button:
                     RecognitionEngine.LoadGrammarAsync(DefuseGrammar.ButtonGrammar);
                     break;
+                case Solvers.Symbols:
+                    break;
                 case Solvers.Memory:
                     break;
-                case Solvers.Wires:
+                case Solvers.Complicated:
+                    break;
+                case Solvers.Simon:
                     break;
                 case Solvers.Sequence:
                     break;
-                case Solvers.Complex:
+                case Solvers.Morse:
                     break;
-                case Solvers.SimonSays:
+                case Solvers.Knob:
+                    break;
+                case Solvers.Password:
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(solver), solver, null);
