@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Speech.Recognition;
 using System.Speech.Synthesis;
 using System.Windows.Forms;
@@ -187,6 +188,8 @@ namespace KTANE_Bot
                     switch (_solvingModule)
                     {
                         case Solvers.Wires:
+                            
+                            
                             break;
                         case Solvers.Button:
                             if (_defusingModule == null)
@@ -235,7 +238,7 @@ namespace KTANE_Bot
             {
                 { Solvers.Default, DefuseGrammar.StandardDefuseGrammar },
                 { Solvers.Check, DefuseGrammar.BombCheckGrammar},
-                { Solvers.Wires, null},
+                { Solvers.Wires, DefuseGrammar.WiresGrammar},
                 { Solvers.Button, DefuseGrammar.ButtonGrammar},
                 { Solvers.Symbols, null},
                 { Solvers.Memory, DefuseGrammar.MemoryGrammar},
@@ -272,6 +275,28 @@ namespace KTANE_Bot
             _bomb = null;
             _state = States.Waiting;
             _solvingModule = Solvers.Default;
+
+            foreach (var key in _bombProperties.Keys.ToList())
+            {
+                _bombProperties[key] = -1;
+            }
+        }
+
+        public void InitializeRandomBomb()
+        {
+            foreach (var key in _bombProperties.Keys.ToList())
+            {
+                _bombProperties[key] = new Random().Next(0, 2);
+            }
+            
+            _bomb = new Bomb(_bombProperties["Batteries"], 
+                _bombProperties["Parallel"] == 1,
+                _bombProperties["Freak"] == 1, 
+                _bombProperties["Car"] == 1, 
+                _bombProperties["Vowel"] == 1,
+                _bombProperties["Digit"] == 0);
+            _state = States.Waiting;
+            SwitchDefaultSpeechRecognizer(Solvers.Default);
         }
     }
 }

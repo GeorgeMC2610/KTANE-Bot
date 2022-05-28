@@ -35,12 +35,12 @@ namespace KTANE_Bot
             this.labelOutput = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
             this.textBoxOutput = new System.Windows.Forms.TextBox();
+            this.buttonRandomBomb = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonReset
             // 
             this.buttonReset.BackColor = System.Drawing.Color.Red;
-            this.buttonReset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReset.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.buttonReset.Location = new System.Drawing.Point(12, 145);
@@ -85,7 +85,6 @@ namespace KTANE_Bot
             // 
             this.buttonStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonStart.BackColor = System.Drawing.Color.Green;
-            this.buttonStart.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonStart.Font = new System.Drawing.Font("Consolas", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStart.ForeColor = System.Drawing.Color.White;
             this.buttonStart.Location = new System.Drawing.Point(12, 387);
@@ -107,12 +106,27 @@ namespace KTANE_Bot
             this.textBoxOutput.Size = new System.Drawing.Size(378, 26);
             this.textBoxOutput.TabIndex = 6;
             // 
+            // buttonRandomBomb
+            // 
+            this.buttonRandomBomb.BackColor = System.Drawing.Color.White;
+            this.buttonRandomBomb.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonRandomBomb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRandomBomb.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.buttonRandomBomb.Location = new System.Drawing.Point(137, 145);
+            this.buttonRandomBomb.Name = "buttonRandomBomb";
+            this.buttonRandomBomb.Size = new System.Drawing.Size(119, 29);
+            this.buttonRandomBomb.TabIndex = 7;
+            this.buttonRandomBomb.Text = "Random Bomb";
+            this.buttonRandomBomb.UseVisualStyleBackColor = false;
+            this.buttonRandomBomb.Click += new System.EventHandler(this.buttonRandomBomb_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonRandomBomb);
             this.Controls.Add(this.textBoxOutput);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.labelOutput);
@@ -126,6 +140,8 @@ namespace KTANE_Bot
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button buttonRandomBomb;
 
         private System.Windows.Forms.TextBox textBoxOutput;
 

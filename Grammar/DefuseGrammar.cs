@@ -8,18 +8,8 @@ namespace KTANE_Bot
         public static Grammar StandardDefuseGrammar = new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Defuse.txt"))));
         public static Grammar BombCheckGrammar => _BombCheckGrammar();
         public static Grammar ButtonGrammar => _ButtonGrammar();
-
         public static Grammar MemoryGrammar => _MemoryGrammar();
-
-        private static Grammar _StandardDefuseGrammar()
-        {
-            GrammarBuilder builder = new GrammarBuilder();
-            builder.AppendRuleReference(@"DefaultSpeech.grxml");
-
-            Grammar stdGrammar = new Grammar(builder);
-            stdGrammar.Name = "Standard Defuse Grammar";
-            return stdGrammar;
-        }
+        public static Grammar WiresGrammar => _WiresGrammar();
         
         
         //bomb checking grammar
@@ -85,5 +75,17 @@ namespace KTANE_Bot
             return new Grammar(allChoices);
         }
 
+        private static Grammar _WiresGrammar()
+        {
+            var builder = new GrammarBuilder();
+            
+            builder.Append("black wire", 0, 6);
+            builder.Append("yellow wire", 0, 6);
+            builder.Append("red wire", 0, 6);
+            builder.Append("white wire", 0, 6);
+            builder.Append("blue wire", 0, 6);
+
+            return new Grammar(builder);
+        }
     }
 }

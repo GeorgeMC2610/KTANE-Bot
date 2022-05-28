@@ -70,5 +70,10 @@ namespace KTANE_Bot
 
             _ktaneSpeech.ResetBomb();
         }
+
+        private void buttonRandomBomb_Click(object sender, EventArgs e)
+        {
+            _ktaneSpeech.InitializeRandomBomb();
+        }
     }
 }
