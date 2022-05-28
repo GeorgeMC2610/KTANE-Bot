@@ -9,6 +9,8 @@ namespace KTANE_Bot
         public static Grammar BombCheckGrammar => _BombCheckGrammar();
         public static Grammar ButtonGrammar => _ButtonGrammar();
 
+        public static Grammar MemoryGrammar => _MemoryGrammar();
+
         private static Grammar _StandardDefuseGrammar()
         {
             GrammarBuilder builder = new GrammarBuilder();

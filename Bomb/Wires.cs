@@ -1,6 +1,6 @@
 namespace KTANE_Bot
 {
-    public static class SimpleWires
+    public class Wires
     {
         
     }

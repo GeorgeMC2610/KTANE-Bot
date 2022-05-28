@@ -63,7 +63,12 @@ namespace KTANE_Bot
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
-            
+            if (MessageBox.Show(
+                    @"Are you sure you want to reset the bomb? All its properties will be gone, and you will have to initialize them again.",
+                    @"Reset Bomb", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+                return;
+
+            _ktaneSpeech.ResetBomb();
         }
     }
 }

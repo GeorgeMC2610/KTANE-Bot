@@ -34,9 +34,11 @@ namespace KTANE_Bot
     {
         public SpeechRecognitionEngine RecognitionEngine { get; private set; }
         public bool Enabled { get; private set; }
-        
+
+        private KTANE_Module _defusingModule;
         private Bomb _bomb;
         private States _state;
+        private Solvers _solvingModule;
         private Dictionary<string, int> _bombProperties = new Dictionary<string, int>
         {
             {"Batteries", -1},
@@ -49,13 +51,14 @@ namespace KTANE_Bot
 
         private Dictionary<string, Solvers> _solvingGrammar = new Dictionary<string, Solvers>
         {
+            { "Defuse wires", Solvers.Wires },
             { "Defuse button", Solvers.Button },
             { "Defuse memory", Solvers.Memory },
-            { "Defuse wires", Solvers.Wires },
             { "Defuse sequence", Solvers.Sequence },
             { "Defuse complicated", Solvers.Complicated },
             { "Defuse simon", Solvers.Simon }
         };
+        
         private SpeechSynthesizer _ktaneBot;
         public KTANE_Speech()
         {
@@ -145,6 +148,7 @@ namespace KTANE_Bot
                     
                     return message;
                 case States.Waiting:
+                    //if the user hasn't yet initialized the bomb
                     if (_bomb == null)
                     {
                         if (command != "Bomb check")
@@ -155,11 +159,15 @@ namespace KTANE_Bot
                         return "Start checking phase.";
                     }
 
+                    
+                    //if the bomb is initialized.
                     try
                     {
                         SwitchDefaultSpeechRecognizer(_solvingGrammar[command]);
+                        _solvingModule = _solvingGrammar[command];
                         _state = States.Defusing;
-                        //this is just a long way to say "return the module with first capital letter and a full stop.
+
+                        //this is just a long way to say "return the module with first letter being capital and a full stop."
                         return $"{char.ToUpper(command.Split(' ')[1][0]) + command.Split(' ')[1].Substring(1)}.";
                     }
                     catch (KeyNotFoundException)
@@ -174,7 +182,45 @@ namespace KTANE_Bot
                                 return "No.";
                         }
                     }
-                case States.Defusing:
+                case States.Defusing when _bomb != null:
+
+                    switch (_solvingModule)
+                    {
+                        case Solvers.Wires:
+                            break;
+                        case Solvers.Button:
+                            if (_defusingModule == null)
+                            {
+                                _defusingModule = new Button(_bomb, command.Split(' ')[0], command.Split(' ')[1]);
+                                return _defusingModule.Solve();
+                            }
+
+                            _defusingModule = null;
+                            SwitchDefaultSpeechRecognizer(Solvers.Default);
+                            _solvingModule = Solvers.Default;
+                            _state = States.Waiting;
+                            return Button.Solve(command.Split(' ')[0]);
+                        case Solvers.Symbols:
+                            break;
+                        case Solvers.Memory:
+                            break;
+                        case Solvers.Complicated:
+                            break;
+                        case Solvers.Simon:
+                            break;
+                        case Solvers.Sequence:
+                            break;
+                        case Solvers.Morse:
+                            break;
+                        case Solvers.Knob:
+                            break;
+                        case Solvers.Password:
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+
+
                     break;
             }
 
@@ -192,7 +238,7 @@ namespace KTANE_Bot
                 { Solvers.Wires, null},
                 { Solvers.Button, DefuseGrammar.ButtonGrammar},
                 { Solvers.Symbols, null},
-                { Solvers.Memory, null},
+                { Solvers.Memory, DefuseGrammar.MemoryGrammar},
                 { Solvers.Complicated, null},
                 { Solvers.Simon, null},
                 { Solvers.Sequence, null},
@@ -219,6 +265,13 @@ namespace KTANE_Bot
         public void Speak(string message)
         {
             _ktaneBot.SpeakAsync(message);
+        }
+
+        public void ResetBomb()
+        {
+            _bomb = null;
+            _state = States.Waiting;
+            _solvingModule = Solvers.Default;
         }
     }
 }
