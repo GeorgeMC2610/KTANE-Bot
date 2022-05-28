@@ -188,20 +188,29 @@ namespace KTANE_Bot
                     switch (_solvingModule)
                     {
                         case Solvers.Wires:
-                            
-                            
-                            break;
+                            command = command.Replace(" ", "");
+                            var seperatedWires = command.Split(new string[] { "wire" }, StringSplitOptions.None);
+                            seperatedWires = seperatedWires.Take(seperatedWires.Length - 1).ToArray();
+                            var wires = new Wires(_bomb, seperatedWires);
+
+                            SwitchToDefaultProperties();
+                            return $"{command.Replace("wire", ", ")}; {wires.Solve()}";
+
                         case Solvers.Button:
+                            if (new Button(_bomb, command.Split(' ')[0], command.Split(' ')[1]).Solve() ==
+                                "Press and immediately release.")
+                            {
+                                SwitchToDefaultProperties();
+                                return @"Press and immediately release.";
+                            }
+                            
                             if (_defusingModule == null)
                             {
                                 _defusingModule = new Button(_bomb, command.Split(' ')[0], command.Split(' ')[1]);
                                 return _defusingModule.Solve();
                             }
 
-                            _defusingModule = null;
-                            SwitchDefaultSpeechRecognizer(Solvers.Default);
-                            _solvingModule = Solvers.Default;
-                            _state = States.Waiting;
+                            SwitchToDefaultProperties();
                             return Button.Solve(command.Split(' ')[0]);
                         case Solvers.Symbols:
                             break;
@@ -268,6 +277,14 @@ namespace KTANE_Bot
         public void Speak(string message)
         {
             _ktaneBot.SpeakAsync(message);
+        }
+
+        private void SwitchToDefaultProperties()
+        {
+            _defusingModule = null;
+            SwitchDefaultSpeechRecognizer(Solvers.Default);
+            _solvingModule = Solvers.Default;
+            _state = States.Waiting;
         }
 
         public void ResetBomb()

@@ -14,6 +14,9 @@ namespace KTANE_Bot
 
         public override string Solve()
         {
+            if (_wires.Length > 6)
+                return $"Too many wires given. ({_wires.Length})";
+            
             var redWires = (from wire in _wires where wire == "red" select wire).Count();
             var whiteWires = (from wire in _wires where wire == "white" select wire).Count();
             var blackWires = (from wire in _wires where wire == "black" select wire).Count();
@@ -90,7 +93,8 @@ namespace KTANE_Bot
                 { 2, "second" },
                 { 3, "third" },
                 { 4, "fourth" },
-                { 5, "fifth" }
+                { 5, "fifth" },
+                { 6, "sixth"}
             };
 
             return indexingDict[index];
