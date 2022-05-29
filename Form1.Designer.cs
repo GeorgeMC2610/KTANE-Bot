@@ -36,6 +36,14 @@ namespace KTANE_Bot
             this.buttonStart = new System.Windows.Forms.Button();
             this.textBoxOutput = new System.Windows.Forms.TextBox();
             this.buttonRandomBomb = new System.Windows.Forms.Button();
+            this.panelProperties = new System.Windows.Forms.Panel();
+            this.labelDigit = new System.Windows.Forms.Label();
+            this.labelPort = new System.Windows.Forms.Label();
+            this.labelVowel = new System.Windows.Forms.Label();
+            this.labelCAR = new System.Windows.Forms.Label();
+            this.labelFRK = new System.Windows.Forms.Label();
+            this.labelBatteries = new System.Windows.Forms.Label();
+            this.panelProperties.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonReset
@@ -120,12 +128,86 @@ namespace KTANE_Bot
             this.buttonRandomBomb.UseVisualStyleBackColor = false;
             this.buttonRandomBomb.Click += new System.EventHandler(this.buttonRandomBomb_Click);
             // 
+            // panelProperties
+            // 
+            this.panelProperties.Controls.Add(this.labelDigit);
+            this.panelProperties.Controls.Add(this.labelPort);
+            this.panelProperties.Controls.Add(this.labelVowel);
+            this.panelProperties.Controls.Add(this.labelCAR);
+            this.panelProperties.Controls.Add(this.labelFRK);
+            this.panelProperties.Controls.Add(this.labelBatteries);
+            this.panelProperties.Location = new System.Drawing.Point(561, 90);
+            this.panelProperties.Name = "panelProperties";
+            this.panelProperties.Size = new System.Drawing.Size(227, 199);
+            this.panelProperties.TabIndex = 8;
+            // 
+            // labelDigit
+            // 
+            this.labelDigit.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDigit.Location = new System.Drawing.Point(3, 109);
+            this.labelDigit.Name = "labelDigit";
+            this.labelDigit.Size = new System.Drawing.Size(92, 20);
+            this.labelDigit.TabIndex = 9;
+            this.labelDigit.Text = "Digit: --";
+            this.labelDigit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelPort
+            // 
+            this.labelPort.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPort.Location = new System.Drawing.Point(3, 89);
+            this.labelPort.Name = "labelPort";
+            this.labelPort.Size = new System.Drawing.Size(92, 20);
+            this.labelPort.TabIndex = 8;
+            this.labelPort.Text = "Port: --";
+            this.labelPort.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelVowel
+            // 
+            this.labelVowel.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVowel.Location = new System.Drawing.Point(3, 69);
+            this.labelVowel.Name = "labelVowel";
+            this.labelVowel.Size = new System.Drawing.Size(92, 20);
+            this.labelVowel.TabIndex = 7;
+            this.labelVowel.Text = "Vowel: --";
+            this.labelVowel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCAR
+            // 
+            this.labelCAR.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCAR.Location = new System.Drawing.Point(3, 49);
+            this.labelCAR.Name = "labelCAR";
+            this.labelCAR.Size = new System.Drawing.Size(92, 20);
+            this.labelCAR.TabIndex = 6;
+            this.labelCAR.Text = "CAR: --";
+            this.labelCAR.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelFRK
+            // 
+            this.labelFRK.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFRK.Location = new System.Drawing.Point(3, 29);
+            this.labelFRK.Name = "labelFRK";
+            this.labelFRK.Size = new System.Drawing.Size(92, 20);
+            this.labelFRK.TabIndex = 5;
+            this.labelFRK.Text = "FRK: --";
+            this.labelFRK.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelBatteries
+            // 
+            this.labelBatteries.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBatteries.Location = new System.Drawing.Point(3, 9);
+            this.labelBatteries.Name = "labelBatteries";
+            this.labelBatteries.Size = new System.Drawing.Size(159, 20);
+            this.labelBatteries.TabIndex = 4;
+            this.labelBatteries.Text = "Batteries: --";
+            this.labelBatteries.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panelProperties);
             this.Controls.Add(this.buttonRandomBomb);
             this.Controls.Add(this.textBoxOutput);
             this.Controls.Add(this.buttonStart);
@@ -137,9 +219,19 @@ namespace KTANE_Bot
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Keep Talking and Nobody Explodes Defuser";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.panelProperties.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label labelFRK;
+        private System.Windows.Forms.Label labelCAR;
+        private System.Windows.Forms.Label labelVowel;
+        private System.Windows.Forms.Label labelPort;
+        private System.Windows.Forms.Label labelDigit;
+
+        private System.Windows.Forms.Panel panelProperties;
+        private System.Windows.Forms.Label labelBatteries;
 
         private System.Windows.Forms.Button buttonRandomBomb;
 

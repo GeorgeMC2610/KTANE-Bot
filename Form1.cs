@@ -36,9 +36,10 @@ namespace KTANE_Bot
             textBoxInput.Text = e.Result.Text;
             textBoxOutput.Text = _ktaneSpeech.AnalyzeSpeech(e.Result.Text);
             _ktaneSpeech.Speak(textBoxOutput.Text);
+
+            UpdateProperties();
         }
         
-
         private void buttonStart_Click(object sender, EventArgs e)
         {
             //start listening.
@@ -69,11 +70,23 @@ namespace KTANE_Bot
                 return;
 
             _ktaneSpeech.ResetBomb();
+            UpdateProperties();
         }
 
         private void buttonRandomBomb_Click(object sender, EventArgs e)
         {
             _ktaneSpeech.InitializeRandomBomb();
+            UpdateProperties();
+        }
+
+        private void UpdateProperties()
+        {
+            labelBatteries.Text = $@"Batteries: {_ktaneSpeech.BombProperties["Batteries"]}";
+            labelFRK.Text = $@"FRK: {(_ktaneSpeech.BombProperties["Freak"] == -1 ? "--" : _ktaneSpeech.BombProperties["Freak"] == 1 ? "Yes" : "No")}";
+            labelCAR.Text = $@"CAR: {(_ktaneSpeech.BombProperties["Car"] == -1 ? "--" : _ktaneSpeech.BombProperties["Car"] == 1 ? "Yes" : "No")}";
+            labelPort.Text = $@"Port: {(_ktaneSpeech.BombProperties["Port"] == -1 ? "--" : _ktaneSpeech.BombProperties["Port"] == 1 ? "Yes" : "No")}";
+            labelVowel.Text = $@"Vowel: {(_ktaneSpeech.BombProperties["Vowel"] == -1 ? "--" : _ktaneSpeech.BombProperties["Vowel"] == 1 ? "Yes" : "No")}";
+            labelDigit.Text = $@"Digit: {(_ktaneSpeech.BombProperties["Digit"] == -1 ? "--" : _ktaneSpeech.BombProperties["Digit"] == 1 ? "Yes" : "No")}";
         }
     }
 }

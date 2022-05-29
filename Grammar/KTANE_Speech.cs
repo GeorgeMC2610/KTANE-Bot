@@ -41,10 +41,10 @@ namespace KTANE_Bot
         private Bomb _bomb;
         private States _state;
         private Solvers _solvingModule;
-        private Dictionary<string, int> _bombProperties = new Dictionary<string, int>
+        public Dictionary<string, int> BombProperties = new Dictionary<string, int>
         {
             {"Batteries", -1},
-            {"Parallel",  -1},
+            {"Port",      -1},
             {"Freak",     -1},
             {"Car",       -1},
             {"Vowel",     -1},
@@ -114,7 +114,7 @@ namespace KTANE_Bot
                     }
 
                     //set the property to be the value we assigned before.
-                    _bombProperties[command.Split(' ')[0]] = value;
+                    BombProperties[command.Split(' ')[0]] = value;
                     
                     //process the message to be sent.
                     var message = "";
@@ -123,7 +123,7 @@ namespace KTANE_Bot
                         case "Batteries":
                             message = value == int.MaxValue ? "More than two batteries." : $"{value} batteries.";
                             break;
-                        case "Parallel":
+                        case "Port":
                             message = value == 0 ? "No parallel port." : "Yes parallel port.";
                             break;
                         case "Freak":
@@ -140,14 +140,14 @@ namespace KTANE_Bot
                             break;
                     }
 
-                    if (!_bombProperties.ContainsValue(-1))
+                    if (!BombProperties.ContainsValue(-1))
                     {
-                        _bomb = new Bomb(_bombProperties["Batteries"], 
-                            _bombProperties["Parallel"] == 1,
-                            _bombProperties["Freak"] == 1, 
-                            _bombProperties["Car"] == 1, 
-                            _bombProperties["Vowel"] == 1,
-                            _bombProperties["Digit"] == 0);
+                        _bomb = new Bomb(BombProperties["Batteries"], 
+                            BombProperties["Port"] == 1,
+                            BombProperties["Freak"] == 1, 
+                            BombProperties["Car"] == 1, 
+                            BombProperties["Vowel"] == 1,
+                            BombProperties["Digit"] == 0);
                         message += " Done.";
                         _state = States.Waiting;
                         SwitchDefaultSpeechRecognizer(Solvers.Default);
@@ -332,25 +332,33 @@ namespace KTANE_Bot
             _state = States.Waiting;
             _solvingModule = Solvers.Default;
 
-            foreach (var key in _bombProperties.Keys.ToList())
+            foreach (var key in BombProperties.Keys.ToList())
             {
-                _bombProperties[key] = -1;
+                BombProperties[key] = -1;
             }
         }
 
         public void InitializeRandomBomb()
         {
-            foreach (var key in _bombProperties.Keys.ToList())
+            var rng = new Random();
+            
+            foreach (var key in BombProperties.Keys.ToList())
             {
-                _bombProperties[key] = new Random().Next(0, 2);
+                if (key == "Batteries")
+                {
+                    BombProperties[key] = rng.Next(0, 7);
+                    continue;
+                }
+                
+                BombProperties[key] = rng.Next(0, 2);
             }
             
-            _bomb = new Bomb(_bombProperties["Batteries"], 
-                _bombProperties["Parallel"] == 1,
-                _bombProperties["Freak"] == 1, 
-                _bombProperties["Car"] == 1, 
-                _bombProperties["Vowel"] == 1,
-                _bombProperties["Digit"] == 0);
+            _bomb = new Bomb(BombProperties["Batteries"], 
+                BombProperties["Port"] == 1,
+                BombProperties["Freak"] == 1, 
+                BombProperties["Car"] == 1, 
+                BombProperties["Vowel"] == 1,
+                BombProperties["Digit"] == 0);
             _state = States.Waiting;
             SwitchDefaultSpeechRecognizer(Solvers.Default);
         }

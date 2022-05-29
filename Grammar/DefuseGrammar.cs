@@ -30,7 +30,7 @@ namespace KTANE_Bot
             battery.Append(countBatteries);
                 
             //parallel port
-            var parallelPort = new GrammarBuilder("Parallel");
+            var parallelPort = new GrammarBuilder("Port");
             parallelPort.Append(trueOrFalse);
                 
             //frk, interpreted as the word "freak".
