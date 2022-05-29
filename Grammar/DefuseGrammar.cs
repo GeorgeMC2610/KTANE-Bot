@@ -83,16 +83,24 @@ namespace KTANE_Bot
 
         private static Grammar _SymbolsGrammar()
         {
+            var firstColumn = new Choices("capital queue", "capital ay", "lambda", "lightning", "kitty", "kappa", "reverse dotted c");
+            var secondColumn = new Choices("e with umlaut", "capital queue", "reverse dotted c", "snake", "empty star",
+                "kappa", "question mark");
+            var thirdColumn = new Choices("copyright", "omega", "snake", "ex eye", "three", "lambda", "empty star");
+            var fourthColumn = new Choices("six", "paragraph", "tampa bay", "kitty", "ex eye", "question mark",
+                "smiley face");
+            var fifthColumn = new Choices("psi", "smiley face", "tampa bay", "dotted c", "paragraph", "evil three",
+                "full star");
+            var sixthColumn = new Choices("six", "e with umlaut", "dumbbell", "ay ee", "psi", "reverse n",
+                "capital omega");
+
             var builder = new GrammarBuilder();
-            
-            builder.Append("Capital queue,", 0, 1);
-            builder.Append("Capital ay,", 0, 1);
-            builder.Append("lambda,", 0, 1);
-            builder.Append("lightning,", 0, 1);
-            builder.Append("kitty,", 0, 1);
-            builder.Append("kappa,", 0, 1);
-            builder.Append("flipped c,", 0, 1);
-            //builder.Append("", 0, 1);
+            builder.Append(firstColumn);
+            builder.Append(secondColumn);
+            builder.Append(thirdColumn);
+            builder.Append(fourthColumn);
+            builder.Append(fifthColumn);
+            builder.Append(sixthColumn);
 
             return new Grammar(builder);
         }
