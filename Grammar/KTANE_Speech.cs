@@ -28,7 +28,8 @@ namespace KTANE_Bot
         Sequence,
         Morse,
         Knob,
-        Password
+        Password,
+        Maze
     }
     
     public class KTANE_Speech
@@ -61,7 +62,8 @@ namespace KTANE_Bot
             { "Defuse sequence", Solvers.Sequence },
             { "Defuse morse", Solvers.Morse },
             { "Defuse knob", Solvers.Knob },
-            { "Defuse password", Solvers.Password }
+            { "Defuse password", Solvers.Password },
+            { "Defuse maze", Solvers.Maze}
         };
         
         private SpeechSynthesizer _ktaneBot;
@@ -191,6 +193,7 @@ namespace KTANE_Bot
 
                     switch (_solvingModule)
                     {
+                        //WIRES SOLVER
                         case Solvers.Wires:
                             if (_defusingModule == null)
                             {
@@ -213,6 +216,8 @@ namespace KTANE_Bot
 
                             wires.AppendWire(command);
                             return $"{command}; next.";
+                        
+                        //BUTTON SOLVER
                         case Solvers.Button:
                             if (new Button(_bomb, command.Split(' ')[0], command.Split(' ')[1]).Solve() ==
                                 "Press and immediately release.")
@@ -229,8 +234,12 @@ namespace KTANE_Bot
 
                             SwitchToDefaultProperties();
                             return Button.Solve(command.Split(' ')[0]);
+                        
+                        //SYMBOLS SOLVER.
                         case Solvers.Symbols:
+                            
                             break;
+                        
                         case Solvers.Memory:
                             break;
                         case Solvers.Complicated:
@@ -245,11 +254,12 @@ namespace KTANE_Bot
                             break;
                         case Solvers.Password:
                             break;
+                        case Solvers.Maze:
+                            break;
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
-
-
+                    
                     break;
             }
 
