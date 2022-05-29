@@ -99,12 +99,13 @@ namespace KTANE_Bot
             var red = new GrammarBuilder("red");
             var blue = new GrammarBuilder("blue");
             var black = new GrammarBuilder("black");
+            var done = new GrammarBuilder("done");
             
             red.Append(letters);
             blue.Append(letters);
             black.Append(letters);
 
-            var allChoices = new Choices(new GrammarBuilder[] { red, black, blue });
+            var allChoices = new Choices(new GrammarBuilder[] { red, black, blue, done });
 
             return new Grammar(allChoices);
         }

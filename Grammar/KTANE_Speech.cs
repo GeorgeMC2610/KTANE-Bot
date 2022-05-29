@@ -292,7 +292,7 @@ namespace KTANE_Bot
                 { Solvers.Memory, DefuseGrammar.MemoryGrammar},
                 { Solvers.Complicated, null},
                 { Solvers.Simon, null},
-                { Solvers.Sequence, null},
+                { Solvers.Sequence, DefuseGrammar.SequenceGrammar},
                 { Solvers.Morse, null},
                 { Solvers.Knob, null},
                 { Solvers.Password, null},
