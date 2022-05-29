@@ -12,6 +12,8 @@ namespace KTANE_Bot
         public static Grammar WiresGrammar => _WiresGrammar();
         public static Grammar SymbolsGrammar => _SymbolsGrammar();
 
+        public static Grammar SequenceGrammar => _SequenceGrammar();
+
         private static Grammar _StandardDefuseGrammar()
         {
             return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Defuse.txt"))));
@@ -88,6 +90,23 @@ namespace KTANE_Bot
         private static Grammar _SymbolsGrammar()
         {
             return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Symbols.txt"))));
+        }
+
+        private static Grammar _SequenceGrammar()
+        {
+            var letters = new Choices("alpha", "bravo", "charlie");
+
+            var red = new GrammarBuilder("red");
+            var blue = new GrammarBuilder("blue");
+            var black = new GrammarBuilder("black");
+            
+            red.Append(letters);
+            blue.Append(letters);
+            black.Append(letters);
+
+            var allChoices = new Choices(new GrammarBuilder[] { red, black, blue });
+
+            return new Grammar(allChoices);
         }
     }
 }
