@@ -5,13 +5,17 @@ namespace KTANE_Bot
 {
     public static class DefuseGrammar
     {
-        public static Grammar StandardDefuseGrammar = new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Defuse.txt"))));
+        public static Grammar StandardDefuseGrammar => _StandardDefuseGrammar();
         public static Grammar BombCheckGrammar => _BombCheckGrammar();
         public static Grammar ButtonGrammar => _ButtonGrammar();
         public static Grammar MemoryGrammar => _MemoryGrammar();
         public static Grammar WiresGrammar => _WiresGrammar();
         public static Grammar SymbolsGrammar => _SymbolsGrammar();
-        
+
+        private static Grammar _StandardDefuseGrammar()
+        {
+            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Defuse.txt"))));
+        }
         
         //bomb checking grammar
         private static Grammar _BombCheckGrammar()
@@ -83,26 +87,7 @@ namespace KTANE_Bot
 
         private static Grammar _SymbolsGrammar()
         {
-            var firstColumn = new Choices("capital queue", "capital ay", "lambda", "lightning", "kitty", "kappa", "reverse dotted c");
-            var secondColumn = new Choices("e with umlaut", "capital queue", "reverse dotted c", "snake", "empty star",
-                "kappa", "question mark");
-            var thirdColumn = new Choices("copyright", "omega", "snake", "ex eye", "three", "lambda", "empty star");
-            var fourthColumn = new Choices("six", "paragraph", "tampa bay", "kitty", "ex eye", "question mark",
-                "smiley face");
-            var fifthColumn = new Choices("psi", "smiley face", "tampa bay", "dotted c", "paragraph", "evil three",
-                "full star");
-            var sixthColumn = new Choices("six", "e with umlaut", "dumbbell", "ay ee", "psi", "reverse n",
-                "capital omega");
-
-            var builder = new GrammarBuilder();
-            builder.Append(firstColumn);
-            builder.Append(secondColumn);
-            builder.Append(thirdColumn);
-            builder.Append(fourthColumn);
-            builder.Append(fifthColumn);
-            builder.Append(sixthColumn);
-
-            return new Grammar(builder);
+            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Symbols.txt"))));
         }
     }
 }

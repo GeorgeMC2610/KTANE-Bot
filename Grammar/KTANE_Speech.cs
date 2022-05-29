@@ -237,9 +237,21 @@ namespace KTANE_Bot
                         
                         //SYMBOLS SOLVER.
                         case Solvers.Symbols:
-                            
-                            break;
-                        
+                            if (_defusingModule == null)
+                                _defusingModule = new Symbols(_bomb);
+
+                            var symbols = (Symbols)_defusingModule;
+
+                            if (symbols.InputLength < 3)
+                            {
+                                symbols.AppendSymbol(command);
+                                return $"{command}; next.";
+                            }
+
+                            symbols.AppendSymbol(command);
+                            SwitchToDefaultProperties();
+                            return $"{command}; done. {symbols.Solve()}";
+
                         case Solvers.Memory:
                             break;
                         case Solvers.Complicated:
