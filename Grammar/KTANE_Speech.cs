@@ -54,10 +54,14 @@ namespace KTANE_Bot
         {
             { "Defuse wires", Solvers.Wires },
             { "Defuse button", Solvers.Button },
+            { "Defuse symbols", Solvers.Symbols },
             { "Defuse memory", Solvers.Memory },
-            { "Defuse sequence", Solvers.Sequence },
             { "Defuse complicated", Solvers.Complicated },
-            { "Defuse simon", Solvers.Simon }
+            { "Defuse simon", Solvers.Simon },
+            { "Defuse sequence", Solvers.Sequence },
+            { "Defuse morse", Solvers.Morse },
+            { "Defuse knob", Solvers.Knob },
+            { "Defuse password", Solvers.Password }
         };
         
         private SpeechSynthesizer _ktaneBot;
@@ -188,14 +192,27 @@ namespace KTANE_Bot
                     switch (_solvingModule)
                     {
                         case Solvers.Wires:
-                            command = command.Replace(" ", "");
-                            var seperatedWires = command.Split(new string[] { "wire" }, StringSplitOptions.None);
-                            seperatedWires = seperatedWires.Take(seperatedWires.Length - 1).ToArray();
-                            var wires = new Wires(_bomb, seperatedWires);
+                            if (_defusingModule == null)
+                            {
+                                if (command == "done") return "You must give a color";
+                                
+                                var defusingModule = new Wires(_bomb);
+                                defusingModule.AppendWire(command);
+                                _defusingModule = defusingModule;
+                                
+                                return $"{command}; next.";
+                            }
 
-                            SwitchToDefaultProperties();
-                            return $"{command.Replace("wire", ", ")}; {wires.Solve()}";
+                            var wires = (Wires)_defusingModule;
 
+                            if (command == "done")
+                            {
+                                SwitchToDefaultProperties();
+                                return wires.Solve();
+                            }
+
+                            wires.AppendWire(command);
+                            return $"{command}; next.";
                         case Solvers.Button:
                             if (new Button(_bomb, command.Split(' ')[0], command.Split(' ')[1]).Solve() ==
                                 "Press and immediately release.")
@@ -249,7 +266,7 @@ namespace KTANE_Bot
                 { Solvers.Check, DefuseGrammar.BombCheckGrammar},
                 { Solvers.Wires, DefuseGrammar.WiresGrammar},
                 { Solvers.Button, DefuseGrammar.ButtonGrammar},
-                { Solvers.Symbols, null},
+                { Solvers.Symbols, DefuseGrammar.SymbolsGrammar},
                 { Solvers.Memory, DefuseGrammar.MemoryGrammar},
                 { Solvers.Complicated, null},
                 { Solvers.Simon, null},

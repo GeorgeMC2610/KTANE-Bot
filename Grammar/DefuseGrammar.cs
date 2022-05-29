@@ -10,6 +10,7 @@ namespace KTANE_Bot
         public static Grammar ButtonGrammar => _ButtonGrammar();
         public static Grammar MemoryGrammar => _MemoryGrammar();
         public static Grammar WiresGrammar => _WiresGrammar();
+        public static Grammar SymbolsGrammar => _SymbolsGrammar();
         
         
         //bomb checking grammar
@@ -77,13 +78,21 @@ namespace KTANE_Bot
 
         private static Grammar _WiresGrammar()
         {
+            return new Grammar(new GrammarBuilder(new Choices(new string[] {"yellow", "blue", "black", "white", "red", "done"})));
+        }
+
+        private static Grammar _SymbolsGrammar()
+        {
             var builder = new GrammarBuilder();
             
-            builder.Append("black wire", 0, 6);
-            builder.Append("yellow wire", 0, 6);
-            builder.Append("red wire", 0, 6);
-            builder.Append("white wire", 0, 6);
-            builder.Append("blue wire", 0, 6);
+            builder.Append("Capital queue,", 0, 1);
+            builder.Append("Capital ay,", 0, 1);
+            builder.Append("lambda,", 0, 1);
+            builder.Append("lightning,", 0, 1);
+            builder.Append("kitty,", 0, 1);
+            builder.Append("kappa,", 0, 1);
+            builder.Append("flipped c,", 0, 1);
+            //builder.Append("", 0, 1);
 
             return new Grammar(builder);
         }

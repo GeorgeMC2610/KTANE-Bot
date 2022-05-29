@@ -5,17 +5,24 @@ namespace KTANE_Bot
 {
     public class Wires : KTANE_Module
     {
-        private readonly string[] _wires;
+        private List<string> _wires;
 
-        public Wires(Bomb bomb, params string[] wires) : base(bomb)
+        public Wires(Bomb bomb) : base(bomb)
         {
-            _wires = wires;
+            _wires = new List<string>();
+        }
+
+        public void AppendWire(string color)
+        {
+            _wires.Add(color);
         }
 
         public override string Solve()
         {
-            if (_wires.Length > 6)
-                return $"Too many wires given. ({_wires.Length})";
+            if (_wires.Count > 6)
+                return $"Too many wires given. ({_wires.Count})";
+            if (_wires.Count < 3)
+                return $"You must give at least 3 wires. ({_wires.Count})";
             
             var redWires = (from wire in _wires where wire == "red" select wire).Count();
             var whiteWires = (from wire in _wires where wire == "white" select wire).Count();
@@ -25,7 +32,7 @@ namespace KTANE_Bot
             
             int index = 0;
             
-            switch (_wires.Length)
+            switch (_wires.Count)
             {
                 case 3:
                     if (redWires == 0)
@@ -41,7 +48,7 @@ namespace KTANE_Bot
                 case 4:
                     if (redWires > 1 && !_bomb.EvenDigit)
                     {
-                        for (int i = 1; i < _wires.Length; i++)
+                        for (int i = 1; i < _wires.Count; i++)
                             if (_wires[i] == "red")
                                 index = i;
                     }
@@ -84,7 +91,7 @@ namespace KTANE_Bot
 
         private string IndexToWords(int index)
         {
-            if (index == _wires.Length)
+            if (index == _wires.Count)
                 return "last";
 
             var indexingDict = new Dictionary<int, string>
