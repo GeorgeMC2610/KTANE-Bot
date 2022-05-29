@@ -64,7 +64,7 @@ namespace KTANE_Bot
         {
             { "six", 0 },
             { "e with umlaut", 1 },
-            { "tampa dumbbell", 2 },
+            { "dumbbell", 2 },
             { "ay ee", 3 },
             { "psi", 4 },
             { "reverse n", 5 },

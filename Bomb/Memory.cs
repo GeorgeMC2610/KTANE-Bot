@@ -1,6 +1,6 @@
 namespace KTANE_Bot
 {
-    public static class Memory
+    public class Memory : KTANE_Module
     {
         private static int stage = 1;
         private static int[,] values = new int[5,5];
@@ -29,6 +29,15 @@ namespace KTANE_Bot
             }
 
             return 2;
+        }
+
+        internal Memory(Bomb bomb) : base(bomb)
+        {
+        }
+
+        public override string Solve()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

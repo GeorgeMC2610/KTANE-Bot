@@ -50,7 +50,7 @@ namespace KTANE_Bot
                     {
                         for (int i = 1; i < _wires.Count; i++)
                             if (_wires[i] == "red")
-                                index = i;
+                                index = i + 1;
                     }
                     else if (_wires.Last() == "yellow" && redWires == 0) 
                         index = 1;

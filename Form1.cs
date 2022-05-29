@@ -86,7 +86,7 @@ namespace KTANE_Bot
             labelCAR.Text = $@"CAR: {(_ktaneSpeech.BombProperties["Car"] == -1 ? "--" : _ktaneSpeech.BombProperties["Car"] == 1 ? "Yes" : "No")}";
             labelPort.Text = $@"Port: {(_ktaneSpeech.BombProperties["Port"] == -1 ? "--" : _ktaneSpeech.BombProperties["Port"] == 1 ? "Yes" : "No")}";
             labelVowel.Text = $@"Vowel: {(_ktaneSpeech.BombProperties["Vowel"] == -1 ? "--" : _ktaneSpeech.BombProperties["Vowel"] == 1 ? "Yes" : "No")}";
-            labelDigit.Text = $@"Digit: {(_ktaneSpeech.BombProperties["Digit"] == -1 ? "--" : _ktaneSpeech.BombProperties["Digit"] == 1 ? "Yes" : "No")}";
+            labelDigit.Text = $@"Digit: {(_ktaneSpeech.BombProperties["Digit"] == -1 ? "--" : _ktaneSpeech.BombProperties["Digit"] == 1 ? "Odd" : "Even")}";
         }
     }
 }
