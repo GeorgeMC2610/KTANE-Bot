@@ -259,7 +259,18 @@ namespace KTANE_Bot
                         case Solvers.Simon:
                             break;
                         case Solvers.Sequence:
-                            break;
+                            if (command == "done")
+                            {
+                                SwitchToDefaultProperties();
+                                return "";
+                            }
+
+                            if (_defusingModule == null)
+                                _defusingModule = new Sequence(_bomb);
+
+                            var sequence = (Sequence)_defusingModule;
+                            sequence.InitializeValues(command.Split(' ')[0], command.Split(' ')[1]);
+                            return sequence.Solve();
                         case Solvers.Morse:
                             break;
                         case Solvers.Knob:
