@@ -141,7 +141,7 @@ namespace KTANE_Bot
             redBlue.Append(properties);
             white.Append(properties);
 
-            var allChoices = new Choices(new GrammarBuilder[] { red, redWhite, blue, blueWhite, blueRed, redBlue, white, done });
+            var allChoices = new Choices(new GrammarBuilder[] { red, redWhite, whiteRed, blue, blueWhite, whiteBlue, blueRed, redBlue, white, done });
             
             return new Grammar(allChoices);
         }
