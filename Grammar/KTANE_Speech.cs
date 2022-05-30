@@ -268,7 +268,19 @@ namespace KTANE_Bot
                             return memory.Solve();
 
                         case Solvers.Complicated:
-                            break;
+                            if (command == "done")
+                            {
+                                SwitchToDefaultProperties();
+                                return "";
+                            }
+                            
+                            if (_defusingModule == null)
+                                _defusingModule = new ComplexWires(_bomb);
+
+                            var complexWire = (ComplexWires)_defusingModule;
+                            complexWire.InterpretInput(command);
+                            return complexWire.Solve(); 
+                        
                         case Solvers.Simon:
                             break;
                         
@@ -316,7 +328,7 @@ namespace KTANE_Bot
                 { Solvers.Button, DefuseGrammar.ButtonGrammar},
                 { Solvers.Symbols, DefuseGrammar.SymbolsGrammar},
                 { Solvers.Memory, DefuseGrammar.MemoryGrammar},
-                { Solvers.Complicated, null},
+                { Solvers.Complicated, DefuseGrammar.ComplicatedGrammar},
                 { Solvers.Simon, null},
                 { Solvers.Sequence, DefuseGrammar.SequenceGrammar},
                 { Solvers.Morse, null},

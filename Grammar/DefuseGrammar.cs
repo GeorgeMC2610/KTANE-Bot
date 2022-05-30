@@ -114,13 +114,15 @@ namespace KTANE_Bot
 
         private static Grammar _ComplicatedGrammar()
         {
-            var properties = new Choices("nothing", "star", "led", "star and led");
+            var properties = new Choices("nothing", "star", "light", "star and light");
 
             var red = new GrammarBuilder("red");
             var redWhite = new GrammarBuilder("red and white");
+            var whiteRed = new GrammarBuilder("white and red");
             
             var blue = new GrammarBuilder("blue");
             var blueWhite = new GrammarBuilder("blue and white");
+            var whiteBlue = new GrammarBuilder("white and blue");
             
             var blueRed = new GrammarBuilder("blue and red");
             var redBlue = new GrammarBuilder("red and blue");
@@ -131,8 +133,10 @@ namespace KTANE_Bot
             
             red.Append(properties);
             redWhite.Append(properties);
+            whiteRed.Append(properties);
             blue.Append(properties);
             blueWhite.Append(properties);
+            whiteBlue.Append(properties);
             blueRed.Append(properties);
             redBlue.Append(properties);
             white.Append(properties);
