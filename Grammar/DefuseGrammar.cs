@@ -11,9 +11,12 @@ namespace KTANE_Bot
         public static Grammar MemoryGrammar => _MemoryGrammar();
         public static Grammar WiresGrammar => _WiresGrammar();
         public static Grammar SymbolsGrammar => _SymbolsGrammar();
-
         public static Grammar SequenceGrammar => _SequenceGrammar();
 
+        public static Grammar ComplicatedGrammar => _ComplicatedGrammar();
+        
+
+        //METHODS TO RETRIEVE GRAMMARS.
         private static Grammar _StandardDefuseGrammar()
         {
             return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Defuse.txt"))));
@@ -106,6 +109,36 @@ namespace KTANE_Bot
 
             var allChoices = new Choices(new GrammarBuilder[] { red, black, blue, done });
 
+            return new Grammar(allChoices);
+        }
+
+        private static Grammar _ComplicatedGrammar()
+        {
+            var properties = new Choices("nothing", "star", "led", "star and led");
+
+            var red = new GrammarBuilder("red");
+            var redWhite = new GrammarBuilder("red and white");
+            
+            var blue = new GrammarBuilder("blue");
+            var blueWhite = new GrammarBuilder("blue and white");
+            
+            var blueRed = new GrammarBuilder("blue and red");
+            var redBlue = new GrammarBuilder("red and blue");
+
+            var white = new GrammarBuilder("white");
+
+            var done = new GrammarBuilder("done");
+            
+            red.Append(properties);
+            redWhite.Append(properties);
+            blue.Append(properties);
+            blueWhite.Append(properties);
+            blueRed.Append(properties);
+            redBlue.Append(properties);
+            white.Append(properties);
+
+            var allChoices = new Choices(new GrammarBuilder[] { red, redWhite, blue, blueWhite, blueRed, redBlue, white, done });
+            
             return new Grammar(allChoices);
         }
     }

@@ -193,7 +193,7 @@ namespace KTANE_Bot
 
                     switch (_solvingModule)
                     {
-                        //WIRES SOLVER
+                        //WIRES SOLVER.
                         case Solvers.Wires:
                             if (_defusingModule == null)
                             {
@@ -217,7 +217,7 @@ namespace KTANE_Bot
                             wires.AppendWire(command);
                             return $"{command}; next.";
                         
-                        //BUTTON SOLVER
+                        //BUTTON SOLVER.
                         case Solvers.Button:
                             if (new Button(_bomb, command.Split(' ')[0], command.Split(' ')[1]).Solve() ==
                                 "Press and immediately release.")
@@ -252,6 +252,7 @@ namespace KTANE_Bot
                             SwitchToDefaultProperties();
                             return $"{command}; done. {symbols.Solve()}";
 
+                        //MEMORY SOLVER.
                         case Solvers.Memory:
                             if (_defusingModule == null)
                                 _defusingModule = new Memory(_bomb);
@@ -270,6 +271,8 @@ namespace KTANE_Bot
                             break;
                         case Solvers.Simon:
                             break;
+                        
+                        //WIRE SEQUENCE SOLVER.
                         case Solvers.Sequence:
                             if (command == "done")
                             {
