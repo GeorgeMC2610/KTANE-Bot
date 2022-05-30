@@ -1,43 +1,58 @@
+using System.Collections.Generic;
+
 namespace KTANE_Bot
 {
     public class Memory : KTANE_Module
     {
-        private static int stage = 1;
-        private static int[,] values = new int[5,5];
+        public int Stage { get; private set; }
 
-        public static int Solve(int[] sequence)
+        private int _display;
+        private int _firstNumber;
+        private int _secondNumber;
+        private int _thirdNumber;
+        private int _fourthNumber;
+
+        private static Dictionary<string, int> _numbersDict = new Dictionary<string, int>
         {
-            //the values have to be in a specific length
-            if (sequence.Length != 5)
-                return -1;
+            { "one", 1 },
+            { "two", 2 },
+            { "three", 3 },
+            { "four", 4 }
+        };
 
-            //copy the values to the two-dimensional array
-            for (var i = 0; i < sequence.Length; i++)
-                values[stage - 1, i] = sequence[i];
-            
-            //return the number to be pressed.
-            switch (stage)
-            {
-                case 1:
-                    if (values[0, 0] == 1 || values[0, 0] == 2) return values[0, 2];
-                    if (values[0, 0] == 3) return values[0, 3];
-                    return values[0, 4];
-                case 2:
-                    if (values[1, 0] == 1) return 4;
-                    if (values[1, 0] == 2) return values[0, 0];
-                    return 6;
-            }
-
-            return 2;
-        }
-
-        internal Memory(Bomb bomb) : base(bomb)
+        public Memory(Bomb bomb) : base(bomb)
         {
+            Stage = 1;
         }
 
         public override string Solve()
         {
-            throw new System.NotImplementedException();
+            var numberToPress = 0;
+            
+            switch (Stage)
+            {
+                
+            }
+        }
+
+        public bool SetNumbers(params string[] numbers)
+        {
+            if (numbers.Length != 6)
+                return false;
+            
+            try
+            {
+                _display = _numbersDict[numbers[1]];
+                _firstNumber = _numbersDict[numbers[2]];
+                _secondNumber = _numbersDict[numbers[3]];
+                _thirdNumber = _numbersDict[numbers[4]];
+                _fourthNumber = _numbersDict[numbers[5]];
+                return true;
+            }
+            catch (KeyNotFoundException)
+            {
+                return false;
+            }
         }
     }
 }

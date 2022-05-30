@@ -253,8 +253,19 @@ namespace KTANE_Bot
                             return $"{command}; done. {symbols.Solve()}";
 
                         case Solvers.Memory:
+                            if (_defusingModule == null)
+                                _defusingModule = new Memory(_bomb);
 
-                            return $"Press {command[6]}";
+                            var memory = (Memory)_defusingModule;
+
+                            if (!memory.SetNumbers(command.Split(' ')))
+                                return @"Try again.";
+
+                            if (memory.Stage != 5) return memory.Solve();
+                            
+                            SwitchToDefaultProperties();
+                            return memory.Solve();
+
                         case Solvers.Complicated:
                             break;
                         case Solvers.Simon:

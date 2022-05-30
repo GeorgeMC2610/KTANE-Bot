@@ -74,12 +74,11 @@ namespace KTANE_Bot
 
         private static Grammar _MemoryGrammar()
         {
-            var nums = new Choices(new string[] {"1", "2", "3", "4"});
-            var sequence = new GrammarBuilder("Numbers");
-            sequence.Append(nums);
+            var grammarBuilder = new GrammarBuilder();
+            grammarBuilder.Append("Numbers", 1, 7);
+            grammarBuilder.AppendDictation(category: "numbers");
 
-            var allChoices = new Choices(sequence);
-            return new Grammar(allChoices);
+            return new Grammar(grammarBuilder);
         }
 
         private static Grammar _WiresGrammar()
