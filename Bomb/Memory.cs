@@ -34,6 +34,7 @@ namespace KTANE_Bot
             switch (Stage)
             {
                 case 1:
+                    
                     switch (_sequence[0])
                     {
                         case 1:
@@ -57,6 +58,7 @@ namespace KTANE_Bot
                     break;
                 
                 case 2:
+                    
                     switch (_sequence[0])
                     {
                         case 1:
@@ -109,6 +111,54 @@ namespace KTANE_Bot
                             break;
                     }
 
+                    break;
+                
+                case 4:
+
+                    switch (_sequence[0])
+                    {
+                        case 1:
+                            _positions[3] = _positions[0];
+                            _numbers[3] = _sequence[_positions[0]];
+                            numberToPress = _sequence[_positions[0]];
+                            break;
+                        case 2:
+                            _positions[3] = 1;
+                            _numbers[3] = _sequence[1];
+                            numberToPress = _sequence[1];
+                            break;
+                        case 3:
+                            _positions[3] = _positions[1];
+                            _numbers[3] = _sequence[_positions[1]];
+                            numberToPress = _sequence[_positions[1]];
+                            break;
+                        default:
+                            _positions[3] = _positions[1];
+                            _numbers[3] = _sequence[_positions[1]];
+                            numberToPress = _sequence[_positions[1]];
+                            break;
+                    }
+
+                    break;
+                
+                case 5:
+
+                    switch (_sequence[0])
+                    {
+                        case 1:
+                            numberToPress = _numbers[0];
+                            break;
+                        case 2:
+                            numberToPress = _numbers[1];
+                            break;
+                        case 3:
+                            numberToPress = _numbers[3];
+                            break;
+                        default:
+                            numberToPress = _numbers[2];
+                            break;
+                    }
+                    
                     break;
                 
             }
