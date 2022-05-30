@@ -114,7 +114,7 @@ namespace KTANE_Bot
 
         private static Grammar _ComplicatedGrammar()
         {
-            var properties = new Choices("nothing", "star", "light", "star and light");
+            var properties = new Choices("nothing", "star", "light", "star and light", "light and star");
 
             var red = new GrammarBuilder("red");
             var redWhite = new GrammarBuilder("red and white");
