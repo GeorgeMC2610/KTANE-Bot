@@ -111,14 +111,11 @@ namespace KTANE_Bot
             return $"First is {output[0]}; then {output[1]}; then {output[2]}; then {output[3]}.";
         }
 
-        public string AppendSymbol(string symbol)
+        public void AppendSymbol(string symbol)
         {
-            if (_input.Count == 4)
-                return "Reached maximum size.";
-            
-            _input.Add(symbol);
+            if (_input.Count == 4) return;
 
-            return _input.Count == 4 ? $"{symbol}; done." : $"{symbol}; next.";
+            _input.Add(symbol);
         }
     }
 }

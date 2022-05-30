@@ -253,7 +253,8 @@ namespace KTANE_Bot
                             return $"{command}; done. {symbols.Solve()}";
 
                         case Solvers.Memory:
-                            break;
+
+                            return $"Press {command[6]}";
                         case Solvers.Complicated:
                             break;
                         case Solvers.Simon:
