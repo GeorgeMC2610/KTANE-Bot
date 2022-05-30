@@ -85,9 +85,28 @@ namespace KTANE_Bot
                 
                 case 3:
 
-                    if (_positions[0] == 1)
+                    switch (_sequence[0])
                     {
-                        
+                        case 1:
+                            _positions[2] = Array.IndexOf(_sequence, _numbers[1]);
+                            _numbers[2] = _numbers[1];
+                            numberToPress = _numbers[1];
+                            break;
+                        case 2:
+                            _positions[2] = Array.IndexOf(_sequence, _numbers[0]);
+                            _numbers[2] = _numbers[0];
+                            numberToPress = _numbers[0];
+                            break;
+                        case 3:
+                            _positions[2] = 3;
+                            _numbers[2] = _sequence[3];
+                            numberToPress = _sequence[3];
+                            break;
+                        default:
+                            _positions[2] = Array.IndexOf(_sequence, 4);
+                            _numbers[2] = 4;
+                            numberToPress = 4;
+                            break;
                     }
 
                     break;
