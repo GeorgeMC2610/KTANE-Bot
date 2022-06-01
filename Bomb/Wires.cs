@@ -7,6 +7,8 @@ namespace KTANE_Bot
     {
         private List<string> _wires;
 
+        public int WireCount => _wires.Count;
+
         public Wires(Bomb bomb) : base(bomb)
         {
             _wires = new List<string>();
