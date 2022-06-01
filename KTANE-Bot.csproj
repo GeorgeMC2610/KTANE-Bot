@@ -53,6 +53,7 @@
     <Compile Include="Bomb\KTANE_Module.cs" />
     <Compile Include="Bomb\Maze.cs" />
     <Compile Include="Bomb\Memory.cs" />
+    <Compile Include="Bomb\Morse.cs" />
     <Compile Include="Bomb\Sequence.cs" />
     <Compile Include="Bomb\Symbols.cs" />
     <Compile Include="Bomb\Wires.cs" />
