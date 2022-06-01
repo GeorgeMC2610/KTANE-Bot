@@ -67,7 +67,7 @@ namespace KTANE_Bot
         {
             var abbreviation = _letters.ToString();
             var wordsThatStartWithIt =
-                (from word in WordsDict.Keys.ToList() where word.StartsWith(abbreviation) select word).ToArray();
+                (from word in WordsDict.Keys.ToList() where word.StartsWith(abbreviation) select word).ToList();
 
             var callerDict = new Dictionary<int, string>
             {
@@ -79,19 +79,17 @@ namespace KTANE_Bot
                 { 6, "sixth" }
             };
 
-            if (wordsThatStartWithIt.Length > 1)
-                return $"{callerDict[_letters.Length + 1]} letter";
-
-            switch (wordsThatStartWithIt.Length)
+            switch (wordsThatStartWithIt.Count)
             {
+                case 16:
                 case 0:
                     _letters = new StringBuilder();
-                    return @"No words found";
+                    return @"No words found; try again.";
                 case 1:
                     return $"Word \"{wordsThatStartWithIt.Last()}\"; tunes in {WordsDict[wordsThatStartWithIt.Last()]} mega hertz.";
+                default:
+                    return $"{callerDict[_letters.Length + 1]} letter ({wordsThatStartWithIt.Count}, {abbreviation})";
             }
-
-            return @"Something is wrong";
         }
 
         public bool AddLetters(params string[] sequence)
@@ -112,15 +110,14 @@ namespace KTANE_Bot
             {
                 foreach (var s in sequence)
                     numbers.Append(interpretDict[s]);
+                
+                _letters.Append(MorseCodeDict[numbers.ToString()]);
+                return true;
             }
             catch (KeyNotFoundException)
             {
                 return false;
             }
-            
-            
-            _letters.Append(MorseCodeDict[numbers.ToString()]);
-            return true;
         }
     }
 }
