@@ -164,7 +164,7 @@ namespace KTANE_Bot
             }
 
             Stage++;
-            return $"Press {numberToPress}";
+            return $"Press {numberToPress}, " + (Stage != 6? $"stage {Stage}" : "done");
         }
 
         public bool SetNumbers(params string[] numbers)
