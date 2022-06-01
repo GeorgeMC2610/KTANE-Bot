@@ -86,7 +86,7 @@ namespace KTANE_Bot
             {
                 case 0:
                     _letters = new StringBuilder();
-                    return @"Something is wrong";
+                    return @"No words found";
                 case 1:
                     return $"Word \"{wordsThatStartWithIt.Last()}\"; tunes in {WordsDict[wordsThatStartWithIt.Last()]} mega hertz.";
             }

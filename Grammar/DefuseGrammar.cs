@@ -13,7 +13,7 @@ namespace KTANE_Bot
         public static Grammar MorseGrammar => _MorseGrammar();
         public static Grammar SymbolsGrammar => _SymbolsGrammar();
         public static Grammar SequenceGrammar => _SequenceGrammar();
-
+        public static Grammar SimonSaysGrammar => _SimonSaysGrammar();
         public static Grammar ComplicatedGrammar => _ComplicatedGrammar();
         
 
@@ -152,6 +152,22 @@ namespace KTANE_Bot
 
             var allChoices = new Choices(new GrammarBuilder[] { red, redWhite, whiteRed, blue, blueWhite, whiteBlue, blueRed, redBlue, white, done });
             
+            return new Grammar(allChoices);
+        }
+
+        private static Grammar _SimonSaysGrammar()
+        {
+            var strikeChoices = new Choices("1", "2");
+            var strikeBuilder = new GrammarBuilder("strikes");
+            
+            strikeBuilder.Append(strikeChoices);
+
+            var blue = new GrammarBuilder("blue");
+            var green = new GrammarBuilder("green");
+            var red = new GrammarBuilder("red");
+            var yellow = new GrammarBuilder("yellow");
+
+            var allChoices = new Choices(new GrammarBuilder[] { strikeBuilder, blue, red, green, yellow });
             return new Grammar(allChoices);
         }
     }

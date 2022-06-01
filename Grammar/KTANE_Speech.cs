@@ -340,7 +340,7 @@ namespace KTANE_Bot
                 { Solvers.Symbols, DefuseGrammar.SymbolsGrammar},
                 { Solvers.Memory, DefuseGrammar.MemoryGrammar},
                 { Solvers.Complicated, DefuseGrammar.ComplicatedGrammar},
-                { Solvers.Simon, null},
+                { Solvers.Simon, DefuseGrammar.SimonSaysGrammar},
                 { Solvers.Sequence, DefuseGrammar.SequenceGrammar},
                 { Solvers.Morse, DefuseGrammar.MorseGrammar},
                 { Solvers.Knob, null},
