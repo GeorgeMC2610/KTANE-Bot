@@ -299,7 +299,18 @@ namespace KTANE_Bot
                             sequence.InitializeValues(command.Split(' ')[0], command.Split(' ')[1]);
                             return sequence.Solve();
                         case Solvers.Morse:
-                            break;
+                            if (_defusingModule == null)
+                                _defusingModule = new Morse(_bomb);
+
+                            var morse = (Morse)_defusingModule;
+                            if (!morse.AddLetters(command.Split(' ')))
+                                return @"Try again.";
+                            
+                            if (morse.Solve().EndsWith("hertz."))
+                                SwitchToDefaultProperties();
+
+                            return morse.Solve();
+                        
                         case Solvers.Knob:
                             break;
                         case Solvers.Password:
@@ -331,7 +342,7 @@ namespace KTANE_Bot
                 { Solvers.Complicated, DefuseGrammar.ComplicatedGrammar},
                 { Solvers.Simon, null},
                 { Solvers.Sequence, DefuseGrammar.SequenceGrammar},
-                { Solvers.Morse, null},
+                { Solvers.Morse, DefuseGrammar.MorseGrammar},
                 { Solvers.Knob, null},
                 { Solvers.Password, null},
             };

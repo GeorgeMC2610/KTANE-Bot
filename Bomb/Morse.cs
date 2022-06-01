@@ -80,7 +80,7 @@ namespace KTANE_Bot
             };
 
             if (wordsThatStartWithIt.Length > 1)
-                return $"{callerDict[wordsThatStartWithIt.Length + 1]} letter";
+                return $"{callerDict[_letters.Length + 1]} letter";
 
             switch (wordsThatStartWithIt.Length)
             {
@@ -88,10 +88,10 @@ namespace KTANE_Bot
                     _letters = new StringBuilder();
                     return @"Something is wrong";
                 case 1:
-                    return $"Word {wordsThatStartWithIt.Last()} tunes in {WordsDict[wordsThatStartWithIt.Last()]} mega hertz.";
+                    return $"Word \"{wordsThatStartWithIt.Last()}\"; tunes in {WordsDict[wordsThatStartWithIt.Last()]} mega hertz.";
             }
 
-            return "Something is wrong";
+            return @"Something is wrong";
         }
 
         public bool AddLetters(params string[] sequence)
@@ -102,6 +102,8 @@ namespace KTANE_Bot
                 { "dash", "1" },
                 { "zero", "0" },
                 { "one", "1" },
+                { ".", "0" },
+                { "-", "1" }
             };
 
             var numbers = new StringBuilder();
