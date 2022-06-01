@@ -121,7 +121,7 @@ namespace KTANE_Bot
                     switch (command.Split(' ')[0])
                     {
                         case "Batteries":
-                            message = value == int.MaxValue ? "More than two batteries." : $"{value} batteries.";
+                            message = value == int.MaxValue ? "More than two batteries." : $"{value} " + (value == 1? "battery" : "batteries");
                             break;
                         case "Port":
                             message = value == 0 ? "No parallel port." : "Yes parallel port.";
@@ -174,8 +174,15 @@ namespace KTANE_Bot
                         _solvingModule = _solvingGrammar[command];
                         _state = States.Defusing;
 
+                        var additionalInfo = string.Empty;
+
+                        if (command == "Defuse memory")
+                            additionalInfo = "Stage 1";
+                        else if (command == "Defuse morse")
+                            additionalInfo = "First letter";
+                        
                         //this is just a long way to say "return the module with first letter being capital and a full stop."
-                        return $"{char.ToUpper(command.Split(' ')[1][0]) + command.Split(' ')[1].Substring(1)}.";
+                        return $"{char.ToUpper(command.Split(' ')[1][0]) + command.Split(' ')[1].Substring(1)}. {additionalInfo}";
                     }
                     catch (KeyNotFoundException)
                     {
@@ -211,11 +218,15 @@ namespace KTANE_Bot
                             if (command == "done")
                             {
                                 SwitchToDefaultProperties();
-                                return wires.Solve();
+                                return "Done; " + wires.Solve();
                             }
 
                             wires.AppendWire(command);
-                            return $"{command}; next.";
+
+                            if (wires.WireCount != 6) return $"{command}; next.";
+
+                            SwitchToDefaultProperties();
+                            return $"{command}; done. {wires.Solve()}.";
                         
                         //BUTTON SOLVER.
                         case Solvers.Button:
