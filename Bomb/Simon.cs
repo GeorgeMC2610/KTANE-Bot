@@ -98,9 +98,9 @@ namespace KTANE_Bot
             try
             {
                 foreach (var s in _sequence)
-                    buttonsToPress.Append($"{targetDict[s]} ");
+                    buttonsToPress.Append($"{targetDict[s]}; ");
 
-                return $"Press {buttonsToPress.ToString()}.";
+                return $"Press {buttonsToPress.ToString()}";
             }
             catch (KeyNotFoundException)
             {

@@ -88,7 +88,7 @@ namespace KTANE_Bot
                 case 1:
                     return $"Word \"{wordsThatStartWithIt.Last()}\"; tunes in {WordsDict[wordsThatStartWithIt.Last()]} mega hertz.";
                 default:
-                    return $"{callerDict[_letters.Length + 1]} letter ({wordsThatStartWithIt.Count}, {abbreviation})";
+                    return $"{callerDict[_letters.Length + 1]} letter.";
             }
         }
 

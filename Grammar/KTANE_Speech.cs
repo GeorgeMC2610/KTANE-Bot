@@ -226,7 +226,7 @@ namespace KTANE_Bot
                             if (wires.WireCount != 6) return $"{command}; next.";
 
                             SwitchToDefaultProperties();
-                            return $"{command}; done. {wires.Solve()}.";
+                            return $"{command}; done. {wires.Solve()}";
                         
                         //BUTTON SOLVER.
                         case Solvers.Button:
@@ -278,6 +278,7 @@ namespace KTANE_Bot
                             SwitchToDefaultProperties();
                             return memory.Solve();
 
+                        //COMPLEX WIRES SOLVER.
                         case Solvers.Complicated:
                             if (command == "done")
                             {
@@ -292,9 +293,28 @@ namespace KTANE_Bot
                             complexWire.InterpretInput(command);
                             return complexWire.Solve(); 
                         
+                        //SIMON SAYS SOLVER.
                         case Solvers.Simon:
-                            break;
-                        
+                            if (_defusingModule == null)
+                                _defusingModule = new Simon(_bomb);
+
+                            var simon = (Simon)_defusingModule;
+
+                            if (command.Contains("strikes"))
+                            {
+                                simon.SetStrikes(int.Parse(command.Split(' ')[1]));
+                                return $"{command.Split(' ')[1]} " + (command.Split(' ')[1] == "1"? "strike" : "strikes");
+                            }
+                            
+                            if (command == "done")
+                            {
+                                SwitchToDefaultProperties();
+                                return "";
+                            }
+                            
+                            simon.AppendColor(command);
+                            return simon.Solve();
+
                         //WIRE SEQUENCE SOLVER.
                         case Solvers.Sequence:
                             if (command == "done")
@@ -309,6 +329,8 @@ namespace KTANE_Bot
                             var sequence = (Sequence)_defusingModule;
                             sequence.InitializeValues(command.Split(' ')[0], command.Split(' ')[1]);
                             return sequence.Solve();
+                        
+                        //MORSE CODE SOLVER
                         case Solvers.Morse:
                             if (_defusingModule == null)
                                 _defusingModule = new Morse(_bomb);

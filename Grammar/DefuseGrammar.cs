@@ -166,8 +166,9 @@ namespace KTANE_Bot
             var green = new GrammarBuilder("green");
             var red = new GrammarBuilder("red");
             var yellow = new GrammarBuilder("yellow");
+            var done = new GrammarBuilder("done");
 
-            var allChoices = new Choices(new GrammarBuilder[] { strikeBuilder, blue, red, green, yellow });
+            var allChoices = new Choices(new GrammarBuilder[] { strikeBuilder, blue, red, green, yellow, done });
             return new Grammar(allChoices);
         }
     }
