@@ -26,6 +26,7 @@ namespace KTANE_Bot
         Complicated,
         Simon,
         Sequence,
+        WhoIsOnFirst,
         Morse,
         Knob,
         Password,
@@ -60,10 +61,11 @@ namespace KTANE_Bot
             { "Defuse complicated", Solvers.Complicated },
             { "Defuse simon", Solvers.Simon },
             { "Defuse sequence", Solvers.Sequence },
+            { "Defuse who is on first", Solvers.WhoIsOnFirst },
             { "Defuse morse", Solvers.Morse },
             { "Defuse knob", Solvers.Knob },
             { "Defuse password", Solvers.Password },
-            { "Defuse maze", Solvers.Maze}
+            { "Defuse maze", Solvers.Maze }
         };
         
         private SpeechSynthesizer _ktaneBot;
@@ -176,22 +178,36 @@ namespace KTANE_Bot
 
                         var additionalInfo = string.Empty;
 
-                        if (command == "Defuse memory")
-                            additionalInfo = "Stage 1";
-                        else if (command == "Defuse morse")
-                            additionalInfo = "First letter";
+                        switch (command)
+                        {
+                            case "Defuse memory":
+                                additionalInfo = ", Stage 1";
+                                break;
+                            case "Defuse morse":
+                                additionalInfo = ", first letter";
+                                break;
+                            case "Defuse who is on first":
+                                additionalInfo = "is on first, what's on the display?";
+                                break;
+                        }
                         
-                        //this is just a long way to say "return the module with first letter being capital and a full stop."
-                        return $"{char.ToUpper(command.Split(' ')[1][0]) + command.Split(' ')[1].Substring(1)}. {additionalInfo}";
+                        //this is just a long way to say "return the module with first letter being capital."
+                        return $"{char.ToUpper(command.Split(' ')[1][0]) + command.Split(' ')[1].Substring(1)} {additionalInfo}";
                     }
                     catch (KeyNotFoundException)
                     {
+                        var rng = new Random();
+                        
                         switch (command)
                         {
                             case "The bomb exploded":
-                                return "You're useless.";
+                                var dismissingMessages = new[] { "Aww :(", "It's your fault.", "Think faster.", "You're useless.", "We tried our best." };
+                                return dismissingMessages[rng.Next(0, dismissingMessages.Length)];
+                            
                             case "The bomb is defused":
-                                return "Good job!";
+                                var congratulatoryMessages = new[] { "Good job!", "Nice!", "You did it!", "Yaaaay!", "Woo-hoo!", "Congratulations!" };
+                                return congratulatoryMessages[rng.Next(0, congratulatoryMessages.Length)];
+                            
                             default:
                                 return "No.";
                         }
@@ -330,6 +346,10 @@ namespace KTANE_Bot
                             sequence.InitializeValues(command.Split(' ')[0], command.Split(' ')[1]);
                             return sequence.Solve();
                         
+                        //WHO'S ON FIRST.
+                        case Solvers.WhoIsOnFirst:
+                            break;
+                        
                         //MORSE CODE SOLVER.
                         case Solvers.Morse:
                             if (_defusingModule == null)
@@ -381,17 +401,18 @@ namespace KTANE_Bot
             var grammarDict = new Dictionary<Solvers, Grammar>
             {
                 { Solvers.Default, DefuseGrammar.StandardDefuseGrammar },
-                { Solvers.Check, DefuseGrammar.BombCheckGrammar},
-                { Solvers.Wires, DefuseGrammar.WiresGrammar},
-                { Solvers.Button, DefuseGrammar.ButtonGrammar},
-                { Solvers.Symbols, DefuseGrammar.SymbolsGrammar},
-                { Solvers.Memory, DefuseGrammar.MemoryGrammar},
-                { Solvers.Complicated, DefuseGrammar.ComplicatedGrammar},
-                { Solvers.Simon, DefuseGrammar.SimonSaysGrammar},
-                { Solvers.Sequence, DefuseGrammar.SequenceGrammar},
-                { Solvers.Morse, DefuseGrammar.MorseGrammar},
-                { Solvers.Knob, DefuseGrammar.KnobGrammar},
-                { Solvers.Password, null},
+                { Solvers.Check, DefuseGrammar.BombCheckGrammar },
+                { Solvers.Wires, DefuseGrammar.WiresGrammar },
+                { Solvers.Button, DefuseGrammar.ButtonGrammar },
+                { Solvers.Symbols, DefuseGrammar.SymbolsGrammar },
+                { Solvers.Memory, DefuseGrammar.MemoryGrammar },
+                { Solvers.Complicated, DefuseGrammar.ComplicatedGrammar },
+                { Solvers.Simon, DefuseGrammar.SimonSaysGrammar },
+                { Solvers.Sequence, DefuseGrammar.SequenceGrammar },
+                { Solvers.WhoIsOnFirst, DefuseGrammar.WhoIsOnFirstGrammar },
+                { Solvers.Morse, DefuseGrammar.MorseGrammar },
+                { Solvers.Knob, DefuseGrammar.KnobGrammar },
+                { Solvers.Password, null },
             };
 
             RecognitionEngine.LoadGrammarAsync(grammarDict[solver]);
