@@ -16,6 +16,7 @@ namespace KTANE_Bot
         public static Grammar SequenceGrammar => _SequenceGrammar();
         public static Grammar SimonSaysGrammar => _SimonSaysGrammar();
         public static Grammar ComplicatedGrammar => _ComplicatedGrammar();
+        public static Grammar WhoIsOnFirstGrammar => _WhoIsOnFirstGrammar();
         
 
         //METHODS TO RETRIEVE GRAMMARS.
@@ -176,6 +177,11 @@ namespace KTANE_Bot
 
             var allChoices = new Choices(new GrammarBuilder[] { strikeBuilder, blue, red, green, yellow, done });
             return new Grammar(allChoices);
+        }
+
+        private static Grammar _WhoIsOnFirstGrammar()
+        {
+            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"WhoIsOnFirst.txt"))));
         }
     }
 }
