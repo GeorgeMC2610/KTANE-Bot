@@ -446,13 +446,10 @@ namespace KTANE_Bot
         public void ResetBomb()
         {
             _bomb = null;
-            _state = States.Waiting;
-            _solvingModule = Solvers.Default;
+            SwitchToDefaultProperties();
 
             foreach (var key in BombProperties.Keys.ToList())
-            {
                 BombProperties[key] = -1;
-            }
         }
 
         public void InitializeRandomBomb()
