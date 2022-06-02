@@ -6,6 +6,7 @@ Defuse memory
 Defuse complicated
 Defuse simon
 Defuse sequence
+Defuse who is on first
 Defuse morse
 Defuse knob
 Defuse password
