@@ -32,7 +32,6 @@ u h h h
 left
 right
 middle
-okay written in full
 wait
 press
 u letter

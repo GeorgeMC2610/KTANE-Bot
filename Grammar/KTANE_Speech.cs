@@ -351,7 +351,20 @@ namespace KTANE_Bot
                         
                         //WHO'S ON FIRST.
                         case Solvers.WhoIsOnFirst:
-                            break;
+                            if (_defusingModule == null)
+                                _defusingModule = new WhoIsOnFirst(_bomb);
+
+                            var whoIsOnFirst = (WhoIsOnFirst)_defusingModule;
+
+                            if (whoIsOnFirst.Display == string.Empty)
+                            {
+                                whoIsOnFirst.Display = command;
+                                return whoIsOnFirst.Solve();
+                            }
+
+                            whoIsOnFirst.Button = command;
+                            SwitchToDefaultProperties();
+                            return whoIsOnFirst.Solve();
                         
                         //MORSE CODE SOLVER.
                         case Solvers.Morse:
@@ -403,19 +416,20 @@ namespace KTANE_Bot
 
             var grammarDict = new Dictionary<Solvers, Grammar>
             {
-                { Solvers.Default, DefuseGrammar.StandardDefuseGrammar },
-                { Solvers.Check, DefuseGrammar.BombCheckGrammar },
-                { Solvers.Wires, DefuseGrammar.WiresGrammar },
-                { Solvers.Button, DefuseGrammar.ButtonGrammar },
-                { Solvers.Symbols, DefuseGrammar.SymbolsGrammar },
-                { Solvers.Memory, DefuseGrammar.MemoryGrammar },
-                { Solvers.Complicated, DefuseGrammar.ComplicatedGrammar },
-                { Solvers.Simon, DefuseGrammar.SimonSaysGrammar },
-                { Solvers.Sequence, DefuseGrammar.SequenceGrammar },
+                { Solvers.Default,      DefuseGrammar.StandardDefuseGrammar },
+                { Solvers.Check,        DefuseGrammar.BombCheckGrammar },
+                { Solvers.Wires,        DefuseGrammar.WiresGrammar },
+                { Solvers.Button,       DefuseGrammar.ButtonGrammar },
+                { Solvers.Symbols,      DefuseGrammar.SymbolsGrammar },
+                { Solvers.Memory,       DefuseGrammar.MemoryGrammar },
+                { Solvers.Complicated,  DefuseGrammar.ComplicatedGrammar },
+                { Solvers.Simon,        DefuseGrammar.SimonSaysGrammar },
+                { Solvers.Sequence,     DefuseGrammar.SequenceGrammar },
                 { Solvers.WhoIsOnFirst, DefuseGrammar.WhoIsOnFirstGrammar },
-                { Solvers.Morse, DefuseGrammar.MorseGrammar },
-                { Solvers.Knob, DefuseGrammar.KnobGrammar },
-                { Solvers.Password, null },
+                { Solvers.Morse,        DefuseGrammar.MorseGrammar },
+                { Solvers.Knob,         DefuseGrammar.KnobGrammar },
+                { Solvers.Password,     null },
+                { Solvers.Maze,         null }
             };
 
             RecognitionEngine.LoadGrammarAsync(grammarDict[solver]);
