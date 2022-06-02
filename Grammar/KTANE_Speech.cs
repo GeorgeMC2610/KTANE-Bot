@@ -336,7 +336,13 @@ namespace KTANE_Bot
                                 _defusingModule = new Morse(_bomb);
 
                             var morse = (Morse)_defusingModule;
-                            if (!morse.AddLetters(command.Split(' ')))
+
+                            if (command.Contains('.') || command.Contains('-'))
+                            {
+                                if (!morse.AddLetters(command.ToCharArray()))
+                                    return @"Try again";
+                            }
+                            else if (!morse.AddLetters(command.Split(' ')))
                                 return @"Try again.";
                             
                             if (morse.Solve().EndsWith("hertz."))

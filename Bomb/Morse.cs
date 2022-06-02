@@ -119,5 +119,15 @@ namespace KTANE_Bot
                 return false;
             }
         }
+
+        public bool AddLetters(params char[] sequence)
+        {
+            var stringSequence = new string[sequence.Length];
+
+            for (var i = 0; i < sequence.Length; i++)
+                stringSequence[i] = sequence[i].ToString();
+
+            return AddLetters(stringSequence);
+        }
     }
 }
