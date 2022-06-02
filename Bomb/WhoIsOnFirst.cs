@@ -33,7 +33,11 @@ namespace KTANE_Bot
             { "u r letters", "upper left" },
             { "there", "lower right" },
             { "they're apostrophe", "lower left" },
-            { "their pronoun", "middle right" }
+            { "their pronoun", "middle right" },
+            { "they are", "middle left"},
+            { "see", "lower right"},
+            {"c letter", "upper right"},
+            {"charlie echo echo", "lower right"}
         };
 
         private static readonly Dictionary<string, string> WordsDict = new Dictionary<string, string>
