@@ -50,6 +50,7 @@
     <Compile Include="Bomb\Bomb.cs" />
     <Compile Include="Bomb\Button.cs" />
     <Compile Include="Bomb\ComplexWires.cs" />
+    <Compile Include="Bomb\Knob.cs" />
     <Compile Include="Bomb\KTANE_Module.cs" />
     <Compile Include="Bomb\Maze.cs" />
     <Compile Include="Bomb\Memory.cs" />

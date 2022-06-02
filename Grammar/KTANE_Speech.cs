@@ -330,7 +330,7 @@ namespace KTANE_Bot
                             sequence.InitializeValues(command.Split(' ')[0], command.Split(' ')[1]);
                             return sequence.Solve();
                         
-                        //MORSE CODE SOLVER
+                        //MORSE CODE SOLVER.
                         case Solvers.Morse:
                             if (_defusingModule == null)
                                 _defusingModule = new Morse(_bomb);
@@ -350,8 +350,16 @@ namespace KTANE_Bot
 
                             return morse.Solve();
                         
+                        //KNOB SOLVER.
                         case Solvers.Knob:
-                            break;
+                            if (_defusingModule == null)
+                                _defusingModule = new Knob(_bomb);
+
+                            var knob = (Knob)_defusingModule;
+                            knob.Lights = command;
+                            SwitchToDefaultProperties();
+                            return knob.Solve();
+                        
                         case Solvers.Password:
                             break;
                         case Solvers.Maze:
@@ -382,7 +390,7 @@ namespace KTANE_Bot
                 { Solvers.Simon, DefuseGrammar.SimonSaysGrammar},
                 { Solvers.Sequence, DefuseGrammar.SequenceGrammar},
                 { Solvers.Morse, DefuseGrammar.MorseGrammar},
-                { Solvers.Knob, null},
+                { Solvers.Knob, DefuseGrammar.KnobGrammar},
                 { Solvers.Password, null},
             };
 

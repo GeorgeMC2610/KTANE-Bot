@@ -10,6 +10,7 @@ namespace KTANE_Bot
         public static Grammar ButtonGrammar => _ButtonGrammar();
         public static Grammar MemoryGrammar => _MemoryGrammar();
         public static Grammar WiresGrammar => _WiresGrammar();
+        public static Grammar KnobGrammar => _KnobGrammar();
         public static Grammar MorseGrammar => _MorseGrammar();
         public static Grammar SymbolsGrammar => _SymbolsGrammar();
         public static Grammar SequenceGrammar => _SequenceGrammar();
@@ -88,6 +89,11 @@ namespace KTANE_Bot
         private static Grammar _WiresGrammar()
         {
             return new Grammar(new GrammarBuilder(new Choices(new string[] {"yellow", "blue", "black", "white", "red", "done"})));
+        }
+        
+        private static Grammar _KnobGrammar()
+        {
+            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Knob.txt"))));
         }
 
         private static Grammar _MorseGrammar()
