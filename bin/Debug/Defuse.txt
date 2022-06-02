@@ -11,3 +11,4 @@ Defuse knob
 Defuse password
 The bomb is defused
 The bomb exploded
+Stop

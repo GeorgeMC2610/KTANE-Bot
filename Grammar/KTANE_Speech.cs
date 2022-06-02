@@ -168,7 +168,6 @@ namespace KTANE_Bot
                         return "Start checking phase.";
                     }
 
-                    
                     //if the bomb is initialized.
                     try
                     {
@@ -207,6 +206,10 @@ namespace KTANE_Bot
                             case "The bomb is defused":
                                 var congratulatoryMessages = new[] { "Good job!", "Nice!", "You did it!", "Yaaaay!", "Woo-hoo!", "Congratulations!" };
                                 return congratulatoryMessages[rng.Next(0, congratulatoryMessages.Length)];
+                            
+                            case "Stop":
+                                StopSpeaking();
+                                return "";
                             
                             default:
                                 return "No.";
@@ -428,6 +431,11 @@ namespace KTANE_Bot
         {
             Enabled = false;
             RecognitionEngine.RecognizeAsyncCancel();
+        }
+
+        public void StopSpeaking()
+        {
+            _ktaneBot.SpeakAsyncCancelAll();
         }
 
         public void Speak(string message)

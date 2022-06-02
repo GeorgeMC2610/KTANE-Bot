@@ -58,6 +58,7 @@
     <Compile Include="Bomb\Sequence.cs" />
     <Compile Include="Bomb\Simon.cs" />
     <Compile Include="Bomb\Symbols.cs" />
+    <Compile Include="Bomb\WhoIsOnFirst.cs" />
     <Compile Include="Bomb\Wires.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
