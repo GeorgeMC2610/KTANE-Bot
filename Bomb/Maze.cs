@@ -46,79 +46,80 @@ namespace KTANE_Bot
             public static readonly Block UpDownRight = new Block(true, true, true, false);
             public static readonly Block All = new Block(true, true, true, true);
         }
-
-        private readonly Block[,] Maze1 =
-        {
-            { DownRight, RightLeft, DownLeft, DownRight, RightLeft, OnlyLeft },
-            { UpDown, DownRight, UpLeft, UpRight, RightLeft, DownLeft },
-            { UpDown, UpRight, DownLeft, DownRight, RightLeft, UpDownLeft },
-            { UpDown, OnlyRight, UpRightLeft, UpLeft, OnlyRight, UpDownLeft },
-            { UpDownRight, RightLeft, DownLeft, DownRight, OnlyLeft, UpDown },
-            { UpRight, OnlyLeft, UpRight, UpLeft, OnlyRight, UpLeft }
-        };
-
+        
         public Point SquareLocation { get; private set; }
         public Point TriangleLocation { get; private set; }
-        private Queue<Point> _visitedPoints;
         private int[] _circles;
         private Block[,] _targetMaze;
 
         public Maze(Bomb bomb) : base(bomb)
         {
-            _visitedPoints = new Queue<Point>();
             _circles = new[] {-1, -1, -1, -1};
+            TriangleLocation = new Point(-1, -1);
+            SquareLocation = new Point(-1, -1);
         }
 
         public override string Solve()
         {
-            if (SquareLocation.IsEmpty || TriangleLocation.IsEmpty)
+            Block[,] Maze1 =
+            {
+                { DownRight, RightLeft, DownLeft, DownRight, RightLeft, OnlyLeft },
+                { UpDown, DownRight, UpLeft, UpRight, RightLeft, DownLeft },
+                { UpDown, UpRight, DownLeft, DownRight, RightLeft, UpDownLeft },
+                { UpDown, OnlyRight, UpRightLeft, UpLeft, OnlyRight, UpDownLeft },
+                { UpDownRight, RightLeft, DownLeft, DownRight, OnlyLeft, UpDown },
+                { UpRight, OnlyLeft, UpRight, UpLeft, OnlyRight, UpLeft }
+            };
+            
+            var _visitedPoints = new Queue<Point>();
+            var _path = new List<string>();
+
+            if (SquareLocation.X == -1 || TriangleLocation.X == -1)
                 return @"Something is wrong.";
 
             _targetMaze = Maze1;
-            _visitedPoints.Enqueue(TriangleLocation);
-            _targetMaze[TriangleLocation.X, TriangleLocation.Y].Marked = true;
-            var moves = new StringBuilder();
+            _visitedPoints.Enqueue(SquareLocation);
 
             while (_visitedPoints.Count != 0)
             {
-                var cell = _visitedPoints.Peek();
-                _visitedPoints.Dequeue();
+                var cell = _visitedPoints.Dequeue();
+                _targetMaze[cell.X, cell.Y].Marked = true;
                 
+                if (cell.X == TriangleLocation.X && cell.Y == TriangleLocation.Y)
+                    return string.Join(", ", _path);
+
                 //move right (this is y+1)
-                if (cell.Y + 1 < 6 && !_targetMaze[cell.X, cell.Y + 1].Marked && _targetMaze[cell.X, cell.Y + 1].Right)
+                if (cell.Y + 1 < 6 && !_targetMaze[cell.X, cell.Y + 1].Marked && _targetMaze[cell.X, cell.Y].Right)
                 {
                     _visitedPoints.Enqueue(new Point(cell.X, cell.Y + 1));
-                    _targetMaze[cell.X, cell.Y + 1].Marked = true;
-                    moves.Append("right, ");
+                    _path.Add("right");
                 }
                 
                 //move down (this is (x+1)
-                if (cell.X + 1 < 6 && !_targetMaze[cell.X + 1, cell.Y].Marked && _targetMaze[cell.X + 1, cell.Y].Down)
+                if (cell.X + 1 < 6 && !_targetMaze[cell.X + 1, cell.Y].Marked && _targetMaze[cell.X, cell.Y].Down)
                 {
                     _visitedPoints.Enqueue(new Point(cell.X + 1, cell.Y));
-                    _targetMaze[cell.X + 1, cell.Y].Marked = true;
-                    moves.Append("down, ");
+                    _path.Add("down");
                 }
                 
                 //move left (this is y-1)
-                if (cell.Y - 1 >= 0 && !_targetMaze[cell.X, cell.Y - 1].Marked && _targetMaze[cell.X, cell.Y - 1].Left)
+                if (cell.Y - 1 >= 0 && !_targetMaze[cell.X, cell.Y - 1].Marked && _targetMaze[cell.X, cell.Y].Left)
                 {
                     _visitedPoints.Enqueue(new Point(cell.X, cell.Y - 1));
-                    _targetMaze[cell.X, cell.Y - 1].Marked = true;
-                    moves.Append("left, ");
+                    _path.Add("left");
                 }
                 
                 //move up (this is x-1)
                 if (cell.X - 1 >= 0 && !_targetMaze[cell.X - 1, cell.Y].Marked && _targetMaze[cell.X, cell.Y].Up)
                 {
                     _visitedPoints.Enqueue(new Point(cell.X - 1, cell.Y));
-                    _targetMaze[cell.X - 1, cell.Y].Marked = true;
-                    moves.Append("up, ");
+                    _path.Add("up");
                 }
             }
 
-            return moves.ToString();
+            return @"No path found";
         }
+        
 
         public void AssignFirstCircle(int x, int y)
         {

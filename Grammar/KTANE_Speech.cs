@@ -407,15 +407,16 @@ namespace KTANE_Bot
 
                             var maze = (Maze)_defusingModule;
 
-                            if (maze.SquareLocation.IsEmpty)
+                            if (maze.SquareLocation.X == -1 || maze.SquareLocation.Y == -1)
                             {
                                 maze.SetSquare(int.Parse(command[0].ToString()), int.Parse(command[2].ToString()));
                                 return "Triangle coordinates.";
                             }
                             
-                            if (maze.TriangleLocation.IsEmpty)
+                            if (maze.TriangleLocation.X == -1 || maze.TriangleLocation.Y == -1)
                                 maze.SetTriangle(int.Parse(command[0].ToString()), int.Parse(command[2].ToString()));
 
+                            SwitchToDefaultProperties();
                             return maze.Solve();
 
                         default:
@@ -447,7 +448,7 @@ namespace KTANE_Bot
                 { Solvers.Morse,        DefuseGrammar.MorseGrammar },
                 { Solvers.Knob,         DefuseGrammar.KnobGrammar },
                 { Solvers.Password,     null },
-                { Solvers.Maze,         null }
+                { Solvers.Maze,         DefuseGrammar.MazeGrammar }
             };
 
             RecognitionEngine.LoadGrammarAsync(grammarDict[solver]);

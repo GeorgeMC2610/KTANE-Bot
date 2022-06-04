@@ -5,6 +5,7 @@ Defuse symbols
 Defuse memory
 Defuse complicated
 Defuse simon
+Defuse maze
 Defuse sequence
 Defuse who is on first
 Defuse morse

@@ -11,6 +11,7 @@ namespace KTANE_Bot
         public static Grammar MemoryGrammar => _MemoryGrammar();
         public static Grammar WiresGrammar => _WiresGrammar();
         public static Grammar KnobGrammar => _KnobGrammar();
+        public static Grammar MazeGrammar => _MazeGrammar();
         public static Grammar MorseGrammar => _MorseGrammar();
         public static Grammar SymbolsGrammar => _SymbolsGrammar();
         public static Grammar SequenceGrammar => _SequenceGrammar();
@@ -95,6 +96,29 @@ namespace KTANE_Bot
         private static Grammar _KnobGrammar()
         {
             return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Knob.txt"))));
+        }
+
+        private static Grammar _MazeGrammar()
+        {
+            var numbers = new Choices("1", "2", "3", "4", "5", "6");
+
+            var one = new GrammarBuilder("1");
+            var two = new GrammarBuilder("2");
+            var three = new GrammarBuilder("3");
+            var four = new GrammarBuilder("4");
+            var five = new GrammarBuilder("5");
+            var six = new GrammarBuilder("6");
+            
+            one.Append(numbers);
+            two.Append(numbers);
+            three.Append(numbers);
+            four.Append(numbers);
+            five.Append(numbers);
+            six.Append(numbers);
+            
+            var allChoices = new Choices(new GrammarBuilder[] { one, two, three, four, five, six });
+            
+            return new Grammar(allChoices);
         }
 
         private static Grammar _MorseGrammar()
