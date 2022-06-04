@@ -101,7 +101,7 @@ namespace KTANE_Bot
 
         public override string Solve()
         {
-            return Button == string.Empty ? PositionsDict[Display] : WordsDict[Button];
+            return Button == string.Empty ? PositionsDict[Display] : WordsDict[Button].Replace(',', '.');
         }
     }
 }
