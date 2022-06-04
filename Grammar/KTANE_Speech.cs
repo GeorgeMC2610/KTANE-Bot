@@ -188,6 +188,9 @@ namespace KTANE_Bot
                             case "Defuse who is on first":
                                 additionalInfo = "is on first, what's on the display?";
                                 break;
+                            case "Defuse maze":
+                                additionalInfo = "; white square coordinates.";
+                                break;
                         }
                         
                         //this is just a long way to say "return the module with first letter being capital."
@@ -399,7 +402,22 @@ namespace KTANE_Bot
                         case Solvers.Password:
                             break;
                         case Solvers.Maze:
-                            break;
+                            if (_defusingModule == null)
+                                _defusingModule = new Maze(_bomb);
+
+                            var maze = (Maze)_defusingModule;
+
+                            if (maze.SquareLocation.IsEmpty)
+                            {
+                                maze.SetSquare(int.Parse(command[0].ToString()), int.Parse(command[2].ToString()));
+                                return "Triangle coordinates.";
+                            }
+                            
+                            if (maze.TriangleLocation.IsEmpty)
+                                maze.SetTriangle(int.Parse(command[0].ToString()), int.Parse(command[2].ToString()));
+
+                            return maze.Solve();
+
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
