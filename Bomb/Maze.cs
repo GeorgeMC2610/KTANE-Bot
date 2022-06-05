@@ -70,6 +70,11 @@ namespace KTANE_Bot
                 { UpDownRight, RightLeft, DownLeft, DownRight, OnlyLeft, UpDown },
                 { UpRight, OnlyLeft, UpRight, UpLeft, OnlyRight, UpLeft }
             };
+
+            foreach (var VARIABLE in Maze1)
+            {
+                VARIABLE.Marked = false;
+            }
             
             var _visitedPoints = new Queue<Point>();
             var _path = new List<string>();
