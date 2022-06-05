@@ -74,6 +74,28 @@ namespace KTANE_Bot
             }
         }
         
+        private static readonly Block[,] Maze1 =
+        {
+            { DownRight(), RightLeft(), DownLeft(), DownRight(), RightLeft(), OnlyLeft() },
+            { UpDown(), DownRight(), UpLeft(), UpRight(), RightLeft(), DownLeft() },
+            { UpDown(), UpRight(), DownLeft(), DownRight(), RightLeft(), UpDownLeft() },
+            { UpDown(), OnlyRight(), UpRightLeft(), UpLeft(), OnlyRight(), UpDownLeft() },
+            { UpDownRight(), RightLeft(), DownLeft(), DownRight(), OnlyLeft(), UpDown() },
+            { UpRight(), OnlyLeft(), UpRight(), UpLeft(), OnlyRight(), UpLeft() }
+        };
+        
+        private static readonly Block[,] Maze2 =
+        {
+            { OnlyRight(), DownRightLeft(), OnlyLeft(), DownRight(), DownRightLeft(), OnlyLeft() },
+            { DownRight(), UpLeft(), DownRight(), UpLeft(), UpRight(), DownLeft() },
+            { UpDown(), DownRight(), UpLeft(), DownRight(), RightLeft(), UpDownLeft() },
+            { UpDownRight(), UpLeft(), DownRight(), UpLeft(), OnlyDown(), UpDown() },
+            { UpDown(), OnlyDown(), UpDown(), DownRight(), UpLeft(), UpDown() },
+            { OnlyUp(), UpRight(), UpLeft(), UpRight(), RightLeft(), UpLeft() }
+        };
+        
+        
+        
         public Node SquareLocation { get; private set; }
         public Node TriangleLocation { get; private set; }
         private int[] _circles;
@@ -88,17 +110,7 @@ namespace KTANE_Bot
 
         public override string Solve()
         {
-            Block[,] Maze1 =
-            {
-                { DownRight(), RightLeft(), DownLeft(), DownRight(), RightLeft(), OnlyLeft() },
-                { UpDown(), DownRight(), UpLeft(), UpRight(), RightLeft(), DownLeft() },
-                { UpDown(), UpRight(), DownLeft(), DownRight(), RightLeft(), UpDownLeft() },
-                { UpDown(), OnlyRight(), UpRightLeft(), UpLeft(), OnlyRight(), UpDownLeft() },
-                { UpDownRight(), RightLeft(), DownLeft(), DownRight(), OnlyLeft(), UpDown() },
-                { UpRight(), OnlyLeft(), UpRight(), UpLeft(), OnlyRight(), UpLeft() }
-            };
-
-            foreach (var VARIABLE in Maze1)
+            foreach (var VARIABLE in Maze2)
             {
                 VARIABLE.Marked = false;
             }
@@ -109,7 +121,7 @@ namespace KTANE_Bot
             if (SquareLocation.X == -1 || TriangleLocation.X == -1)
                 return @"Something is wrong.";
 
-            _targetMaze = Maze1;
+            _targetMaze = Maze2;
             _visitedPoints.Enqueue(SquareLocation);
 
             while (_visitedPoints.Count != 0)
@@ -148,23 +160,6 @@ namespace KTANE_Bot
             return @"No path found";
         }
 
-        private string ShowMarkedNodes()
-        {
-            var builder = new StringBuilder();
-
-            for (int i = 0; i < 6; i++)
-            {
-                builder.Append('[');
-                for (int j = 0; j < 6; j++)
-                {
-                    builder.Append(_targetMaze[i, j].Marked ? 'X' : '.');
-                }
-                builder.Append("] " + Environment.NewLine);
-            }
-
-            return builder.ToString();
-        }
-
         private string ConstructPath(Node end)
         {
             var previous = end;
@@ -181,16 +176,16 @@ namespace KTANE_Bot
             for (int i = 1; i < path.Count; i++)
             {
                 if (path[i].X - path[i - 1].X == -1)
-                    pathBuilder.Append("up, ");
+                    pathBuilder.Append("up; ");
                 
                 if (path[i].X - path[i - 1].X == 1)
-                    pathBuilder.Append("down, ");
+                    pathBuilder.Append("down; ");
                 
                 if (path[i].Y - path[i - 1].Y == -1)
-                    pathBuilder.Append("left, ");
+                    pathBuilder.Append("left; ");
                 
                 if (path[i].Y - path[i - 1].Y == 1)
-                    pathBuilder.Append("right, ");
+                    pathBuilder.Append("right; ");
             }
 
             return pathBuilder.ToString();
