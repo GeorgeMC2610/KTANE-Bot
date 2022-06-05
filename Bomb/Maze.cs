@@ -176,7 +176,24 @@ namespace KTANE_Bot
                 previous = previous.Previous;
             }
 
-            return path.Count.ToString();
+            var pathBuilder = new StringBuilder();
+            path.Reverse();
+            for (int i = 1; i < path.Count; i++)
+            {
+                if (path[i].X - path[i - 1].X == -1)
+                    pathBuilder.Append("up, ");
+                
+                if (path[i].X - path[i - 1].X == 1)
+                    pathBuilder.Append("down, ");
+                
+                if (path[i].Y - path[i - 1].Y == -1)
+                    pathBuilder.Append("left, ");
+                
+                if (path[i].Y - path[i - 1].Y == 1)
+                    pathBuilder.Append("right, ");
+            }
+
+            return pathBuilder.ToString();
         }
         
 
