@@ -103,6 +103,26 @@ namespace KTANE_Bot
             { UpDown(), UpRight(), UpLeft(), UpDown(), UpDown(), UpDown() },
             { UpRight(), RightLeft(), RightLeft(), UpLeft(), UpRight(), UpLeft() }
         };
+        
+        private static readonly Block[,] Maze4 =
+        {
+            { DownRight(), DownRight(), OnlyRight(), RightLeft(), RightLeft(), DownLeft() },
+            { UpDown(), UpDown(), DownRight(), RightLeft(), RightLeft(), UpDownLeft() },
+            { UpDown(), UpRight(), UpLeft(), DownRight(), OnlyLeft(), UpDown() },
+            { UpDown(), OnlyRight(), RightLeft(), UpRightLeft(), RightLeft(), UpDownLeft() },
+            { UpDownRight(), RightLeft(), RightLeft(), RightLeft(), DownLeft(), UpDown() },
+            { UpRight(), RightLeft(), OnlyLeft(), OnlyRight(), UpLeft(), OnlyUp() }
+        };
+        
+        private static readonly Block[,] Maze5 =
+        {
+            { DownRight(), DownRight(), OnlyRight(), RightLeft(), RightLeft(), DownLeft() },
+            { UpDown(), UpDown(), DownRight(), RightLeft(), RightLeft(), UpDownLeft() },
+            { UpDown(), UpRight(), UpLeft(), DownRight(), OnlyLeft(), UpDown() },
+            { UpDown(), OnlyRight(), RightLeft(), UpRightLeft(), RightLeft(), UpDownLeft() },
+            { UpDownRight(), RightLeft(), RightLeft(), RightLeft(), DownLeft(), UpDown() },
+            { UpRight(), RightLeft(), OnlyLeft(), OnlyRight(), UpLeft(), OnlyUp() }
+        };
 
 
 
@@ -114,6 +134,8 @@ namespace KTANE_Bot
             { new Point(2, 5), Maze2 },
             { new Point(4, 4), Maze3},
             {new Point(4, 6), Maze3},
+            {new Point(1, 1), Maze4},
+            {new Point(4, 1), Maze4},
         };
 
         public Node SquareLocation { get; private set; }
