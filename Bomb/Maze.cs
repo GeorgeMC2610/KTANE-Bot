@@ -146,9 +146,9 @@ namespace KTANE_Bot
         
         private static readonly Block[,] Maze8 =
         {
-            { OnlyDown(), DownRight(), DownLeft(), OnlyRight(), DownRightLeft(), DownLeft() },
-            { UpDown(), DownRight(), OnlyLeft(), UpRight(), UpLeft(), UpDown() },
-            { UpDownRight(), UpLeft(), OnlyUp(), UpDown(), DownRight(), UpLeft() },
+            { OnlyDown(), DownRight(), RightLeft(), DownLeft(), DownRight(), DownLeft() },
+            { UpDownRight(), UpRightLeft(), OnlyLeft(), UpRight(), UpLeft(), UpDown() },
+            { UpDown(), DownRight(), OnlyUp(), UpDown(), DownRight(), UpLeft() },
             { UpRight(), DownLeft(), DownRight(), UpDownLeft(), UpDown(), OnlyDown() },
             { DownRight(), UpLeft(), OnlyUp(), UpDown(), UpRight(), UpDownLeft() },
             { UpRight(), RightLeft(), RightLeft(), UpLeft(), OnlyRight(), UpLeft() }
