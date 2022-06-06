@@ -156,12 +156,12 @@ namespace KTANE_Bot
         
         private static readonly Block[,] Maze9 =
         {
-            { OnlyDown(), DownRight(), DownLeft(), OnlyRight(), DownRightLeft(), DownLeft() },
-            { UpDown(), UpDown(), UpDown(), DownRight(), UpLeft(), UpDown() },
-            { UpDownRight(), UpLeft(), OnlyUp(), UpDown(), DownRight(), UpLeft() },
-            { UpRight(), DownLeft(), DownRight(), UpDownLeft(), UpDown(), OnlyDown() },
-            { DownRight(), UpLeft(), OnlyUp(), UpDown(), UpRight(), UpDownLeft() },
-            { UpRight(), RightLeft(), RightLeft(), UpLeft(), OnlyRight(), UpLeft() }
+            { OnlyDown(), DownRight(), RightLeft(), RightLeft(), DownRightLeft(), DownLeft() },
+            { UpDown(), UpDown(), DownRight(), OnlyLeft(), UpDown(), UpDown() },
+            { UpDownRight(), UpRightLeft(), UpLeft(), DownRight(), UpLeft(), UpDown() },
+            { UpDown(), OnlyDown(), DownRight(), UpLeft(), OnlyRight(), UpDownLeft() },
+            { UpDown(), UpDown(), UpDown(), DownRight(), DownLeft(), OnlyUp() },
+            { UpRight(), UpLeft(), UpRight(), UpLeft(), UpRight(), OnlyLeft() }
         };
 
         private static readonly Dictionary<Point, Block[,]> MazeIdentifierDict = new Dictionary<Point, Block[,]>
