@@ -189,7 +189,7 @@ namespace KTANE_Bot
                                 additionalInfo = "is on first, what's on the display?";
                                 break;
                             case "Defuse maze":
-                                additionalInfo = "; white square coordinates.";
+                                additionalInfo = "; Any green circle coordinates.";
                                 break;
                         }
                         
@@ -207,7 +207,7 @@ namespace KTANE_Bot
                                 return dismissingMessages[rng.Next(0, dismissingMessages.Length)];
                             
                             case "The bomb is defused":
-                                var congratulatoryMessages = new[] { "Good job!", "Nice!", "You did it!", "Yaaaay!", "Woo-hoo!", "Congratulations!" };
+                                var congratulatoryMessages = new[] { "Good job!", "Nice!", "You did it!", "Yay!", "Woo-hoo!", "Congratulations!" };
                                 return congratulatoryMessages[rng.Next(0, congratulatoryMessages.Length)];
                             
                             case "Stop":
@@ -407,14 +407,32 @@ namespace KTANE_Bot
 
                             var maze = (Maze)_defusingModule;
 
+                            if (maze.TargetMaze == null)
+                            {
+                                if (maze.AssignCircle(int.Parse(command[0].ToString()), int.Parse(command[2].ToString())))
+                                    return "White square coordinates.";
+
+                                return "Try again";
+                            }
+
+
                             if (maze.SquareLocation.X == -1 || maze.SquareLocation.Y == -1)
                             {
                                 maze.SetSquare(int.Parse(command[0].ToString()), int.Parse(command[2].ToString()));
                                 return "Triangle coordinates.";
                             }
-                            
+
                             if (maze.TriangleLocation.X == -1 || maze.TriangleLocation.Y == -1)
+                            {
                                 maze.SetTriangle(int.Parse(command[0].ToString()), int.Parse(command[2].ToString()));
+                                
+                                if (maze.TriangleLocation.X == maze.SquareLocation.X &&
+                                    maze.TriangleLocation.Y == maze.SquareLocation.Y)
+                                {
+                                    maze.SetTriangle(0, 0);
+                                    return "Square and triangle must be in different places; try again.";
+                                }
+                            }
 
                             SwitchToDefaultProperties();
                             return maze.Solve();
