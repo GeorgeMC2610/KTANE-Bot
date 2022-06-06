@@ -116,26 +116,28 @@ namespace KTANE_Bot
         
         private static readonly Block[,] Maze5 =
         {
-            { DownRight(), DownRight(), OnlyRight(), RightLeft(), RightLeft(), DownLeft() },
-            { UpDown(), UpDown(), DownRight(), RightLeft(), RightLeft(), UpDownLeft() },
-            { UpDown(), UpRight(), UpLeft(), DownRight(), OnlyLeft(), UpDown() },
-            { UpDown(), OnlyRight(), RightLeft(), UpRightLeft(), RightLeft(), UpDownLeft() },
-            { UpDownRight(), RightLeft(), RightLeft(), RightLeft(), DownLeft(), UpDown() },
-            { UpRight(), RightLeft(), OnlyLeft(), OnlyRight(), UpLeft(), OnlyUp() }
+            { OnlyRight(), RightLeft(), RightLeft(), RightLeft(), DownRightLeft(), DownLeft() },
+            { DownRight(), RightLeft(), RightLeft(), DownRightLeft(), UpLeft(), OnlyUp() },
+            { UpDownRight(), DownLeft(), OnlyRight(), UpLeft(), DownRight(), DownLeft() },
+            { UpDown(), UpRight(), RightLeft(), DownLeft(), OnlyUp(), UpDown() },
+            { UpDown(), DownRight(), RightLeft(), UpRightLeft(), OnlyLeft(), UpDown() },
+            { OnlyUp(), UpRight(), RightLeft(), RightLeft(), RightLeft(), UpLeft() }
         };
 
 
 
-        private Dictionary<Point, Block[,]> _mazeIdentifierDict = new Dictionary<Point, Block[,]>
+        private static readonly Dictionary<Point, Block[,]> MazeIdentifierDict = new Dictionary<Point, Block[,]>
         {
             { new Point(2, 1), Maze1 },
             { new Point(3, 6), Maze1 },
             { new Point(4, 2), Maze2 },
             { new Point(2, 5), Maze2 },
-            { new Point(4, 4), Maze3},
-            {new Point(4, 6), Maze3},
-            {new Point(1, 1), Maze4},
-            {new Point(4, 1), Maze4},
+            { new Point(4, 4), Maze3 },
+            { new Point(4, 6), Maze3 },
+            { new Point(1, 1), Maze4 },
+            { new Point(4, 1), Maze4 },
+            { new Point(6, 4), Maze5 },
+            { new Point(3, 5), Maze5 }
         };
 
         public Node SquareLocation { get; private set; }
@@ -234,7 +236,7 @@ namespace KTANE_Bot
         {
             try
             {
-                TargetMaze = _mazeIdentifierDict[new Point(x, y)];
+                TargetMaze = MazeIdentifierDict[new Point(x, y)];
                 return true;
             }
             catch (KeyNotFoundException)
