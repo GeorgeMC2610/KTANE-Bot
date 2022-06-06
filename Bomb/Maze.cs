@@ -93,6 +93,16 @@ namespace KTANE_Bot
             { UpDown(), OnlyDown(), UpDown(), DownRight(), UpLeft(), UpDown() },
             { OnlyUp(), UpRight(), UpLeft(), UpRight(), RightLeft(), UpLeft() }
         };
+        
+        private static readonly Block[,] Maze3 =
+        {
+            { DownRight(), RightLeft(), DownLeft(), OnlyDown(), DownRight(), DownLeft() },
+            { OnlyUp(), OnlyDown(), UpDown(), UpRight(), UpLeft(), UpDown() },
+            { DownRight(), UpDownLeft(), UpDown(), DownRight(), DownLeft(), UpDown() },
+            { UpDown(), UpDown(), UpDown(), UpDown(), UpDown(), UpDown() },
+            { UpDown(), UpRight(), UpLeft(), UpDown(), UpDown(), UpDown() },
+            { UpRight(), RightLeft(), RightLeft(), UpLeft(), UpRight(), UpLeft() }
+        };
 
 
 
@@ -102,6 +112,8 @@ namespace KTANE_Bot
             { new Point(3, 6), Maze1 },
             { new Point(4, 2), Maze2 },
             { new Point(2, 5), Maze2 },
+            { new Point(4, 4), Maze3},
+            {new Point(4, 6), Maze3},
         };
 
         public Node SquareLocation { get; private set; }
