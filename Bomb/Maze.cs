@@ -133,8 +133,36 @@ namespace KTANE_Bot
             { DownRight(), UpLeft(), OnlyUp(), UpDown(), UpRight(), UpDownLeft() },
             { UpRight(), RightLeft(), RightLeft(), UpLeft(), OnlyRight(), UpLeft() }
         };
-
-
+        
+        private static readonly Block[,] Maze7 =
+        {
+            { DownRight(), RightLeft(), RightLeft(), DownLeft(), DownRight(), DownLeft() },
+            { UpDown(), DownRight(), OnlyLeft(), UpRight(), UpLeft(), UpDown() },
+            { UpRight(), UpLeft(), DownRight(), OnlyLeft(), DownRight(), UpLeft() },
+            { DownRight(), DownLeft(), UpDownRight(), RightLeft(), UpLeft(), OnlyDown() },
+            { UpDown(), OnlyUp(), UpRight(), RightLeft(), DownLeft(), UpDown() },
+            { UpRight(), RightLeft(), RightLeft(), UpLeft(), UpRightLeft(), UpLeft() }
+        };
+        
+        private static readonly Block[,] Maze8 =
+        {
+            { OnlyDown(), DownRight(), DownLeft(), OnlyRight(), DownRightLeft(), DownLeft() },
+            { UpDown(), DownRight(), OnlyLeft(), UpRight(), UpLeft(), UpDown() },
+            { UpDownRight(), UpLeft(), OnlyUp(), UpDown(), DownRight(), UpLeft() },
+            { UpRight(), DownLeft(), DownRight(), UpDownLeft(), UpDown(), OnlyDown() },
+            { DownRight(), UpLeft(), OnlyUp(), UpDown(), UpRight(), UpDownLeft() },
+            { UpRight(), RightLeft(), RightLeft(), UpLeft(), OnlyRight(), UpLeft() }
+        };
+        
+        private static readonly Block[,] Maze9 =
+        {
+            { OnlyDown(), DownRight(), DownLeft(), OnlyRight(), DownRightLeft(), DownLeft() },
+            { UpDown(), UpDown(), UpDown(), DownRight(), UpLeft(), UpDown() },
+            { UpDownRight(), UpLeft(), OnlyUp(), UpDown(), DownRight(), UpLeft() },
+            { UpRight(), DownLeft(), DownRight(), UpDownLeft(), UpDown(), OnlyDown() },
+            { DownRight(), UpLeft(), OnlyUp(), UpDown(), UpRight(), UpDownLeft() },
+            { UpRight(), RightLeft(), RightLeft(), UpLeft(), OnlyRight(), UpLeft() }
+        };
 
         private static readonly Dictionary<Point, Block[,]> MazeIdentifierDict = new Dictionary<Point, Block[,]>
         {
@@ -150,6 +178,12 @@ namespace KTANE_Bot
             { new Point(3, 5), Maze5 },
             { new Point(1, 5), Maze6 },
             { new Point(5, 3), Maze6 },
+            { new Point(1, 2), Maze7 },
+            { new Point(6, 2), Maze7 },
+            { new Point(1, 4), Maze8 },
+            { new Point(4, 3), Maze8 },
+            { new Point(2, 3), Maze9 },
+            { new Point(5, 1), Maze9 }
         };
 
         public Node SquareLocation { get; private set; }
@@ -257,7 +291,6 @@ namespace KTANE_Bot
             }
         }
         
-
         public void SetTriangle(int x, int y)
         {
             TriangleLocation = new Node(--x, --y);
