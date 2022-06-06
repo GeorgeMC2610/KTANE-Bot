@@ -124,6 +124,16 @@ namespace KTANE_Bot
             { OnlyUp(), UpRight(), RightLeft(), RightLeft(), RightLeft(), UpLeft() }
         };
 
+        private static readonly Block[,] Maze6 =
+        {
+            { OnlyDown(), DownRight(), DownLeft(), OnlyRight(), DownRightLeft(), DownLeft() },
+            { UpDown(), UpDown(), UpDown(), DownRight(), UpLeft(), UpDown() },
+            { UpDownRight(), UpLeft(), OnlyUp(), UpDown(), DownRight(), UpLeft() },
+            { UpRight(), DownLeft(), DownRight(), UpDownLeft(), UpDown(), OnlyDown() },
+            { DownRight(), UpLeft(), OnlyUp(), UpDown(), UpRight(), UpDownLeft() },
+            { UpRight(), RightLeft(), RightLeft(), UpLeft(), OnlyRight(), UpLeft() }
+        };
+
 
 
         private static readonly Dictionary<Point, Block[,]> MazeIdentifierDict = new Dictionary<Point, Block[,]>
@@ -137,7 +147,9 @@ namespace KTANE_Bot
             { new Point(1, 1), Maze4 },
             { new Point(4, 1), Maze4 },
             { new Point(6, 4), Maze5 },
-            { new Point(3, 5), Maze5 }
+            { new Point(3, 5), Maze5 },
+            { new Point(1, 5), Maze6 },
+            { new Point(5, 3), Maze6 },
         };
 
         public Node SquareLocation { get; private set; }
