@@ -9,23 +9,41 @@ namespace KTANE_Bot
                                                  "spell,still,study,their,there,these,thing,think,three,water,where,which,world,would,write").Split(',');
 
         public int Column { get; private set; }
-        private string[,] _letters;
+
+        private List<string> _column1;
+        private List<string> _column2;
+        private List<string> _column3;
+        private List<string> _column4;
+        private List<string> _column5;
 
         public Password(Bomb bomb) : base(bomb)
         {
             Column = 0;
-            _letters = new string[6, 5];
+            _column1 = new List<string>();
+            _column2 = new List<string>();
+            _column3 = new List<string>();
+            _column4 = new List<string>();
+            _column5 = new List<string>();
         }
 
         public override string Solve()
         {
-            var existingLetters = new List<string>();
-
             
+
+            return "";
         }
 
         public int AssignLetters(string words)
         {
+            var targetListDict = new Dictionary<int, List<string>>
+            {
+                { 0, _column1 },
+                { 1, _column2 },
+                { 2, _column3 },
+                { 3, _column4 },
+                { 4, _column5 },
+            };
+            
             var split = words.Split(' ');
             if (split.Length != 6)
                 return 1;
@@ -35,8 +53,12 @@ namespace KTANE_Bot
                 return -1;
 
             //assign the first letter of every word to the letters list.
-            for (var i = 0; i < 6; i++)
-                _letters[i, Column] = split[i][0].ToString();
+            foreach (var s in split)
+                targetListDict[Column].Add(s);
+
+            //only keep letters that exist in the Words list.
+            var existingLettersList = targetListDict[Column].Where(s => (from word in Words where word[Column] == char.Parse(s) select word).Any()).ToList();
+            targetListDict[Column] = existingLettersList;
 
             Column++;
             return 0;
