@@ -225,18 +225,18 @@ namespace KTANE_Bot
                     visitedPoints.Enqueue(new Node(cell.X, cell.Y + 1) {Previous = cell});
                 }
                 
-                //move down (this is (x+1)
-                if (cell.X + 1 < 6 && !TargetMaze[cell.X + 1, cell.Y].Marked && TargetMaze[cell.X, cell.Y].Down)
-                {
-                    visitedPoints.Enqueue(new Node(cell.X + 1, cell.Y) {Previous = cell});
-                }
-                
                 //move left (this is y-1)
                 if (cell.Y - 1 >= 0 && !TargetMaze[cell.X, cell.Y - 1].Marked && TargetMaze[cell.X, cell.Y].Left)
                 {
                     visitedPoints.Enqueue(new Node(cell.X, cell.Y - 1) {Previous = cell});
                 }
                 
+                //move down (this is (x+1)
+                if (cell.X + 1 < 6 && !TargetMaze[cell.X + 1, cell.Y].Marked && TargetMaze[cell.X, cell.Y].Down)
+                {
+                    visitedPoints.Enqueue(new Node(cell.X + 1, cell.Y) {Previous = cell});
+                }
+
                 //move up (this is x-1)
                 if (cell.X - 1 >= 0 && !TargetMaze[cell.X - 1, cell.Y].Marked && TargetMaze[cell.X, cell.Y].Up)
                 {
