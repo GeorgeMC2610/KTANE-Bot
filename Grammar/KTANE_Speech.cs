@@ -191,6 +191,9 @@ namespace KTANE_Bot
                             case "Defuse maze":
                                 additionalInfo = "; Any green circle coordinates.";
                                 break;
+                            case "Defuse password":
+                                additionalInfo = "; Column 1";
+                                break;
                         }
                         
                         //this is just a long way to say "return the module with first letter being capital."
@@ -406,16 +409,18 @@ namespace KTANE_Bot
 
                             var password = (Password)_defusingModule;
 
-                            if (password.AssignLetters(command) == -1)
-                                return "There can be no duplicate letters in the password. Try again.";
+                            switch (password.AssignLetters(command.ToLower()))
+                            {
+                                case -1:
+                                    return "There can be no duplicate letters in the password. Try again.";
+                                case 2:
+                                    return $"{command}; next";
+                                default:
+                                    if (password.Solve().StartsWith("Try") || password.Solve().StartsWith("Something"))
+                                        SwitchToDefaultProperties();
 
-                            if (password.AssignLetters(command) == 1)
-                                return "You must give exactly 6 letters. Try again.";
-                            
-                            if (password.Solve().StartsWith("Try"))
-                                SwitchToDefaultProperties();
-
-                            return password.Solve();
+                                    return password.Solve();
+                            }
 
                         //MAZE SOLVER.
                         case Solvers.Maze:
@@ -481,7 +486,7 @@ namespace KTANE_Bot
                 { Solvers.WhoIsOnFirst, DefuseGrammar.WhoIsOnFirstGrammar },
                 { Solvers.Morse,        DefuseGrammar.MorseGrammar },
                 { Solvers.Knob,         DefuseGrammar.KnobGrammar },
-                { Solvers.Password,     null },
+                { Solvers.Password,     DefuseGrammar.PasswordGrammar },
                 { Solvers.Maze,         DefuseGrammar.MazeGrammar }
             };
 

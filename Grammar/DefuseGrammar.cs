@@ -14,6 +14,7 @@ namespace KTANE_Bot
         public static Grammar MazeGrammar => _MazeGrammar();
         public static Grammar MorseGrammar => _MorseGrammar();
         public static Grammar SymbolsGrammar => _SymbolsGrammar();
+        public static Grammar PasswordGrammar => _PasswordGrammar();
         public static Grammar SequenceGrammar => _SequenceGrammar();
         public static Grammar SimonSaysGrammar => _SimonSaysGrammar();
         public static Grammar ComplicatedGrammar => _ComplicatedGrammar();
@@ -132,6 +133,11 @@ namespace KTANE_Bot
         private static Grammar _SymbolsGrammar()
         {
             return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Symbols.txt"))));
+        }
+
+        private static Grammar _PasswordGrammar()
+        {
+            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Password.txt"))));
         }
 
         private static Grammar _SequenceGrammar()

@@ -28,12 +28,42 @@ namespace KTANE_Bot
 
         public override string Solve()
         {
-            
+            var combinationLetters = new List<string>();
 
-            return "";
+            foreach (var t1 in _column1)
+            {
+                combinationLetters.Add(t1);
+                foreach (var t2 in _column2)
+                {
+                    combinationLetters.Remove(t1);
+                    combinationLetters.Add(t1 + t2);
+                    foreach (var t3 in _column3)
+                    {
+                        combinationLetters.Remove(t1 + t2);
+                        combinationLetters.Add(t1 + t2 + t3);
+                        foreach (var t4 in _column4)
+                        {
+                            combinationLetters.Remove(t1 + t2 + t3);
+                            combinationLetters.Add(t1 + t2 + t3 + t4);
+                            foreach (var t5 in _column5)
+                            {
+                                combinationLetters.Remove(t1 + t2 + t3 + t4);
+                                combinationLetters.Add(t1 + t2 + t3 + t4 + t5);
+                            }
+                        }
+                    }
+                }
+            }
+
+            var possibleWords = (from letter in combinationLetters from word in Words where word.StartsWith(letter) select word).ToList();
+
+            if (possibleWords.Count == 0)
+                return @"Something is wrong.";
+            
+            return possibleWords.Count < 5 ? $"Try words: {string.Join(", ", possibleWords)}" : $"Column {Column + 1}.";
         }
 
-        public int AssignLetters(string words)
+        public int AssignLetters(string letter)
         {
             var targetListDict = new Dictionary<int, List<string>>
             {
@@ -43,25 +73,21 @@ namespace KTANE_Bot
                 { 3, _column4 },
                 { 4, _column5 },
             };
-            
-            var split = words.Split(' ');
-            if (split.Length != 6)
-                return 1;
 
-            //this translates to "if there are any duplicates".
-            if (split.GroupBy(x => x).Where(g => g.Count() > 1).Select(y => y.Key).Count() != 0)
+            //if there is any duplicate don't allow it.
+            if (!targetListDict[Column].Contains(letter))
+                targetListDict[Column].Add(letter);
+            else
                 return -1;
 
-            //assign the first letter of every word to the letters list.
-            foreach (var s in split)
-                targetListDict[Column].Add(s);
+            if (targetListDict[Column].Count == 6)
+            {
+                Column++;
+                return 0;
+            }
+            
+            return 2;
 
-            //only keep letters that exist in the Words list.
-            var existingLettersList = targetListDict[Column].Where(s => (from word in Words where word[Column] == char.Parse(s) select word).Any()).ToList();
-            targetListDict[Column] = existingLettersList;
-
-            Column++;
-            return 0;
         }
     }
 }
