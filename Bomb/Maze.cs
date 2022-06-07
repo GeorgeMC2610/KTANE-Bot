@@ -106,7 +106,7 @@ namespace KTANE_Bot
         
         private static readonly Block[,] Maze4 =
         {
-            { DownRight(), DownRight(), OnlyRight(), RightLeft(), RightLeft(), DownLeft() },
+            { DownRight(), DownLeft(), OnlyRight(), RightLeft(), RightLeft(), DownLeft() },
             { UpDown(), UpDown(), DownRight(), RightLeft(), RightLeft(), UpDownLeft() },
             { UpDown(), UpRight(), UpLeft(), DownRight(), OnlyLeft(), UpDown() },
             { UpDown(), OnlyRight(), RightLeft(), UpRightLeft(), RightLeft(), UpDownLeft() },
@@ -141,7 +141,7 @@ namespace KTANE_Bot
             { UpRight(), UpLeft(), DownRight(), OnlyLeft(), DownRight(), UpLeft() },
             { DownRight(), DownLeft(), UpDownRight(), RightLeft(), UpLeft(), OnlyDown() },
             { UpDown(), OnlyUp(), UpRight(), RightLeft(), DownLeft(), UpDown() },
-            { UpRight(), RightLeft(), RightLeft(), UpLeft(), UpRightLeft(), UpLeft() }
+            { UpRight(), RightLeft(), RightLeft(), RightLeft(), UpRightLeft(), UpLeft() }
         };
         
         private static readonly Block[,] Maze8 =
@@ -263,16 +263,16 @@ namespace KTANE_Bot
             for (int i = 1; i < path.Count; i++)
             {
                 if (path[i].X - path[i - 1].X == -1)
-                    pathBuilder.Append("up; ");
+                    pathBuilder.Append("Up. ");
                 
                 if (path[i].X - path[i - 1].X == 1)
-                    pathBuilder.Append("down; ");
+                    pathBuilder.Append("Down. ");
                 
                 if (path[i].Y - path[i - 1].Y == -1)
-                    pathBuilder.Append("left; ");
+                    pathBuilder.Append("Left. ");
                 
                 if (path[i].Y - path[i - 1].Y == 1)
-                    pathBuilder.Append("right; ");
+                    pathBuilder.Append("Right. ");
             }
 
             return pathBuilder.ToString();
