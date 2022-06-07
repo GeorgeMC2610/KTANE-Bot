@@ -19,6 +19,8 @@ namespace KTANE_Bot
 
         public override string Solve()
         {
+            var existingLetters = new List<string>();
+
             
         }
 

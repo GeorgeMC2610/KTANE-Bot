@@ -399,8 +399,25 @@ namespace KTANE_Bot
                             SwitchToDefaultProperties();
                             return knob.Solve();
                         
+                        //PASSWORD SOLVER.
                         case Solvers.Password:
-                            break;
+                            if (_defusingModule == null)
+                                _defusingModule = new Password(_bomb);
+
+                            var password = (Password)_defusingModule;
+
+                            if (password.AssignLetters(command) == -1)
+                                return "There can be no duplicate letters in the password. Try again.";
+
+                            if (password.AssignLetters(command) == 1)
+                                return "You must give exactly 6 letters. Try again.";
+                            
+                            if (password.Solve().StartsWith("Try"))
+                                SwitchToDefaultProperties();
+
+                            return password.Solve();
+
+                        //MAZE SOLVER.
                         case Solvers.Maze:
                             if (_defusingModule == null)
                                 _defusingModule = new Maze(_bomb);
@@ -414,8 +431,7 @@ namespace KTANE_Bot
 
                                 return "Try again";
                             }
-
-
+                            
                             if (maze.SquareLocation.X == -1 || maze.SquareLocation.Y == -1)
                             {
                                 maze.SetSquare(int.Parse(command[0].ToString()), int.Parse(command[2].ToString()));
