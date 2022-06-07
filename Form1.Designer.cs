@@ -130,6 +130,7 @@ namespace KTANE_Bot
             // 
             // panelProperties
             // 
+            this.panelProperties.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelProperties.Controls.Add(this.labelDigit);
             this.panelProperties.Controls.Add(this.labelPort);
             this.panelProperties.Controls.Add(this.labelVowel);
