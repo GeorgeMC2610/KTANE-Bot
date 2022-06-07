@@ -60,7 +60,7 @@ namespace KTANE_Bot
             if (possibleWords.Count == 0)
                 return @"Something is wrong.";
             
-            return possibleWords.Count < 5 ? $"Try words: {string.Join(", ", possibleWords)}" : $"Column {Column + 1}.";
+            return possibleWords.Count < 6 ? $"Try words: {string.Join(", ", possibleWords)}" : $"Column {Column + 1}.";
         }
 
         public int AssignLetters(string letter)

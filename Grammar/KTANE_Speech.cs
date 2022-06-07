@@ -510,6 +510,11 @@ namespace KTANE_Bot
             _ktaneBot.SpeakAsyncCancelAll();
         }
 
+        public void ChangeInputDevice()
+        {
+            RecognitionEngine.
+        }
+
         public void Speak(string message)
         {
             _ktaneBot.SpeakAsync(message);
