@@ -73,7 +73,6 @@ namespace KTANE_Bot
         {
             //speech synthesizer
             _ktaneBot = new SpeechSynthesizer();
-            _ktaneBot.SelectVoice("Microsoft Zira Desktop");
 
             //switch to waiting state, so the bomb solver waits for a command.
             _state = States.Waiting;
