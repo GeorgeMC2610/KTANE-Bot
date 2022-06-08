@@ -413,9 +413,9 @@ namespace KTANE_Bot
                                 case -1:
                                     return "There can be no duplicate letters in the password. Try again.";
                                 case 2:
-                                    return $"{command}; next";
+                                    return $"{command[0]}; next";
                                 default:
-                                    if (password.Solve().StartsWith("Try") || password.Solve().StartsWith("Something"))
+                                    if (password.Solve().StartsWith("Try") || password.Solve().StartsWith("Something") || password.Solve().StartsWith("The"))
                                         SwitchToDefaultProperties();
 
                                     return password.Solve();

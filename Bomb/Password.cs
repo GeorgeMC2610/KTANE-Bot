@@ -57,10 +57,15 @@ namespace KTANE_Bot
 
             var possibleWords = (from letter in combinationLetters from word in Words where word.StartsWith(letter) select word).ToList();
 
-            if (possibleWords.Count == 0)
-                return @"Something is wrong.";
-            
-            return possibleWords.Count < 6 ? $"Try words: {string.Join(", ", possibleWords)}" : $"Column {Column + 1}.";
+            switch (possibleWords.Count)
+            {
+                case 0:
+                    return @"Something is wrong.";
+                case 1:
+                    return $"The password is \"{possibleWords[0]}.\"";
+                default:
+                    return possibleWords.Count < 6 ? $"Try words: {string.Join(", ", possibleWords)}" : $"Column {Column + 1}.";
+            }
         }
 
         public int AssignLetters(string letter)
@@ -73,6 +78,9 @@ namespace KTANE_Bot
                 { 3, _column4 },
                 { 4, _column5 },
             };
+
+            if (letter.Length > 1)
+                letter = letter[0].ToString();
 
             //if there is any duplicate don't allow it.
             if (!targetListDict[Column].Contains(letter))
