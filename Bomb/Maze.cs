@@ -199,10 +199,8 @@ namespace KTANE_Bot
 
         public override string Solve()
         {
-            foreach (var VARIABLE in TargetMaze)
-            {
-                VARIABLE.Marked = false;
-            }
+            foreach (var block in TargetMaze)
+                block.Marked = false;
             
             var visitedPoints = new Queue<Node>();
 
@@ -221,27 +219,19 @@ namespace KTANE_Bot
 
                 //move right (this is y+1)
                 if (cell.Y + 1 < 6 && !TargetMaze[cell.X, cell.Y + 1].Marked && TargetMaze[cell.X, cell.Y].Right)
-                {
                     visitedPoints.Enqueue(new Node(cell.X, cell.Y + 1) {Previous = cell});
-                }
-                
+
                 //move left (this is y-1)
                 if (cell.Y - 1 >= 0 && !TargetMaze[cell.X, cell.Y - 1].Marked && TargetMaze[cell.X, cell.Y].Left)
-                {
                     visitedPoints.Enqueue(new Node(cell.X, cell.Y - 1) {Previous = cell});
-                }
-                
+
                 //move down (this is (x+1)
                 if (cell.X + 1 < 6 && !TargetMaze[cell.X + 1, cell.Y].Marked && TargetMaze[cell.X, cell.Y].Down)
-                {
                     visitedPoints.Enqueue(new Node(cell.X + 1, cell.Y) {Previous = cell});
-                }
-
+                
                 //move up (this is x-1)
                 if (cell.X - 1 >= 0 && !TargetMaze[cell.X - 1, cell.Y].Marked && TargetMaze[cell.X, cell.Y].Up)
-                {
                     visitedPoints.Enqueue(new Node(cell.X - 1, cell.Y) {Previous = cell});
-                }
             }
 
             return @"No path found";
