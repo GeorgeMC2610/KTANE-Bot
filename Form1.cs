@@ -29,6 +29,11 @@ namespace KTANE_Bot
             //initialize speech recognition.
             _ktaneSpeech = new KTANE_Speech();
             _ktaneSpeech.RecognitionEngine.SpeechRecognized += DefaultSpeechRecognized;
+
+            foreach (var voice in _ktaneSpeech.GetAllVoices())
+                comboBoxVoices.Items.Add(voice);
+
+            comboBoxVoices.SelectedIndex = 0;
         }
         
         private void DefaultSpeechRecognized(object sender, SpeechRecognizedEventArgs e)
@@ -87,6 +92,11 @@ namespace KTANE_Bot
             labelPort.Text = $@"Port: {(_ktaneSpeech.BombProperties["Port"] == -1 ? "--" : _ktaneSpeech.BombProperties["Port"] == 1 ? "Yes" : "No")}";
             labelVowel.Text = $@"Vowel: {(_ktaneSpeech.BombProperties["Vowel"] == -1 ? "--" : _ktaneSpeech.BombProperties["Vowel"] == 1 ? "Yes" : "No")}";
             labelDigit.Text = $@"Digit: {(_ktaneSpeech.BombProperties["Digit"] == -1 ? "--" : _ktaneSpeech.BombProperties["Digit"] == 1 ? "Odd" : "Even")}";
+        }
+
+        private void comboBoxVoices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _ktaneSpeech.ChangeVoice(comboBoxVoices.SelectedItem.ToString());
         }
     }
 }

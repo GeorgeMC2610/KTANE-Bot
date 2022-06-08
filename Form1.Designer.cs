@@ -43,6 +43,8 @@ namespace KTANE_Bot
             this.labelCAR = new System.Windows.Forms.Label();
             this.labelFRK = new System.Windows.Forms.Label();
             this.labelBatteries = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxVoices = new System.Windows.Forms.ComboBox();
             this.panelProperties.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,17 +79,17 @@ namespace KTANE_Bot
             this.labelInput.Size = new System.Drawing.Size(55, 20);
             this.labelInput.TabIndex = 3;
             this.labelInput.Text = "INPUT";
-            this.labelInput.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelInput.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelOutput
             // 
             this.labelOutput.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOutput.Location = new System.Drawing.Point(12, 240);
+            this.labelOutput.Location = new System.Drawing.Point(12, 220);
             this.labelOutput.Name = "labelOutput";
             this.labelOutput.Size = new System.Drawing.Size(69, 20);
             this.labelOutput.TabIndex = 4;
             this.labelOutput.Text = "OUTPUT";
-            this.labelOutput.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelOutput.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // buttonStart
             // 
@@ -109,7 +111,7 @@ namespace KTANE_Bot
             this.textBoxOutput.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxOutput.Enabled = false;
             this.textBoxOutput.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxOutput.Location = new System.Drawing.Point(12, 263);
+            this.textBoxOutput.Location = new System.Drawing.Point(12, 243);
             this.textBoxOutput.Name = "textBoxOutput";
             this.textBoxOutput.Size = new System.Drawing.Size(378, 26);
             this.textBoxOutput.TabIndex = 6;
@@ -202,12 +204,35 @@ namespace KTANE_Bot
             this.labelBatteries.Text = "Batteries: --";
             this.labelBatteries.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 281);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 21);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Output voice:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // comboBoxVoices
+            // 
+            this.comboBoxVoices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxVoices.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxVoices.FormattingEnabled = true;
+            this.comboBoxVoices.Location = new System.Drawing.Point(117, 281);
+            this.comboBoxVoices.Name = "comboBoxVoices";
+            this.comboBoxVoices.Size = new System.Drawing.Size(234, 24);
+            this.comboBoxVoices.TabIndex = 10;
+            this.comboBoxVoices.SelectedIndexChanged += new System.EventHandler(this.comboBoxVoices_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBoxVoices);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panelProperties);
             this.Controls.Add(this.buttonRandomBomb);
             this.Controls.Add(this.textBoxOutput);
@@ -224,6 +249,10 @@ namespace KTANE_Bot
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.ComboBox comboBoxVoices;
+
+        private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.Label labelFRK;
         private System.Windows.Forms.Label labelCAR;
