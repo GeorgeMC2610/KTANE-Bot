@@ -199,14 +199,16 @@ namespace KTANE_Bot
 
         public override string Solve()
         {
+            //unmark all maze blocks.
             foreach (var block in TargetMaze)
                 block.Marked = false;
             
-            var visitedPoints = new Queue<Node>();
-
+            //if the locations are not initialized, alert.
             if (SquareLocation.X == -1 || TriangleLocation.X == -1)
                 return @"Something is wrong.";
             
+            //standard bfs procedure to find a path.
+            var visitedPoints = new Queue<Node>();
             visitedPoints.Enqueue(SquareLocation);
 
             while (visitedPoints.Count != 0)
@@ -237,10 +239,15 @@ namespace KTANE_Bot
             return @"No path found";
         }
 
+        /// <summary>
+        /// Constructs a path from a certain starting point to an end.
+        /// </summary>
+        /// <param name="end">The objective/goal to be reached.</param>
+        /// <returns>A sequence of moves to be followed in order to reach the goal from start to end.</returns>
         private string ConstructPath(Node end)
         {
             var previous = end;
-            List<Node> path = new List<Node>();
+            var path = new List<Node>();
 
             while (previous != null)
             {
@@ -250,7 +257,7 @@ namespace KTANE_Bot
 
             var pathBuilder = new StringBuilder();
             path.Reverse();
-            for (int i = 1; i < path.Count; i++)
+            for (var i = 1; i < path.Count; i++)
             {
                 if (path[i].X - path[i - 1].X == -1)
                     pathBuilder.Append("Up. ");
@@ -270,6 +277,7 @@ namespace KTANE_Bot
 
         public bool AssignCircle(int x, int y)
         {
+            //assign the target maze, based on one green circle
             try
             {
                 TargetMaze = MazeIdentifierDict[new Point(x, y)];
