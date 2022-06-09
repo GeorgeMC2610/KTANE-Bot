@@ -30,6 +30,7 @@ namespace KTANE_Bot
         {
             var combinationLetters = new List<string>();
 
+            //go to each column, and collect all letter combinations without keeping the ones from the previous column.
             foreach (var t1 in _column1)
             {
                 combinationLetters.Add(t1);
@@ -55,14 +56,20 @@ namespace KTANE_Bot
                 }
             }
 
+            //find all words that start with available column combinations
             var possibleWords = (from letter in combinationLetters from word in Words where word.StartsWith(letter) select word).ToList();
 
             switch (possibleWords.Count)
             {
+                //if no words were found, then something went wrong.
                 case 0:
                     return @"Something is wrong.";
+                
+                //if there was exactly one word found, return this one word.
                 case 1:
                     return $"The password is \"{possibleWords[0]}.\"";
+                
+                //if more than 5 words were found, collect the letters from the next column. Otherwise, return the possible words.
                 default:
                     return possibleWords.Count < 6 ? $"Try words: {string.Join(", ", possibleWords)}" : $"Column {Column + 1}.";
             }
@@ -79,6 +86,7 @@ namespace KTANE_Bot
                 { 4, _column5 },
             };
 
+            //if the parameter is a word, only keep its first letter.
             if (letter.Length > 1)
                 letter = letter[0].ToString();
 
@@ -88,14 +96,12 @@ namespace KTANE_Bot
             else
                 return -1;
 
-            if (targetListDict[Column].Count == 6)
-            {
-                Column++;
-                return 0;
-            }
+            //continue allowing letters, until they're exactly 6.
+            if (targetListDict[Column].Count != 6) return 2;
             
-            return 2;
-
+            //otherwise go to the next column.
+            Column++;
+            return 0;
         }
     }
 }
