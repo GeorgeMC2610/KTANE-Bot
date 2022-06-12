@@ -34,6 +34,7 @@ namespace KTANE_Bot
                 comboBoxVoices.Items.Add(voice);
 
             comboBoxVoices.SelectedIndex = 0;
+            ResetBomb = true;
             UpdateInput();
         }
         
