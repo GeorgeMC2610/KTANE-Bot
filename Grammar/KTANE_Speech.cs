@@ -376,6 +376,12 @@ namespace KTANE_Bot
                             if (_defusingModule == null)
                                 _defusingModule = new Morse(_bomb);
 
+                            if (command == "escape module")
+                            {
+                                SwitchToDefaultProperties();
+                                return "Cancelled Morse.";
+                            }
+                            
                             var morse = (Morse)_defusingModule;
 
                             if (command.Contains('.') || command.Contains('-'))
@@ -406,6 +412,12 @@ namespace KTANE_Bot
                             if (_defusingModule == null)
                                 _defusingModule = new Password(_bomb);
 
+                            if (command == "ESCAPE MODULE")
+                            {
+                                SwitchToDefaultProperties();
+                                return "Cancelled Password";
+                            }
+
                             var password = (Password)_defusingModule;
 
                             switch (password.AssignLetters(command.ToLower()))
@@ -425,6 +437,12 @@ namespace KTANE_Bot
                         case Solvers.Maze:
                             if (_defusingModule == null)
                                 _defusingModule = new Maze(_bomb);
+
+                            if (command == "ESCAPE MODULE")
+                            {
+                                SwitchToDefaultProperties();
+                                return "Cancelled Maze.";
+                            }
 
                             var maze = (Maze)_defusingModule;
 

@@ -109,6 +109,7 @@ namespace KTANE_Bot
             var four = new GrammarBuilder("4");
             var five = new GrammarBuilder("5");
             var six = new GrammarBuilder("6");
+            var done = new GrammarBuilder("ESCAPE MODULE");
             
             one.Append(numbers);
             two.Append(numbers);
@@ -117,7 +118,8 @@ namespace KTANE_Bot
             five.Append(numbers);
             six.Append(numbers);
             
-            var allChoices = new Choices(new GrammarBuilder[] { one, two, three, four, five, six });
+            
+            var allChoices = new Choices(new GrammarBuilder[] { one, two, three, four, five, six, done });
             
             return new Grammar(allChoices);
         }
