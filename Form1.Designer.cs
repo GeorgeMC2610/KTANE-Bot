@@ -46,6 +46,7 @@ namespace KTANE_Bot
             this.labelOutputVoice = new System.Windows.Forms.Label();
             this.comboBoxVoices = new System.Windows.Forms.ComboBox();
             this.labelGrammarInput = new System.Windows.Forms.Label();
+            this.checkBoxResetBomb = new System.Windows.Forms.CheckBox();
             this.panelProperties.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -235,12 +236,25 @@ namespace KTANE_Bot
             this.labelGrammarInput.TabIndex = 11;
             this.labelGrammarInput.Text = "INPUT";
             // 
+            // checkBoxResetBomb
+            // 
+            this.checkBoxResetBomb.Checked = true;
+            this.checkBoxResetBomb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxResetBomb.Location = new System.Drawing.Point(12, 180);
+            this.checkBoxResetBomb.Name = "checkBoxResetBomb";
+            this.checkBoxResetBomb.Size = new System.Drawing.Size(206, 24);
+            this.checkBoxResetBomb.TabIndex = 12;
+            this.checkBoxResetBomb.Text = "Reset Bomb upon Explosion/Defusal";
+            this.checkBoxResetBomb.UseVisualStyleBackColor = true;
+            this.checkBoxResetBomb.CheckedChanged += new System.EventHandler(this.checkBoxResetBomb_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkBoxResetBomb);
             this.Controls.Add(this.labelGrammarInput);
             this.Controls.Add(this.comboBoxVoices);
             this.Controls.Add(this.labelOutputVoice);
@@ -260,6 +274,8 @@ namespace KTANE_Bot
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.CheckBox checkBoxResetBomb;
 
         private System.Windows.Forms.Label labelGrammarInput;
 

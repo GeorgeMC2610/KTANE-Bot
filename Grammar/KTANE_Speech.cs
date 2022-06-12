@@ -206,10 +206,18 @@ namespace KTANE_Bot
                         {
                             case "The bomb exploded":
                                 var dismissingMessages = new[] { "Aww :(", "It's your fault.", "Think faster.", "You're useless.", "We tried our best." };
+                                
+                                if (Form1.ResetBomb)
+                                    ResetBomb();
+                                
                                 return dismissingMessages[rng.Next(0, dismissingMessages.Length)];
                             
                             case "The bomb is defused":
                                 var congratulatoryMessages = new[] { "Good job!", "Nice!", "You did it!", "Yay!", "Woo-hoo!", "Congratulations!" };
+                                
+                                if (Form1.ResetBomb)
+                                    ResetBomb();
+                                
                                 return congratulatoryMessages[rng.Next(0, congratulatoryMessages.Length)];
                             
                             case "Stop":

@@ -17,7 +17,7 @@ namespace KTANE_Bot
     public partial class Form1 : Form
     {
         private KTANE_Speech _ktaneSpeech;
-        public static string Output { get; set; }   
+        public static bool ResetBomb { get; private set; }   
         
         public Form1()
         {
@@ -141,6 +141,11 @@ namespace KTANE_Bot
         private void comboBoxVoices_SelectedIndexChanged(object sender, EventArgs e)
         {
             _ktaneSpeech.ChangeVoice(comboBoxVoices.SelectedItem.ToString());
+        }
+
+        private void checkBoxResetBomb_CheckedChanged(object sender, EventArgs e)
+        {
+            ResetBomb = checkBoxResetBomb.Checked;
         }
     }
 }
