@@ -24,7 +24,7 @@ namespace KTANE_Bot
         //METHODS TO RETRIEVE GRAMMARS.
         private static Grammar _StandardDefuseGrammar()
         {
-            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Defuse.txt"))));
+            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Defuse.txt")))) {Name = "Standard Defuse Grammar"};
         }
         
         //bomb checking grammar
@@ -60,7 +60,7 @@ namespace KTANE_Bot
             digit.Append(oddEven);
                 
             var allChoices = new Choices(new GrammarBuilder[] {battery, vowel, parallelPort, digit, frk, car});
-            return new Grammar(allChoices);
+            return new Grammar(allChoices) {Name = "Bomb Check Grammar"};
         }
 
         private static Grammar _ButtonGrammar()
@@ -77,7 +77,7 @@ namespace KTANE_Bot
             white.Append(labelChoices);
 
             var allChoices = new Choices(new GrammarBuilder[] {red, yellow, blue, white});
-            return new Grammar(allChoices);
+            return new Grammar(allChoices) {Name = "Button Grammar"};
         }
 
         private static Grammar _MemoryGrammar()
@@ -86,17 +86,17 @@ namespace KTANE_Bot
             grammarBuilder.Append("Numbers", 1, 7);
             grammarBuilder.AppendDictation(category: "numbers");
 
-            return new Grammar(grammarBuilder);
+            return new Grammar(grammarBuilder) {Name = "Memory Grammar"};
         }
 
         private static Grammar _WiresGrammar()
         {
-            return new Grammar(new GrammarBuilder(new Choices(new string[] {"yellow", "blue", "black", "white", "red", "done"})));
+            return new Grammar(new GrammarBuilder(new Choices(new string[] {"yellow", "blue", "black", "white", "red", "done"}))) {Name = "Wires Grammar"};
         }
         
         private static Grammar _KnobGrammar()
         {
-            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Knob.txt"))));
+            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Knob.txt")))) {Name = "Knob Grammar"};
         }
 
         private static Grammar _MazeGrammar()
@@ -121,7 +121,7 @@ namespace KTANE_Bot
             
             var allChoices = new Choices(new GrammarBuilder[] { one, two, three, four, five, six, done });
             
-            return new Grammar(allChoices);
+            return new Grammar(allChoices) {Name = "Maze Grammar"};
         }
 
         private static Grammar _MorseGrammar()
@@ -129,17 +129,17 @@ namespace KTANE_Bot
             var builder = new GrammarBuilder();
             
             builder.AppendDictation();
-            return new Grammar(builder);
+            return new Grammar(builder) {Name = "Morse Grammar"};
         }
 
         private static Grammar _SymbolsGrammar()
         {
-            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Symbols.txt"))));
+            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Symbols.txt")))) {Name = "Symbols Grammar"};
         }
 
         private static Grammar _PasswordGrammar()
         {
-            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Password.txt"))));
+            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"Password.txt")))) {Name = "Password Grammar"};
         }
 
         private static Grammar _SequenceGrammar()
@@ -157,7 +157,7 @@ namespace KTANE_Bot
 
             var allChoices = new Choices(new GrammarBuilder[] { red, black, blue, done });
 
-            return new Grammar(allChoices);
+            return new Grammar(allChoices) {Name = "Sequence Grammar"};
         }
 
         private static Grammar _ComplicatedGrammar()
@@ -191,7 +191,7 @@ namespace KTANE_Bot
 
             var allChoices = new Choices(new GrammarBuilder[] { red, redWhite, whiteRed, blue, blueWhite, whiteBlue, blueRed, redBlue, white, done });
             
-            return new Grammar(allChoices);
+            return new Grammar(allChoices) {Name = "Complicated Grammar"};
         }
 
         private static Grammar _SimonSaysGrammar()
@@ -208,12 +208,12 @@ namespace KTANE_Bot
             var done = new GrammarBuilder("done");
 
             var allChoices = new Choices(new GrammarBuilder[] { strikeBuilder, blue, red, green, yellow, done });
-            return new Grammar(allChoices);
+            return new Grammar(allChoices) {Name = "Simon Says Grammar"};
         }
 
         private static Grammar _WhoIsOnFirstGrammar()
         {
-            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"WhoIsOnFirst.txt"))));
+            return new Grammar(new GrammarBuilder(new Choices(File.ReadAllLines(@"WhoIsOnFirst.txt")))) {Name = "Who's On First Grammar"};
         }
     }
 }

@@ -34,6 +34,7 @@ namespace KTANE_Bot
                 comboBoxVoices.Items.Add(voice);
 
             comboBoxVoices.SelectedIndex = 0;
+            UpdateInput();
         }
         
         private void DefaultSpeechRecognized(object sender, SpeechRecognizedEventArgs e)
@@ -48,15 +49,44 @@ namespace KTANE_Bot
 
         private void UpdateInput()
         {
-            var defuseGrammars = new Dictionary<Grammar, string>
+            var defuseGrammars = new Dictionary<string, string>
             {
-                { DefuseGrammar.StandardDefuseGrammar, "Defuse <module>"},
-                { DefuseGrammar.ComplicatedGrammar, "<THE COLORS OF THE WIRE> + <nothing|star|light|star and light>" },
-                { DefuseGrammar.SequenceGrammar, "<COLOR OF THE WIRE> + <alpha|bravo|charlie>" },
+                { "Standard Defuse Grammar", "Defuse <module>|Bomb Check|The bomb is Defused|The bomb exploded" },
+                { "Complicated Grammar", "<THE COLORS OF THE WIRE> + <nothing|star|light|star and light>" },
+                { "Sequence Grammar", "<COLOR OF THE WIRE> + <alpha|bravo|charlie>, To escape say \"done.\"" },
+                { "Button Grammar", "<color> <label>|<color> stripe" },
+                { "Simon Says Grammar", "<color that flashes last>" },
+                { "Wires Grammar", "<color> (await for next wire)" },
+                {
+                    "Who's On First Grammar",
+                    "Say what you see as is except: red color, u(r) letter(s), ar ee ee dee, el ee ee dee, their OR your pronoun," +
+                    " you're or they're apostrophe, charlie echo echo (cee), u h space u h. Say \"Stop\" to stop speaking."
+                },
+                {
+                    "Password Grammar",
+                    "<military alphabet|regular alphabet> (await for next). To escape say \"escape module.\""
+                },
+                {
+                    "Morse Grammar",
+                    "<0>|<1> (await for next letter) (0 is DOT, 1 is the DASH). To escape say \"escape module\"."
+                },
+                {
+                    "Knob Grammar",
+                    "<zero or one, three times> space <zero or one, three times> (Say the upper right and lower right lights. Zero is unlit, one is lit)"
+                },
+                {
+                    "Symbols Grammar",
+                    "<symbol> (await for next symbol). I have no idea how to explain this. Check SymbolsGrammar.txt to see all available symbols."
+                },
+                { "Maze Grammar", "<0-6>, <0-6>. To escape say \"escape module\"." },
+                { "Memory Grammar", "Numbers <all four numbers that you see>." },
+                {
+                    "Bomb Check Grammar",
+                    "Batteries <0-6> or none or more than two|Freak <yes/true/false/no>|Car <yes/true/false/no>|Vowel <yes/true/false/no>|Port <yes/true/false/no>|Digit <odd/even>"
+                }
             };
 
-            labelGrammarInput.Text = _ktaneSpeech.RecognitionEngine.Grammars.Last().Name;
-            labelGrammarInput.Size = new Size(1000, labelGrammarInput.Height);
+            labelGrammarInput.Text = defuseGrammars[_ktaneSpeech.RecognitionEngine.Grammars.Last().Name];
         }
         
         private void buttonStart_Click(object sender, EventArgs e)

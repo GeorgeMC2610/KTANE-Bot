@@ -54,10 +54,9 @@ namespace KTANE_Bot
             this.buttonReset.BackColor = System.Drawing.Color.Red;
             this.buttonReset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReset.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonReset.Location = new System.Drawing.Point(16, 178);
-            this.buttonReset.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonReset.Location = new System.Drawing.Point(12, 145);
             this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(159, 36);
+            this.buttonReset.Size = new System.Drawing.Size(119, 29);
             this.buttonReset.TabIndex = 1;
             this.buttonReset.Text = "RESET BOMB";
             this.buttonReset.UseVisualStyleBackColor = false;
@@ -68,19 +67,17 @@ namespace KTANE_Bot
             this.textBoxInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxInput.Enabled = false;
             this.textBoxInput.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxInput.Location = new System.Drawing.Point(16, 139);
-            this.textBoxInput.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxInput.Location = new System.Drawing.Point(12, 113);
             this.textBoxInput.Name = "textBoxInput";
-            this.textBoxInput.Size = new System.Drawing.Size(503, 30);
+            this.textBoxInput.Size = new System.Drawing.Size(378, 26);
             this.textBoxInput.TabIndex = 2;
             // 
             // labelInput
             // 
             this.labelInput.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInput.Location = new System.Drawing.Point(16, 111);
-            this.labelInput.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelInput.Location = new System.Drawing.Point(12, 90);
             this.labelInput.Name = "labelInput";
-            this.labelInput.Size = new System.Drawing.Size(73, 25);
+            this.labelInput.Size = new System.Drawing.Size(55, 20);
             this.labelInput.TabIndex = 3;
             this.labelInput.Text = "INPUT";
             this.labelInput.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -88,10 +85,9 @@ namespace KTANE_Bot
             // labelOutput
             // 
             this.labelOutput.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOutput.Location = new System.Drawing.Point(16, 271);
-            this.labelOutput.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelOutput.Location = new System.Drawing.Point(12, 220);
             this.labelOutput.Name = "labelOutput";
-            this.labelOutput.Size = new System.Drawing.Size(92, 25);
+            this.labelOutput.Size = new System.Drawing.Size(69, 20);
             this.labelOutput.TabIndex = 4;
             this.labelOutput.Text = "OUTPUT";
             this.labelOutput.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -102,10 +98,9 @@ namespace KTANE_Bot
             this.buttonStart.BackColor = System.Drawing.Color.Green;
             this.buttonStart.Font = new System.Drawing.Font("Consolas", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonStart.ForeColor = System.Drawing.Color.White;
-            this.buttonStart.Location = new System.Drawing.Point(16, 476);
-            this.buttonStart.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonStart.Location = new System.Drawing.Point(12, 387);
             this.buttonStart.Name = "buttonStart";
-            this.buttonStart.Size = new System.Drawing.Size(1035, 63);
+            this.buttonStart.Size = new System.Drawing.Size(776, 51);
             this.buttonStart.TabIndex = 5;
             this.buttonStart.Text = "START BOT";
             this.buttonStart.UseVisualStyleBackColor = false;
@@ -117,10 +112,9 @@ namespace KTANE_Bot
             this.textBoxOutput.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBoxOutput.Enabled = false;
             this.textBoxOutput.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxOutput.Location = new System.Drawing.Point(16, 299);
-            this.textBoxOutput.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxOutput.Location = new System.Drawing.Point(12, 243);
             this.textBoxOutput.Name = "textBoxOutput";
-            this.textBoxOutput.Size = new System.Drawing.Size(503, 30);
+            this.textBoxOutput.Size = new System.Drawing.Size(378, 26);
             this.textBoxOutput.TabIndex = 6;
             // 
             // buttonRandomBomb
@@ -129,10 +123,9 @@ namespace KTANE_Bot
             this.buttonRandomBomb.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonRandomBomb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRandomBomb.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.buttonRandomBomb.Location = new System.Drawing.Point(183, 178);
-            this.buttonRandomBomb.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonRandomBomb.Location = new System.Drawing.Point(137, 145);
             this.buttonRandomBomb.Name = "buttonRandomBomb";
-            this.buttonRandomBomb.Size = new System.Drawing.Size(159, 36);
+            this.buttonRandomBomb.Size = new System.Drawing.Size(119, 29);
             this.buttonRandomBomb.TabIndex = 7;
             this.buttonRandomBomb.Text = "Random Bomb";
             this.buttonRandomBomb.UseVisualStyleBackColor = false;
@@ -147,19 +140,17 @@ namespace KTANE_Bot
             this.panelProperties.Controls.Add(this.labelCAR);
             this.panelProperties.Controls.Add(this.labelFRK);
             this.panelProperties.Controls.Add(this.labelBatteries);
-            this.panelProperties.Location = new System.Drawing.Point(825, 13);
-            this.panelProperties.Margin = new System.Windows.Forms.Padding(4);
+            this.panelProperties.Location = new System.Drawing.Point(619, 11);
             this.panelProperties.Name = "panelProperties";
-            this.panelProperties.Size = new System.Drawing.Size(229, 245);
+            this.panelProperties.Size = new System.Drawing.Size(172, 199);
             this.panelProperties.TabIndex = 8;
             // 
             // labelDigit
             // 
             this.labelDigit.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDigit.Location = new System.Drawing.Point(4, 134);
-            this.labelDigit.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelDigit.Location = new System.Drawing.Point(3, 109);
             this.labelDigit.Name = "labelDigit";
-            this.labelDigit.Size = new System.Drawing.Size(123, 25);
+            this.labelDigit.Size = new System.Drawing.Size(92, 20);
             this.labelDigit.TabIndex = 9;
             this.labelDigit.Text = "Digit: --";
             this.labelDigit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -167,10 +158,9 @@ namespace KTANE_Bot
             // labelPort
             // 
             this.labelPort.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPort.Location = new System.Drawing.Point(4, 110);
-            this.labelPort.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPort.Location = new System.Drawing.Point(3, 89);
             this.labelPort.Name = "labelPort";
-            this.labelPort.Size = new System.Drawing.Size(123, 25);
+            this.labelPort.Size = new System.Drawing.Size(92, 20);
             this.labelPort.TabIndex = 8;
             this.labelPort.Text = "Port: --";
             this.labelPort.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -178,10 +168,9 @@ namespace KTANE_Bot
             // labelVowel
             // 
             this.labelVowel.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelVowel.Location = new System.Drawing.Point(4, 85);
-            this.labelVowel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelVowel.Location = new System.Drawing.Point(3, 69);
             this.labelVowel.Name = "labelVowel";
-            this.labelVowel.Size = new System.Drawing.Size(123, 25);
+            this.labelVowel.Size = new System.Drawing.Size(92, 20);
             this.labelVowel.TabIndex = 7;
             this.labelVowel.Text = "Vowel: --";
             this.labelVowel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -189,10 +178,9 @@ namespace KTANE_Bot
             // labelCAR
             // 
             this.labelCAR.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCAR.Location = new System.Drawing.Point(4, 60);
-            this.labelCAR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCAR.Location = new System.Drawing.Point(3, 49);
             this.labelCAR.Name = "labelCAR";
-            this.labelCAR.Size = new System.Drawing.Size(123, 25);
+            this.labelCAR.Size = new System.Drawing.Size(92, 20);
             this.labelCAR.TabIndex = 6;
             this.labelCAR.Text = "CAR: --";
             this.labelCAR.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -200,10 +188,9 @@ namespace KTANE_Bot
             // labelFRK
             // 
             this.labelFRK.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFRK.Location = new System.Drawing.Point(4, 36);
-            this.labelFRK.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelFRK.Location = new System.Drawing.Point(3, 29);
             this.labelFRK.Name = "labelFRK";
-            this.labelFRK.Size = new System.Drawing.Size(123, 25);
+            this.labelFRK.Size = new System.Drawing.Size(92, 20);
             this.labelFRK.TabIndex = 5;
             this.labelFRK.Text = "FRK: --";
             this.labelFRK.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -211,10 +198,9 @@ namespace KTANE_Bot
             // labelBatteries
             // 
             this.labelBatteries.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBatteries.Location = new System.Drawing.Point(4, 11);
-            this.labelBatteries.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelBatteries.Location = new System.Drawing.Point(3, 9);
             this.labelBatteries.Name = "labelBatteries";
-            this.labelBatteries.Size = new System.Drawing.Size(212, 25);
+            this.labelBatteries.Size = new System.Drawing.Size(159, 20);
             this.labelBatteries.TabIndex = 4;
             this.labelBatteries.Text = "Batteries: --";
             this.labelBatteries.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -222,10 +208,9 @@ namespace KTANE_Bot
             // labelOutputVoice
             // 
             this.labelOutputVoice.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelOutputVoice.Location = new System.Drawing.Point(16, 346);
-            this.labelOutputVoice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelOutputVoice.Location = new System.Drawing.Point(12, 281);
             this.labelOutputVoice.Name = "labelOutputVoice";
-            this.labelOutputVoice.Size = new System.Drawing.Size(132, 26);
+            this.labelOutputVoice.Size = new System.Drawing.Size(99, 21);
             this.labelOutputVoice.TabIndex = 9;
             this.labelOutputVoice.Text = "Output voice:";
             this.labelOutputVoice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -235,30 +220,27 @@ namespace KTANE_Bot
             this.comboBoxVoices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxVoices.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxVoices.FormattingEnabled = true;
-            this.comboBoxVoices.Location = new System.Drawing.Point(156, 346);
-            this.comboBoxVoices.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBoxVoices.Location = new System.Drawing.Point(117, 281);
             this.comboBoxVoices.Name = "comboBoxVoices";
-            this.comboBoxVoices.Size = new System.Drawing.Size(311, 28);
+            this.comboBoxVoices.Size = new System.Drawing.Size(234, 24);
             this.comboBoxVoices.TabIndex = 10;
             this.comboBoxVoices.SelectedIndexChanged += new System.EventHandler(this.comboBoxVoices_SelectedIndexChanged);
             // 
             // labelGrammarInput
             // 
             this.labelGrammarInput.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGrammarInput.Location = new System.Drawing.Point(13, 13);
-            this.labelGrammarInput.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelGrammarInput.Location = new System.Drawing.Point(10, 11);
             this.labelGrammarInput.Name = "labelGrammarInput";
-            this.labelGrammarInput.Size = new System.Drawing.Size(73, 25);
+            this.labelGrammarInput.Size = new System.Drawing.Size(603, 49);
             this.labelGrammarInput.TabIndex = 11;
             this.labelGrammarInput.Text = "INPUT";
-            this.labelGrammarInput.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.labelGrammarInput);
             this.Controls.Add(this.comboBoxVoices);
             this.Controls.Add(this.labelOutputVoice);
@@ -270,7 +252,6 @@ namespace KTANE_Bot
             this.Controls.Add(this.labelInput);
             this.Controls.Add(this.textBoxInput);
             this.Controls.Add(this.buttonReset);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Keep Talking and Nobody Explodes Defuser";
