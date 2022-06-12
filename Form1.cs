@@ -42,7 +42,21 @@ namespace KTANE_Bot
             textBoxOutput.Text = _ktaneSpeech.AnalyzeSpeech(e.Result.Text);
             _ktaneSpeech.Speak(textBoxOutput.Text);
 
+            UpdateInput();
             UpdateProperties();
+        }
+
+        private void UpdateInput()
+        {
+            var defuseGrammars = new Dictionary<Grammar, string>
+            {
+                { DefuseGrammar.StandardDefuseGrammar, "Defuse <module>"},
+                { DefuseGrammar.ComplicatedGrammar, "<THE COLORS OF THE WIRE> + <nothing|star|light|star and light>" },
+                { DefuseGrammar.SequenceGrammar, "<COLOR OF THE WIRE> + <alpha|bravo|charlie>" },
+            };
+
+            labelGrammarInput.Text = _ktaneSpeech.RecognitionEngine.Grammars.Last().Name;
+            labelGrammarInput.Size = new Size(1000, labelGrammarInput.Height);
         }
         
         private void buttonStart_Click(object sender, EventArgs e)
@@ -86,7 +100,7 @@ namespace KTANE_Bot
 
         private void UpdateProperties()
         {
-            labelBatteries.Text = $@"Batteries: {_ktaneSpeech.BombProperties["Batteries"]}";
+            labelBatteries.Text = $@"Batteries: {(_ktaneSpeech.BombProperties["Batteries"] == -1 ? "--" : _ktaneSpeech.BombProperties["Batteries"].ToString())}";
             labelFRK.Text = $@"FRK: {(_ktaneSpeech.BombProperties["Freak"] == -1 ? "--" : _ktaneSpeech.BombProperties["Freak"] == 1 ? "Yes" : "No")}";
             labelCAR.Text = $@"CAR: {(_ktaneSpeech.BombProperties["Car"] == -1 ? "--" : _ktaneSpeech.BombProperties["Car"] == 1 ? "Yes" : "No")}";
             labelPort.Text = $@"Port: {(_ktaneSpeech.BombProperties["Port"] == -1 ? "--" : _ktaneSpeech.BombProperties["Port"] == 1 ? "Yes" : "No")}";
