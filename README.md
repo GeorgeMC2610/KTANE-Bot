@@ -42,7 +42,7 @@ You can also skip this section if you want, by clicking the **"Random Bomb"** bu
 
 ## The Button
 
-#### Key Word: DEFUSE BUTTON
+#### Key-Word: DEFUSE BUTTON
 
 The button is fairily simple. You just state the button color and then the label as it is written. If the BOT tells you to hold the button until the stripe strikes, you recite the color of the stripe and then the word "stripe".
 
@@ -142,3 +142,17 @@ First is line **THEN** column. For example:
 + the second cicrle's coordinates are **5, 3**.
 + the white square's coordinates are **4, 6**.
 + the red triangle's coordinates are **5, 1**.
+
+<br>
+
+## The Password
+
+#### Key-Word: DEFUSE PASSWORD
+
+For each column, say the letter that you say, either by saying the letter itself (I do not recommend this), or by using the [military alphabet](https://www.wikiwand.com/en/NATO_phonetic_alphabet#:~:text=The%2026%20code%20words%20are,%2Dray%2C%20Yankee%2C%20Zulu.). For each letter, wait until the BOT repeats it, and saying "next".
+
+E.g.: "**Yankee**" or "**Y**".
+
+If the bot finds at most five possible words, it will tell you to try one of them. Otherwise, after the first column, the bot will ask for the letters from the next column.
+
+<br>
