@@ -68,3 +68,15 @@ E.g. **Cut the n-th wire** or **Cut the last wire**.
 This module is also simple. You state the color of the wire and then the letter that it's connected to. The letter can either be A, B or C. Instead of A, B or C, you must say Alpha, Bravo or Charlie accoordingly.
 
 E.g.: **Blue Bravo** or **Black Charlie**.
+
+<br>
+
+## Complicated Wires
+
+#### Key-Word: DEFUSE COMPLICATED
+
+This module is really complicated for a human to solve, but fairily easy for a BOT. After stating the wire's colors, you must say if there is any indicator afterwards (a light or a star). If there is none, you just say "nothing". The BOT will respond with a "yes" or a "no", depending wether the wire must be cut or not.
+
+E.g.: **"Red and White, Nothing" or "Blue, Star" or "Blue and White, Star and Light"**.
+
+<br>
