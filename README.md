@@ -156,3 +156,11 @@ E.g.: "**Yankee**" or "**Y**".
 If the bot finds at most five possible words, it will tell you to try one of them. Otherwise, after the first column, the bot will ask for the letters from the next column.
 
 <br>
+
+## Keypad
+
+#### Key-Word: DEFUSE SYMBOLS
+
+I've named the symbols after what I thought was more obvious. You can take a look at the [Text Document](https://github.com/GeorgeMC2610/KTANE-Bot/blob/master/bin/Debug/Symbols.txt) the program reads to identify the words. Otherwise here are the names:
+
+![symbols](https://github.com/GeorgeMC2610/KTANE-Bot/blob/master/SYMBOLS.jpg)
