@@ -191,4 +191,22 @@ I've tried to make the *Who's on First* module as simple as I possibly could. Yo
 + UH UH → **"u h space u h"**
 + WHAT? → **"what questionmark"**
 
+<br>
 
+## The Knob
+
+#### Key-Word: DEFUSE KNOB
+
+The knob is by far the easiest one. Using "0" for unlit and "1" for lit, spell the six lights that you see (three on the upper left and three on lower left).
+
+For example, for the following knob, you should say: "**0 1 1 space 1 1 1**". 
+
+![knob](https://static.wikia.nocookie.net/ktane/images/9/95/NeedyKnob_Manual2_down2.png/revision/latest/scale-to-width-down/285?cb=20201002195717)
+
+The BOT will respond with the corresponding position the indicator should be turned.
+
+<br><br>
+
+#
+
+### Thanks for reading. Have fun!
