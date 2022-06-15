@@ -100,14 +100,22 @@ E.g.: **"Press three".**
 #### Key-Word: DEFUSE SIMON
 
 Some of you don't even need this, especially when there's a vowel. Each round, the ***only*** thing you have to say is **the color that flashes** ***last***.
-E.g.: **red.**
+E.g.: "**red.**"
 
 Then, the bot will respond with the rest of the colors that you have to press.
-E.g.: **press blue, red, red, yellow**.
+E.g.: "**press blue, red, red, yellow**."
 
-If the bomb has one or more strikes, at any time, you can say "Strikes <number of strikes>".
-E.g.: **Strikes 1**.
+If the bomb has one or more strikes, at any time, you can say "Strikes \<number of strikes>".
+E.g.: "**Strikes 1**."
   
 <br>
   
-## 
+## Morse
+
+#### Key-Word: DEFUSE MORSE
+
+You have to be patient in this one. Starting from the first letter, the bot will sequentially ask you to state the morse code with zeros and ones (**0 is the dot and 1 is the dash**). Once you state one letter, you will state the next one. Usually, you find the word in the third letter.
+
+E.g.: **"zero zero zero"**. (Accoording to Morse Code this is the letter 's')
+
+
