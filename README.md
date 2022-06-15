@@ -130,6 +130,8 @@ I promise this is easy. The only thing you have to recite, are the coordinates. 
 
 E.g. "**one two**".
 
+After that, using BFS, the BOT will tell you which path to follow (Down, Up, etc.). If the bot tells you that there is no path found, then something must be wrong with the circle coordinates.
+
 ### How to specify the coordinates:
 
 ![sample maze](https://raw.githubusercontent.com/cpuSonicatt/KTaNE-Bomb-Expert/HEAD/resources/mazeexample.png)
