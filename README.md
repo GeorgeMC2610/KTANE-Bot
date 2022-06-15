@@ -80,3 +80,15 @@ This module is really complicated for a human to solve, but fairily easy for a B
 E.g.: **"Red and White, Nothing" or "Blue, Star" or "Blue and White, Star and Light"**.
 
 <br>
+
+## Memory
+
+#### Key-Word: DEFUSE MEMORY
+
+The Memory module is really straight forward. After saying the word "Numbers", state all five numbers that you see, starting from the display and then going sequentially left-to-right. Be sure to be moderately fast and clear as you state the numbers. A small misspell and it might not understand you. If it doesn't understand you, it will tell you to repeat the numbers that you see.
+
+E.g.: **"Numbers one, four, one, two, three".**
+
+After stating the numbers, the bot will tell you which button to press.
+
+E.g.: **"Press three".**
