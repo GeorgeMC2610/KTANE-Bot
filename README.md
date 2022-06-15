@@ -118,4 +118,25 @@ You have to be patient in this one. Starting from the first letter, the bot will
 
 E.g.: **"zero zero zero"**. (Accoording to Morse Code this is the letter 's')
 
+After the BOT has identified the word, it will tell you which word it is and at what frequency you tune the radio to.
 
+<br>
+
+## The Maze
+
+#### Key-Word: DEFUSE MAZE
+
+I promise this is easy. The only thing you have to recite, are the coordinates. First, state the coordinates of any of the green circles. Then the white square and then the triangle.
+
+E.g. "**one two**".
+
+### How to specify the coordinates:
+
+![sample maze](https://raw.githubusercontent.com/cpuSonicatt/KTaNE-Bomb-Expert/HEAD/resources/mazeexample.png)
+
+First is line **THEN** column. For example:
+
++ the first circle's coordinates are **1, 5**.
++ the second cicrle's coordinates are **5, 3**.
++ the white square's coordinates are **4, 6**.
++ the red triangle's coordinates are **5, 1**.
