@@ -164,3 +164,31 @@ If the bot finds at most five possible words, it will tell you to try one of the
 I've named the symbols after what I thought was more obvious. You can take a look at the [Text Document](https://github.com/GeorgeMC2610/KTANE-Bot/blob/master/bin/Debug/Symbols.txt) the program reads to identify the words. Otherwise here are the names:
 
 ![symbols](https://github.com/GeorgeMC2610/KTANE-Bot/blob/master/SYMBOLS.jpg)
+
+<br>
+
+## Who's On First
+
+#### Key-Word: DEFUSE WHO IS ON FIRST
+
+I've tried to make the *Who's on First* module as simple as I possibly could. You shall say all words as they're written except:
+
++ [when the display is blank] → **"it is blank"**
++ READ → **"read noun"**
++ RED → "**red color"**
++ REED → **"ar ee ee dee"**
++ LEED → **"el ee ee dee"**
++ YOUR → **"your pronoun"**
++ YOU'RE → **"you're apostrophe"**
++ UR → **"u r letters"**
++ THEY'RE → **"they're apostrophe"**
++ THEIR → **"their pronoun"**
++ C → **"c letter"**
++ CEE → **"charlie echo echo"**
++ UHHH → **"u h h h" (spell the letters)**
++ U → **"u letter"**
++ UH HUH → **"u h space h u h"**
++ UH UH → **"u h space u h"**
++ WHAT? → **"what questionmark"**
+
+
