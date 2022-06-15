@@ -92,3 +92,22 @@ E.g.: **"Numbers one, four, one, two, three".**
 After stating the numbers, the bot will tell you which button to press.
 
 E.g.: **"Press three".**
+
+<br>
+
+## Simon Says
+
+#### Key-Word: DEFUSE SIMON
+
+Some of you don't even need this, especially when there's a vowel. Each round, the ***only*** thing you have to say is **the color that flashes** ***last***.
+E.g.: **red.**
+
+Then, the bot will respond with the rest of the colors that you have to press.
+E.g.: **press blue, red, red, yellow**.
+
+If the bomb has one or more strikes, at any time, you can say "Strikes <number of strikes>".
+E.g.: **Strikes 1**.
+  
+<br>
+  
+## 
