@@ -149,7 +149,7 @@ First is line **THEN** column. For example:
 
 #### Key-Word: DEFUSE PASSWORD
 
-For each column, say the letter that you say, either by saying the letter itself (I do not recommend this), or by using the [military alphabet](https://www.wikiwand.com/en/NATO_phonetic_alphabet#:~:text=The%2026%20code%20words%20are,%2Dray%2C%20Yankee%2C%20Zulu.). For each letter, wait until the BOT repeats it and says "next".
+For each column, tell the bot the letter you see, either by saying the letter itself (I do not recommend this), or by using the [military alphabet](https://www.wikiwand.com/en/NATO_phonetic_alphabet#:~:text=The%2026%20code%20words%20are,%2Dray%2C%20Yankee%2C%20Zulu.). For each letter, wait until the BOT repeats it and says "next".
 
 E.g.: "**Yankee**" or "**Y**".
 
