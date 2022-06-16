@@ -1,6 +1,6 @@
 # Keep Talking and Nobody Explodes BOT
 
-Using C# default speech recognition engine and C# speech synthesis, I made a bot that emulates the manual of Keep Talking and Nobody Explodes video game.
+Using C# default [Speech Recognition Engine](https://docs.microsoft.com/en-us/dotnet/api/system.speech.recognition.speechrecognitionengine?view=netframework-4.8) and C# [Speech Synthesis](https://docs.microsoft.com/en-us/dotnet/api/system.speech.synthesis.speechsynthesizer?view=netframework-4.8), I made a bot that emulates the manual of the video game Keep Talking and Nobody Explodes.
 All modules can be solved using the bot, using the right key-words.
 
 ### Before you give it a go, make sure that...
@@ -139,7 +139,7 @@ After that, using BFS, the BOT will tell you which path to follow (Down, Up, etc
 First is line **THEN** column. For example:
 
 + the first circle's coordinates are **1, 5**.
-+ the second cicrle's coordinates are **5, 3**.
++ the second circle's coordinates are **5, 3**.
 + the white square's coordinates are **4, 6**.
 + the red triangle's coordinates are **5, 1**.
 
@@ -149,7 +149,7 @@ First is line **THEN** column. For example:
 
 #### Key-Word: DEFUSE PASSWORD
 
-For each column, say the letter that you say, either by saying the letter itself (I do not recommend this), or by using the [military alphabet](https://www.wikiwand.com/en/NATO_phonetic_alphabet#:~:text=The%2026%20code%20words%20are,%2Dray%2C%20Yankee%2C%20Zulu.). For each letter, wait until the BOT repeats it, and saying "next".
+For each column, say the letter that you say, either by saying the letter itself (I do not recommend this), or by using the [military alphabet](https://www.wikiwand.com/en/NATO_phonetic_alphabet#:~:text=The%2026%20code%20words%20are,%2Dray%2C%20Yankee%2C%20Zulu.). For each letter, wait until the BOT repeats it and says "next".
 
 E.g.: "**Yankee**" or "**Y**".
 
