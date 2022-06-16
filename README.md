@@ -161,6 +161,8 @@ If the bot finds at most five possible words, it will tell you to try one of the
 
 #### Key-Word: DEFUSE SYMBOLS
 
+Just like Simon Says, there's also a group of people that just memorize the symbols. But if you can't memorize, you have to tell the bot sequentially the symbols you see. **After you state a symbol, wait until the bot repeats it and says "next".** Thereafter naming all four symbols, the bot should say the right order for you to press.
+
 I've named the symbols after what I thought was more obvious. You can take a look at the [Text Document](https://github.com/GeorgeMC2610/KTANE-Bot/blob/master/bin/Debug/Symbols.txt) the program reads to identify the words. Otherwise here are the names:
 
 ![symbols](https://github.com/GeorgeMC2610/KTANE-Bot/blob/master/SYMBOLS.jpg)
