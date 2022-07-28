@@ -29,6 +29,7 @@ namespace KTANE_Bot
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.buttonReset = new System.Windows.Forms.Button();
             this.textBoxInput = new System.Windows.Forms.TextBox();
             this.labelInput = new System.Windows.Forms.Label();
@@ -103,7 +104,7 @@ namespace KTANE_Bot
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(776, 51);
             this.buttonStart.TabIndex = 5;
-            this.buttonStart.Text = "START BOT";
+            this.buttonStart.Text = "START LISTENING";
             this.buttonStart.UseVisualStyleBackColor = false;
             this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
             // 
@@ -266,6 +267,7 @@ namespace KTANE_Bot
             this.Controls.Add(this.labelInput);
             this.Controls.Add(this.textBoxInput);
             this.Controls.Add(this.buttonReset);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Keep Talking and Nobody Explodes Defuser";

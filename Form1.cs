@@ -96,7 +96,7 @@ namespace KTANE_Bot
             if (!_ktaneSpeech.Enabled)
             {
                 _ktaneSpeech.Enable();
-                buttonStart.Text = "STOP BOT";
+                buttonStart.Text = "STOP LISTENING";
                 buttonStart.BackColor = Color.DarkRed;
                 textBoxInput.Enabled = textBoxOutput.Enabled = _ktaneSpeech.Enabled;
                 
@@ -106,7 +106,7 @@ namespace KTANE_Bot
             else
             {
                 _ktaneSpeech.Disable();
-                buttonStart.Text = "START BOT";
+                buttonStart.Text = "START LISTENING";
                 buttonStart.BackColor = Color.Green;
                 textBoxInput.Enabled = textBoxOutput.Enabled = _ktaneSpeech.Enabled;
             }
