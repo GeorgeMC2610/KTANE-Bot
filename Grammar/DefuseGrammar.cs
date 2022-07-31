@@ -91,7 +91,7 @@ namespace KTANE_Bot
 
         private static Grammar _WiresGrammar()
         {
-            return new Grammar(new GrammarBuilder(new Choices(new string[] {"yellow", "blue", "black", "white", "red", "done"}))) {Name = "Wires Grammar"};
+            return new Grammar(new GrammarBuilder(new Choices(new string[] {"yellow", "blue", "black", "white", "red", "done", "wrong"}))) {Name = "Wires Grammar"};
         }
         
         private static Grammar _KnobGrammar()

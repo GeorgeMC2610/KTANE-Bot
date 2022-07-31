@@ -235,22 +235,19 @@ namespace KTANE_Bot
                         //WIRES SOLVER.
                         case Solvers.Wires:
                             if (_defusingModule == null)
-                            {
-                                if (command == "done") return "You must give a color";
-                                
-                                var defusingModule = new Wires(_bomb);
-                                defusingModule.AppendWire(command);
-                                _defusingModule = defusingModule;
-                                
-                                return $"{command}; next.";
-                            }
-
+                                _defusingModule = new Wires(_bomb);
+                            
                             var wires = (Wires)_defusingModule;
 
                             if (command == "done")
                             {
                                 SwitchToDefaultProperties();
                                 return "Done; " + wires.Solve();
+                            }
+
+                            if (command == "wrong")
+                            {
+                                return wires.WireCount < 1 ? "To delete a wire, you must first give one." : wires.DeletePreviousWire();
                             }
 
                             wires.AppendWire(command);

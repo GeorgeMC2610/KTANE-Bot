@@ -6,6 +6,15 @@ namespace KTANE_Bot
     public class Wires : KTANE_Module
     {
         private List<string> _wires;
+        private static readonly Dictionary<int, string> indexingDict = new Dictionary<int, string>
+        {
+            { 1, "first" },
+            { 2, "second" },
+            { 3, "third" },
+            { 4, "fourth" },
+            { 5, "fifth" },
+            { 6, "sixth"}
+        };
 
         public int WireCount => _wires.Count;
 
@@ -19,12 +28,20 @@ namespace KTANE_Bot
             _wires.Add(color);
         }
 
+        public string DeletePreviousWire()
+        {
+            var deletedWire = _wires[_wires.Count - 1];
+            _wires.RemoveAt(_wires.Count - 1);
+
+            return $@"The {indexingDict[WireCount + 1]} wire is no longer {deletedWire}.";
+        }
+
         public override string Solve()
         {
             if (_wires.Count > 6)
                 return $"Too many wires given. ({_wires.Count})";
             if (_wires.Count < 3)
-                return $"You must give at least 3 wires. ({_wires.Count})";
+                return $"You must give at least 3 wires. ({_wires.Count} given)";
             
             var redWires = (from wire in _wires where wire == "red" select wire).Count();
             var whiteWires = (from wire in _wires where wire == "white" select wire).Count();
@@ -95,16 +112,6 @@ namespace KTANE_Bot
         {
             if (index == _wires.Count)
                 return "last";
-
-            var indexingDict = new Dictionary<int, string>
-            {
-                { 1, "first" },
-                { 2, "second" },
-                { 3, "third" },
-                { 4, "fourth" },
-                { 5, "fifth" },
-                { 6, "sixth"}
-            };
 
             return indexingDict[index];
         }
