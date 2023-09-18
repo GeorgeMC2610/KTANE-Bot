@@ -9,3 +9,14 @@ D:\VS Projects\KTANE-Bot\obj\Debug\KTANE-Bot.csproj.CoreCompileInputs.cache
 D:\VS Projects\KTANE-Bot\obj\Debug\KTANE-Bot.exe
 D:\VS Projects\KTANE-Bot\obj\Debug\KTANE-Bot.pdb
 D:\VS Projects\KTANE-Bot\obj\Debug\KTANE-Bot.csproj.SuggestedBindingRedirects.cache
+D:\GitHub\KTANE-Bot\bin\Debug\KTANE-Bot.exe.config
+D:\GitHub\KTANE-Bot\bin\Debug\KTANE-Bot.exe
+D:\GitHub\KTANE-Bot\bin\Debug\KTANE-Bot.pdb
+D:\GitHub\KTANE-Bot\obj\Debug\KTANE-Bot.csproj.AssemblyReference.cache
+D:\GitHub\KTANE-Bot\obj\Debug\KTANE-Bot.csproj.SuggestedBindingRedirects.cache
+D:\GitHub\KTANE-Bot\obj\Debug\KTANE_Bot.Form1.resources
+D:\GitHub\KTANE-Bot\obj\Debug\KTANE_Bot.Properties.Resources.resources
+D:\GitHub\KTANE-Bot\obj\Debug\KTANE-Bot.csproj.GenerateResource.cache
+D:\GitHub\KTANE-Bot\obj\Debug\KTANE-Bot.csproj.CoreCompileInputs.cache
+D:\GitHub\KTANE-Bot\obj\Debug\KTANE-Bot.exe
+D:\GitHub\KTANE-Bot\obj\Debug\KTANE-Bot.pdb
