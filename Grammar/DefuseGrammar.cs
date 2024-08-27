@@ -44,7 +44,7 @@ namespace KTANE_Bot
             parallelPort.Append(trueOrFalse);
                 
             //frk, interpreted as the word "freak".
-            var frk = new GrammarBuilder("Fake");
+            var frk = new GrammarBuilder("Freak");
             frk.Append(trueOrFalse);
                 
             //car, interpreted as the word "car".
